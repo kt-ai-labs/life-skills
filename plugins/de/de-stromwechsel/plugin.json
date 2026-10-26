@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "de-stromwechsel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Research and plan household electricity-provider switches in Germany, including tariffs, bonuses, and switching risks.",
   "author": {
     "name": "KT-AI Labs",
@@ -9,7 +9,11 @@
   },
   "repository": "https://github.com/kt-ai-labs/life-skills",
   "license": "MIT",
-  "keywords": ["germany", "electricity", "utilities"],
+  "keywords": [
+    "germany",
+    "electricity",
+    "utilities"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
