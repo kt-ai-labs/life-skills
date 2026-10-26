@@ -14,11 +14,13 @@ Reusable AI skills for practical everyday decisions and procedures. Each task is
 - **Erfahrungen und Zuverlässigkeit:** untersucht dokumentierte Probleme mit Kündigung, Schlussrechnung, Zählerstand, Guthaben und Bonusauszahlung.
 - **Ökostrom und Plan B:** bewertet nachvollziehbare Ökostrom-Kriterien sowie strategische Reserveanbieter, die bewusst nicht für den normalen Jahreswechsel verbraucht werden.
 
+**Dokumentierte Ergebnisse, auch einmalig:** Der Skill fragt nach einem Zielordner (`target directory`), der vollständigen Lieferadresse inklusive separatem Hausnummerzusatz und einem Jahresverbrauch in kWh (Messwert, Durchschnitt oder Schätzung). Er liest vorhandene Historie und Reserveanbieter, organisiert Jahresordner selbst und speichert einen datierten Bericht **bei jedem Durchlauf**. Persönliche Adressdaten gehören nicht ungefragt in öffentliche Git-Repositories.
+
 **Keine Pflicht-Integration:** Weder MCP, API-Key noch ein Konto bei einem Vergleichsportal sind für die Installation erforderlich. Für eine *aktuelle* Marktanalyse benötigt der Agent allerdings verfügbare Recherchetools, aktuelle Quellen oder ein vom Nutzer geliefertes Tarifangebot. Der Skill schließt keinen Vertrag ab und kündigt keinen Stromvertrag automatisch.
 
 **Beispiel-Prompt (Deutsch):**
 
-> Nutze den Skill `de-stromwechsel`. Ich möchte meinen Stromanbieter in Deutschland wechseln. Vergleiche Tarife für meine Postleitzahl und meinen Jahresverbrauch, prüfe Preisgarantie, Neukundenbonus, Kündigungsfristen, Ökostrom und Zuverlässigkeit. Zeige Erstjahreskosten und Kosten ohne Bonus. Frage nur nach Angaben, die noch fehlen.
+> Nutze den Skill `de-stromwechsel`. Speichere die Recherche in `./de-stromwechsel` und organisiere dort Jahresordner, Berichte, Anbieterhistorie und Reserveanbieter. Ich möchte meinen Stromanbieter in Deutschland wechseln. Frage nach meiner vollständigen Lieferadresse (inklusive separatem Hausnummerzusatz, falls vorhanden), Jahresverbrauch in kWh und dem gewünschten Wechselzeitraum, soweit diese Angaben nicht bereits in den Dateien stehen. Vergleiche Tarife, prüfe Preisgarantie, Boni, Kündigungsfristen, Ökostrom und Zuverlässigkeit und speichere einen datierten Bericht.
 
 **Skill oder MCP?** Ein Skill beschreibt *wie* dein Agent recherchiert, Angebote überprüft und eine Entscheidung vorbereitet. Ein Stromvergleich-MCP wie [Choov](https://www.choov.de/) liefert dagegen Angebote über einen externen Datenanbieter; ein Wechselservice wie [Wechselpilot](https://wechselpilot.com/) kann nach Registrierung einen Wechsel übernehmen. Solche Dienste können optional als Quellen dienen, sind aber **nicht** Bestandteil dieses Plugins und ersetzen keine unabhängige Prüfung.
 

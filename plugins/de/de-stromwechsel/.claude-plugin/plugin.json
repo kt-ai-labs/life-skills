@@ -1,7 +1,7 @@
 {
   "name": "de-stromwechsel",
   "displayName": "Jährlicher Stromwechsel (DE)",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Research and plan household electricity-provider switches in Germany, including tariffs, bonuses, and switching risks.",
   "author": {
     "name": "KT-AI Labs",

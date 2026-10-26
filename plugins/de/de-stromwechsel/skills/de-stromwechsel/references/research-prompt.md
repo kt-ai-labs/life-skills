@@ -33,8 +33,9 @@ For intentional annual switchers, optimize the first contract year without treat
 
 Establish or infer only from supplied context:
 
-- **Location:** PLZ, Ort, and exact supply address when necessary.
-- **Consumption:** exact annual kWh value to use consistently in all calculations.
+- **Workspace:** the user-designated target directory for persisted research, with any existing root profile, historical providers, reserves and annual research read first. Confirm a directory if missing, even for one-off research.
+- **Supply location:** full PLZ, Ort, Straße, Hausnummer and separate Hausnummerzusatz (or explicitly none), reused from the existing private profile where available.
+- **Consumption:** last measured yearly kWh, an average or an estimate; use the supplied figure consistently and clearly label its basis and price uncertainty.
 - **Current provider/tariff:** use as an economic and operational benchmark when available.
 - **Desired supply start / current contract end.**
 - **Recent provider history:** especially providers used in the last few years.
@@ -43,7 +44,7 @@ Establish or infer only from supplied context:
 - **Existing strategic reserve providers:** if any.
 - **Excluded providers:** user choice or evidence-based exclusions.
 
-If a provider's exact price depends on street, house number, Netzgebiet, MaLo-ID, or an interactive calculator, do not fabricate a PLZ-only price. State what is missing or ask the user for the provider quote/screenshot when necessary.
+Use the full supply address for location-sensitive tariff checks, including the Hausnummerzusatz when a calculator exposes a separate field. Do not assume it is interchangeable with the billing address. If a provider additionally requires a MaLo-ID, meter details or an interactive price quote, do not fabricate a price; explain the missing provider-specific requirement. Never enter into a contract or registration without explicit user authorization. In a public/shared workspace, avoid writing personally identifying address details to tracked report files without informed approval.
 
 ## 3. Current-guidance check and baseline enforcement
 
@@ -108,7 +109,7 @@ For every serious candidate, capture or calculate:
 
 - Arbeitspreis in ct/kWh
 - Grundpreis per month or year
-- annual cost before bonuses at the user's exact consumption
+- annual cost before bonuses at the user's supplied consumption (identify measured, average or estimated basis)
 - Sofortbonus
 - Neukundenbonus
 - other one-time credits or discounts
@@ -336,8 +337,8 @@ Produce a compact decision report with:
 
 State:
 
-- location basis
-- consumption
+- location basis (refer to the single private supply profile rather than repeating a full street address)
+- consumption and whether the value is measured, averaged or estimated
 - supply start
 - switching strategy
 - baseline defaults and user overrides
@@ -389,11 +390,23 @@ Give a practical recommendation or small set of choices with trade-offs.
 
 Before Abschluss, tell the user exactly what still needs offer-specific confirmation. Prefer the provider's official checkout path.
 
+### F. Saved research and workspace updates
+
+For **every** run, including a one-time or preliminary comparison:
+
+1. Confirm the target directory, read prior context if present and create the standard workspace layout described in `SKILL.md` where absent.
+2. Save this entire report as `<target>/<target-year>/research/YYYY-MM-DD.md`; preserve earlier reports by adding a suffix on collisions. Include researched-at date, source links, quoted-offer dates and unresolved gaps.
+3. Update the annual `README.md` with current status, shortlist, milestones and a link to this report. Update the root `README.md` profile if verified input changes; do not copy the full address into every report.
+4. Read `history.md` and `fallback.md` before drawing conclusions. Update them only with known events or explicitly approved reserve decisions.
+5. In the response, say where the report was saved. If filesystem write is impossible, provide the report and clearly state that persistence failed; do not claim success.
+
 ## 16. Final verification checklist
 
 Before finalizing:
 
-- [ ] Exact user consumption used consistently.
+- [ ] Target directory identified; relevant profile, history, reserves and prior research read first.
+- [ ] Full supply address obtained or reused, including separate Hausnummerzusatz (or none), without unnecessarily exposing it in reports.
+- [ ] Supplied consumption used consistently and marked measured, averaged or estimated.
 - [ ] Location/address specificity is sufficient for quoted prices.
 - [ ] Current benchmark included when available.
 - [ ] Applied baseline defaults and user overrides stated.
@@ -413,3 +426,5 @@ Before finalizing:
 - [ ] Strategic reserves separated from normal candidates.
 - [ ] Reserved providers excluded from ordinary optimization.
 - [ ] Major uncertainties and missing offer-specific documents stated.
+- [ ] Dated report saved for this run, including one-off runs; annual overview updated and exact file path reported, or inability to write disclosed.
+- [ ] Historic reports preserved; history and reserve statuses altered only with supporting events/decisions.
