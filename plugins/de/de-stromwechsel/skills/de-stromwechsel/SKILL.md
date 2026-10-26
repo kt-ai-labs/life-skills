@@ -1,94 +1,72 @@
 ---
 name: de-stromwechsel
-description: Research, compare, and plan German household electricity-provider switches, especially recurring annual switches. Use for Stromanbieter search, tariff comparison, bonus and Preisgarantie checks, Ökostrom evaluation, direct-provider offer research, portal-assisted market snapshots, switching-risk analysis, Bonusjäger/Ablehnung concerns, and selection or activation of strategic reserve providers in Germany.
+description: Research German household electricity tariffs and plan a self-managed Stromwechsel, from preliminary market research to a simulation using current address-specific offers. Use for annual switching, bonus and contract checks, provider reliability, Ökostrom, and strategic reserves.
 ---
 
-# Jährlicher Stromwechsel (DE)
+# Self-managed Stromwechsel (DE)
 
-Help the user choose and switch German household electricity providers with a repeatable, evidence-based process rather than blindly following comparison-portal rankings.
+Help the user investigate and compare German household electricity providers and prepare their own switch. Before substantive research, read [the research protocol](references/research-prompt.md); it owns tariff checks, economics, evidence standards and report contents.
 
-## Workspace and required inputs
+## Research mode
 
-**Every run, including a one-off comparison, must produce a dated, saved research report.** The agent owns the document structure; do not ask the user to create README files or organize reports manually.
+Infer the mode from the request and existing context. If the choice materially changes the scope or result and intent is unclear, briefly offer both options. Do not repeat a settled mode question. Record the mode in each report; a later run can change mode while reusing the workspace and history.
 
-1. **Find the target directory.** Use a target folder expressly supplied by the user or an unambiguous existing Stromwechsel workspace in the current project. Otherwise ask where to save reports *before starting substantive research*. Work only within the agreed directory. If file tools are unavailable or the directory is not writable, provide the report in the response and clearly disclose that it could not be saved; never claim it was written.
-2. **Read relevant prior state first.** If present, read the target `README.md`, `history.md`, `fallback.md`, the relevant yearly `README.md` and the most recent useful dated research reports. Reuse known details instead of asking repeatedly. Treat saved prices, dates and contract conditions as historical evidence, not current quotes; verify again before recommending.
-3. **Collect essential inputs not already documented:**
-   - Full **supply** address: `PLZ`, `Ort`, `Straße`, `Hausnummer`, and separate `Hausnummerzusatz` (ask whether none exists). Example: Hausnummer `19` plus Hausnummerzusatz `C`, not a single combined field. Do not substitute a billing address.
-   - `Jahresverbrauch` in kWh: last measured year, an average or a user estimate are all acceptable. Record which it is and label prices based on estimated consumption accordingly.
-   - For a planned change: current provider/tariff and `Vertragsende` or desired `Lieferbeginn`, to the extent known. An exploratory one-off market comparison can use an approximate target period with that uncertainty declared.
-   - Provider history, switching strategy, explicit exclusions and user overrides where relevant; infer from existing files when reliable, and ask only missing details that change the research.
-4. **Protect personal data.** Store the full address in one reusable workspace profile (the root `README.md` in a private workspace), not in each research report. Before recording it in a Git-tracked workspace that might be public or shared, flag the exposure risk and obtain a private storage location or the user's informed approval. Do not silently commit or publish personal addresses; keep report copies free of unnecessary identifying details.
+- **Preliminary Research:** reconstruct the starting situation and investigate promising providers, current tariffs, material conditions, risks and limitations. A watchlist without a complete price ranking is acceptable. State what was checked, which prices were obtained or not obtained, and why. A distant switch date alone is no reason to skip today's available tariffs.
+- **Switching Simulation:** simulate choosing a supplier now using real address-specific current offers. Attempt to obtain Arbeitspreis, Grundpreis, bonuses and contract terms, and compare first-year costs with and without attainable bonuses. If the real switch date is outside booking windows, use a suitable current quotation scenario and distinguish its Lieferbeginn from the actual intended date. A provider's application window limits the real switch, not research into current simulation prices. A list of provider names without attempts to obtain prices is insufficient; disclose concrete blockers if attempts fail.
 
-### Default workspace layout
+## Scope and authority
 
-Initialize or reuse the following structure in the agreed target directory, respecting any compatible existing organization:
+The user performs contract applications, submissions, signatures, Kündigung, service registration and other legally consequential actions. Do not execute these actions on their behalf as part of this skill, even in Switching Simulation. Recommendations, instructions, checklists and drafts are in scope. Do not submit personal data through a transaction; use only the location and consumption needed for non-binding quotation research.
+
+If documents reveal an active or possibly active automatic switching service, report it with the uncertainty about its current status and warn about conflicting automatic and independent applications. Offer a **separate, opt-in investigation** of exit terms, Vollmacht, automatic applications, Kündigungsfrist and remaining fees. Start that investigation only after user agreement. If declined, record the unresolved dependency and continue the tariff research. Do not turn this workflow into a comparison of switching intermediaries or require their APIs/MCP.
+
+## Workspace and inputs
+
+Every research run, including a preliminary or one-off comparison, produces a dated saved report. Use the expressly supplied directory or an unambiguous existing Stromwechsel workspace; otherwise ask where to save results before substantive research. Keep persistent outputs within that directory. If persistence is unavailable, provide the report in the response and disclose that it could not be saved.
+
+Read existing root and yearly README files, history, reserves and the latest useful research first. Reuse verified inputs; stored prices and conditions remain historical until refreshed. Ask only for missing information that affects the research:
+
+- **Supply address:** PLZ, Ort, Straße, Hausnummer and separate **Hausnummerzusatz (Zusatz)**, or explicitly none. For `Musterstraße 22C`, Hausnummer is `22` and Zusatz is `C`. Calculator fields may say only `Zusatz`; leave them empty when absent. Do not confuse it with an apartment, floor or other address addition, and do not substitute a billing address. Use the full location when a calculator requires it.
+- **Jahresverbrauch:** select one primary annual figure using the rules below.
+- **Switching context:** current supplier/tariff, contract end or intended Lieferbeginn (approximate is acceptable for exploration), recent providers, exclusions, switching strategy and already designated reserves where known.
+- **Historical documents:** offer the option to supply an existing archive directory for contracts, Rechnungen, Schlussrechnungen, switch confirmations and bonus terms. Reuse its location if already documented instead of asking again.
+
+### Consumption basis
+
+1. Honor an explicit required calculation value from the user.
+2. If the user gives an approximate figure and documents establish a more recent complete annual Verbrauch, use that confirmed value and briefly explain the difference.
+3. Without a complete annual figure, a user estimate is acceptable if labelled accordingly. If provenance is unknown, label it unknown rather than calling it measured or estimated.
+
+Never treat a partial-year bill automatically as annual consumption. Use one primary Jahresverbrauch consistently; add a second scenario only if it materially affects the choice or the user requests it. Do not silently replace an unqualified user value: retain it with its provenance unresolved or clarify if the distinction matters.
+
+### Documents and privacy
+
+Start with the current contract, latest annual/final bills, switch confirmations and bonus conditions. Extend to older records only as needed to establish history, eligibility, calculations or service problems. Prefer corrected documents over superseded versions and distinguish invoice credits/promises from verified payments.
+
+Use existing PDF capabilities; no particular PDF tool or new script is required. Minimize temporary extracts containing personal data, restrict their exposure and remove the agent's own unnecessary temporary copies after processing. Never delete or alter the user's source archive.
+
+Store the full address once in the root profile of a private workspace, not in each report. Before writing it in a potentially public/shared Git workspace, flag exposure and obtain a private location or informed approval. Do not silently commit or publish personal data.
+
+### Durable layout
+
+Reuse a compatible organization or initialize:
 
 ```text
-<target-directory>/
-  README.md                    # reusable supply profile, consumption basis, current cycle
-  history.md                   # previous providers, contracts, bonus and service outcomes
-  fallback.md                  # designated Strategic Reserve providers and their status
+<target>/
+  README.md                 # supply profile, consumption basis, archive location, current cycle
+  history.md                # confirmed suppliers, bonuses, acceptance and service outcomes
+  fallback.md               # reserve candidates and user-designated reserve status
   <target-year>/
-    README.md                  # current contract, switch milestones, shortlist and decision
-    research/
-      YYYY-MM-DD.md            # dated research with evidence and recommendations
+    README.md               # cycle status, milestones, options and latest report link
+    research/YYYY-MM-DD.md
 ```
 
-The year is the **intended new supply/contract year**, even when research starts during the preceding year. If the target year is genuinely unknown, use the year of the research and explain that choice. Initialize useful headings and links without inventing prior contracts, reserves or decisions. When an entry is unknown, label it `not yet established` rather than making one up.
+Use the intended actual new-supply year, even for a simulation with an earlier quotation date. If that year is unknown, use the research year and explain. Preserve prior reports with a suffix/time on date collisions. Update the annual overview and changed verified profile inputs. Keep history and designated reserve status factual: update only for confirmed events or explicit user decisions; label unknowns rather than inventing them.
 
-For every research run, create a dated report under the corresponding `research/` folder; use a disambiguating suffix/time if the date filename already exists and preserve previous reports. Update the yearly `README.md` with the latest status, shortlist and link to the new report, and keep root `README.md` current without duplicating the full address in each report. Treat `history.md` and `fallback.md` as durable cross-year records: read them for context, and change provider history or reserve membership/status only when there is a confirmed event or an explicit user decision. Do not silently replace a strategic reserve with an ordinary cheap candidate.
+## Communication and language
 
-## Core workflow
+Give brief, substantive updates at meaningful points: reconstructed context, important contradictions, price results or blockers, and decisions about the next research step. Explain a material scope change promptly, especially a retreat from price comparison to a watchlist; avoid narration of every technical operation.
 
-1. Apply the workspace and input rules above: confirm the target directory, reuse relevant saved files, obtain the complete supply address and kWh basis, then ask only for missing material switching context. Do not perform a full market comparison using only a PLZ when a provider requires street, number or suffix.
+Use the user's working language for responses and saved Stromwechsel reports, README, history and fallback unless they explicitly choose another. A general preference for English code or technical documentation does not automatically determine the language of these household reports. On continuation, honor explicit language choices without translating historical reports solely for consistency. Preserve precise German contract terms.
 
-2. Unless the user specifies otherwise, use this consumer-friendly baseline:
-   - Festpreistarif
-   - Erstlaufzeit no longer than 12 months
-   - Preisgarantie covering the whole initial term, with scope checked explicitly
-   - Kündigungsfrist no longer than 1 month
-   - monthly Abschläge
-   - no Vorkasse, Kaution, or Pakettarif
-   - stronger Ökostrom preference: 100% renewable electricity plus independently evidenced additional Energiewende contribution where reasonably available
-   - for intentional annual switchers, count realistically attainable bonuses in first-year economics
-
-   Briefly tell the user which defaults you are applying. Do not force a questionnaire when the defaults are acceptable; let the user override them.
-
-3. Before substantive market research or producing a shortlist, read [references/research-prompt.md](references/research-prompt.md) and apply its protocol to the user's current context.
-
-4. Treat CHECK24, Verivox, and similar portals as optional discovery inputs, not ranking authorities. If a fresh portal snapshot would improve coverage, offer to guide the user through the current filter settings. When the user supplies an export, use it as a seed and never infer that an omitted checkbox/radio state means the option was disabled. Follow the detailed portal workflow in the research protocol.
-
-5. Search provider-direct offers as well as portal-discovered tariffs. Prefer official provider documents for price, Laufzeit, Kündigung, Preisgarantie, and bonus conditions. Use independent sources for operational and complaint evidence.
-
-6. For an intentional annual switcher, optimize primarily for effective first-year cost after realistically attainable bonuses. Do not penalize a large bonus merely because it is large. Verify that bonus conditions are compatible with ordinary termination after roughly 12 months, and always show no-bonus/base cost as downside and second-year context.
-
-7. Keep financial attractiveness separate from operational reliability. Check recurring evidence around Kündigung, Zählerstand, Schätzung, Schlussrechnung, Guthaben, bonus payout, correction delays, support, and failed switches.
-
-## Strategic reserve providers
-
-Use reserve providers as a provider-level risk-control mechanism, not another tariff recommendation.
-
-- If the user has no reserves, identify 1–2 suitable providers using the selection method in the research protocol.
-- Preserve providers that are dependable, broadly market-reasonable, and acceptable to stay with for roughly 2–3 years; do not choose them for the lowest first-year price.
-- Once designated, exclude a reserve provider from normal annual-switch optimization even if it temporarily becomes attractive.
-- When repeated rejections or clear frequent-switcher friction make further optimization unattractive, switch from **optimize** to **stabilize** and consider activating a reserve.
-
-## Output
-
-Keep the decision practical:
-
-- state assumptions and any missing data;
-- return no more than 3–5 normal candidates unless the user asks for more;
-- show first-year effective cost, base/no-bonus cost, key terms, bonus safety, Ökostrom quality, operational risk, and important caveats;
-- list strategic reserve providers separately and mark them as **do not use in normal switching**;
-- include attractive near-misses or rejected candidates when the rejection reason teaches something important;
-- give the concrete next step for contract verification or Abschluss.
-
-**Persist this output for every run**, including preliminary or one-time research, in the dated report described above. Include researched-at date, assumptions, kWh basis (measured/average/estimated), verifiable sources and offer dates, uncertainty, candidate comparison, and next steps. Do not present an estimated tariff as a guaranteed offer. Return a concise summary and the actual saved file path to the user.
-
-At the end of a switching cycle, keep the durable records up to date when the relevant facts become known: chosen provider/tariff and economics, bonus payment and acceptance outcomes, reserve status, Kündigung, meter-reading and billing problems. Do not manufacture outcomes or overwrite previous research.
-
-Do not submit a contract, cancel a supply agreement, sign up for services, or send personal information to third-party providers as a transaction without specific user authorization.
-
-Respond in the user's language. Preserve German market and legal terms where they are clearer than translations.
+The final response must give the result, main options and confirmed comparative costs where available, or clearly say that reliable prices were not obtained. State the principal uncertainties and next action; list saved report paths separately. File paths alone are not a result.

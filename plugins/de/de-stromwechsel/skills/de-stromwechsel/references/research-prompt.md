@@ -1,430 +1,134 @@
-# Research protocol: German household electricity switching
+# Research protocol: self-managed household Stromwechsel
 
-Use this protocol for substantive market research under the **de-stromwechsel** skill. Adapt all variables to the user's actual context and never carry personal values from a previous user into a new run.
+Apply this shared protocol to the mode and inputs established in SKILL.md. Use the mode-specific completion criteria in the output section; no full comparison is implied by an initial watchlist.
 
 ## Contents
 
-1. Objective
-2. Input variables
-3. Current-guidance check and baseline enforcement
-4. Portal snapshot workflow
-5. Market discovery
-6. Pricing and first-year economics
-7. Bonus safety
-8. Preisgarantie and contract terms
-9. Ökostrom quality
-10. Operational reliability
-11. Frequent-switcher / acceptance risk
-12. Strategic reserve providers
-13. Evidence hierarchy
-14. Decision model
-15. Required output
-16. Final verification checklist
+1. Scenario and defaults
+2. Discovery and sources
+3. Contract checks and economics
+4. Bonus classification
+5. Environmental quality and operational reliability
+6. Strategic reserves
+7. Report and completion criteria
 
-## 1. Objective
+## 1. Scenario and defaults
 
-Find a small, actionable shortlist of German household electricity offers that fit the user's constraints and switching strategy.
+Keep the **actual intended Lieferbeginn** distinct from any **current quotation Lieferbeginn** used for simulation or an illustrative preliminary price snapshot. Explain the chosen quotation date. Apply all tariff checks, exclusions and comparisons to that one quotation scenario, address and primary Jahresverbrauch; do not reject a simulated offer because the actual date is outside its booking window. Separately record that real-world timing limit. A price for another location or consumption basis is not an address-specific quote.
 
-Do not merely reproduce a comparison portal. Independently verify the terms that matter, search for direct-provider offers, assess operational failure modes, and keep strategic reserve providers separate from ordinary annual-switch candidates.
+Unless overridden, briefly declare these defaults without requiring a questionnaire:
 
-For intentional annual switchers, optimize the first contract year without treating a safe Neukundenbonus or Sofortbonus as a defect. For users who prefer stability, shift weight toward ongoing/base economics and operational reliability.
+- Festpreistarif; initial term at most 12 months (shorter terms remain eligible).
+- Preisgarantie lasting through the initial term; check its scope, not just its duration.
+- Kündigungsfrist at most one month, monthly Abschläge, no Vorkasse, Kaution or Pakettarif.
+- Preference for 100% renewables plus independently evidenced additional Energiewende contribution.
+- For intentional annual switchers, rank primarily by effective first-year cost with attainable bonuses; show base/no-bonus cost separately. For longer stays, give ongoing/multi-year economics more weight.
 
-## 2. Input variables
+Treat contract/payment defaults as hard filters, and stronger Ökostrom as a preference unless the user makes it mandatory. Do not relax filters silently for a cheap offer. A guarantee can exclude components without fixing the whole bill; disclose these exclusions. At the start of substantive research, check current Verbraucherzentrale and Stiftung Warentest guidance for material changes to the defaults and explain any adaptation. Do not assume that a recommended guarantee is legally required or worth any premium.
 
-Establish or infer only from supplied context:
+## 2. Discovery and sources
 
-- **Workspace:** the user-designated target directory for persisted research, with any existing root profile, historical providers, reserves and annual research read first. Confirm a directory if missing, even for one-off research.
-- **Supply location:** full PLZ, Ort, Straße, Hausnummer and separate Hausnummerzusatz (or explicitly none), reused from the existing private profile where available.
-- **Consumption:** last measured yearly kWh, an average or an estimate; use the supplied figure consistently and clearly label its basis and price uncertainty.
-- **Current provider/tariff:** use as an economic and operational benchmark when available.
-- **Desired supply start / current contract end.**
-- **Recent provider history:** especially providers used in the last few years.
-- **Switching strategy:** intentional annual switcher vs. longer-term customer.
-- **User overrides:** contract, payment, sustainability, provider, or other constraints that replace the baseline declared in SKILL.md.
-- **Existing strategic reserve providers:** if any.
-- **Excluded providers:** user choice or evidence-based exclusions.
+Search provider-direct offers and calculators as well as available portal leads; include relevant local/regional providers and offers outside the initial seed set. Portals, popularity, sponsored positions, badges and review averages are discovery signals, not ranking authorities. When direct and portal offers differ, check their prices and terms separately.
 
-Use the full supply address for location-sensitive tariff checks, including the Hausnummerzusatz when a calculator exposes a separate field. Do not assume it is interchangeable with the billing address. If a provider additionally requires a MaLo-ID, meter details or an interactive price quote, do not fabricate a price; explain the missing provider-specific requirement. Never enter into a contract or registration without explicit user authorization. In a public/shared workspace, avoid writing personally identifying address details to tracked report files without informed approval.
+Use sources according to the claim:
 
-## 3. Current-guidance check and baseline enforcement
+- Offer-specific facts: official calculator, Preisblatt, Vertragszusammenfassung, AGB and bonus terms; resolve which version/campaign applies.
+- Consumer/regulatory context: Verbraucherzentralen/vzbv, Stiftung Warentest, Bundesnetzagentur, Schlichtungsstelle Energie and relevant court/regulator material.
+- Independent context: well-supported specialist reporting such as Finanztip.
+- Operational experience: dated reviews, forums and community reports; distinguish allegations from documented findings.
 
-Start from the consumer-friendly defaults declared in SKILL.md unless the user overrides them.
+Cite sources near material claims and record retrieval and offer/version dates where available. Search snippets and generic marketing cannot settle missing offer-specific conditions. Save or identify controlling offer documents for the user's verification before they act. Do not invent missing rates, bonuses, availability or meter requirements.
 
-At the beginning of a substantive research run, check whether current general consumer guidance from **Verbraucherzentrale** and **Stiftung Warentest** has materially changed that baseline. Use them as the primary external sanity check for consumer-facing selection criteria. Use CHECK24, Verivox, and other comparison portals as secondary operational sources for current market controls and discovery mechanics, not as authorities on which offer is best.
+### Optional portal snapshot
 
-If current authoritative guidance materially conflicts with a stored default, tell the user and adapt rather than silently following stale skill text.
+A supplied CHECK24/Verivox export, screenshot or copied results can broaden discovery; the user need not operate a portal before research can proceed. If a fresh snapshot would help, offer guidance using verified current UI labels, not remembered controls.
 
-Do not silently relax a hard filter because a tariff is cheap. Put near-misses in a separate section.
+Set the agreed location/consumption, fixed tariffs, term at most 12 months including shorter terms, notice at most one month and guarantee through term where supported. Include bonuses for annual switching and stronger/sustainable Ökostrom where available. Avoid restrictive high-satisfaction, recommended, regional-only or direct-switch-only filters unless requested; show all tariffs per provider where possible. Apply independent screening afterwards.
 
-## 4. Portal snapshot workflow
+Exports can omit checkbox/radio state. Treat the user's explicit filter statement as authoritative; absent state is unknown, not disabled. Flag material visible conflicts without restarting the search merely because an export cannot prove the settings.
 
-A portal snapshot is optional input. Use it to broaden discovery and capture current market offers; do not require the user to perform portal work before research can proceed.
+### Price access limitations
 
-When a fresh snapshot would help, offer concise portal-specific instructions based on the portal's **current UI**. Verify labels and controls at the time of use rather than relying on stale screenshots or remembered names.
+Attempt official non-binding quotes using the complete supply location, including a separate Zusatz when exposed. If a calculator additionally needs a MaLo-ID, meter information or an unavailable interactive step, identify the requirement without fabricating a price or entering an application. Use a reasonable alternative source or calculator where practical; no quota of sites is required.
 
-As a broad-discovery baseline:
+For missing prices distinguish **provider restriction**, **tool limitation** and **deliberately limited research scope**. A distant date is not itself proof that today's prices cannot be researched. Switching Simulation requires actual attempts to obtain current address-specific prices; a provider's booking window can justify a different quotation date, not abandonment of pricing. If access remains blocked, report an incomplete simulation and the concrete next step rather than substituting unrelated example prices.
 
-- set the user's exact consumption and location;
-- cap Erstlaufzeit at 12 months while allowing shorter terms;
-- keep Kündigungsfrist at no more than 1 month where the portal exposes that control;
-- require Preisgarantie through the initial term where the portal supports it;
-- show Festpreistarife only;
-- include bonuses for an intentional annual switcher;
-- select the portal option corresponding to stronger/sustainable Ökostrom when the user has not overridden the skill's sustainability default;
-- avoid restrictive **high customer satisfaction**, **recommended tariffs**, portal-only ranking, **regional-only**, or **direct-switch-only** filters unless the user explicitly wants them;
-- show all tariffs per provider when the portal offers that option.
+## 3. Contract checks and economics
 
-The goal is a broad candidate pool. Apply quality, operational, and bonus-safety screening independently afterward.
+For each serious offer establish:
 
-### Export and copy/paste quirks
+- Arbeitspreis in ct/kWh, monthly/annual Grundpreis, gross/net basis and separately charged metering costs (including mME/iMSys where applicable).
+- Initial term, Kündigungsfrist, continuation and payment cadence/Abschlag logic; exclude advance-payment/deposit/package tariffs under the defaults.
+- Guarantee duration and covered components; explicitly identify exclusions for Steuern, Abgaben, Umlagen, Netzentgelte and Messstellenbetrieb. Check whether it begins at contract conclusion or supply start and lasts through the chosen initial term.
+- Sofortbonus, Neukundenbonus and other credits, each with its own evidence and classification below.
 
-Portal PDF exports, print views, and copied text may omit or ambiguously render checkbox/radio-button state.
+Calculate transparently using the primary annual consumption:
 
-Treat Verivox PDF/print and copy-paste filter states cautiously:
+`annual base cost = kWh × Arbeitspreis / 100 + annual Grundpreis + mandatory extras not already included`
 
-- if the user explicitly states which options were selected, treat that statement as authoritative;
-- if a visible exported filter state materially conflicts with the agreed settings, flag it and ask or remind the user if necessary;
-- if control state is absent or blank, do **not** infer that the option was disabled;
-- do not restart the whole portal search merely because the export cannot prove UI state.
+`first-year effective cost = annual base cost - attainable bonuses/credits`
 
-Accept PDF, screenshot, copied text, or equivalent structured results. Extract the market candidates that are actually visible and continue with independent verification.
+Avoid double-counting metering charges or confusing an instalment with effective monthly cost. Identify intermediary fees if applicable and documented; do not infer an ongoing service agreement or expand into exit-term research without the opt-in required by SKILL.md.
 
-## 5. Market discovery
+Use A bonuses in the primary effective-cost calculation. Show B-dependent cost separately as conditional, alongside the no-bonus downside; exclude C or unassessed amounts. A large bonus is not inherently bad. The question is attainability under ordinary termination at the intended term end, not its size.
 
-Use multiple routes:
+Compare alternatives against the current contract using a consistent time basis. Do not reuse a current first-year bonus as a renewal benefit. Base cost is an unchanged-rate second-year indicator, not a guarantee of future prices. Explain shorter-term or calendar-based products on their actual terms instead of assuming every contract lasts exactly a year.
 
-1. User-supplied CHECK24 / Verivox / other portal snapshots, if current.
-2. Fresh portal discovery when needed.
-3. Provider-direct websites and calculators.
-4. Local and regional providers that portals may under-rank or omit.
-5. Independent search for tariffs outside the portal seed set.
+## 4. Bonus classification
 
-Portal ranking, badges, popularity, sponsored placement, portal star scores, and portal recommendations are discovery signals only. They are not evidence that a tariff is best.
+Classify **each identified bonus under the applicable offer terms**, not a supplier's reputation or generic advertising. Essential checks are:
 
-When a portal and the provider's direct site differ, investigate both. A direct offer may be materially better or have different bonus/Öko terms.
+- Neukunde definition and same-supplier/corporate-group look-back, matched against the user's history.
+- Minimum actual Belieferungsdauer versus Vertragslaufzeit; delayed start, moving or early termination rules where relevant.
+- Compatibility with timely ordinary Kündigung effective at the intended end date; `ungekündigt` conditions or requirements extending beyond the chosen term.
+- Amount/basis, payout date/channel, clawback and any restrictions on redeeming or paying out credits.
 
-## 6. Pricing and first-year economics
+| Class / evidence state                       | Meaning and economic treatment                                                                                                                                                                                                            |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **A - confirmed compatible**                 | Applicable material terms and eligibility are verified and compatible with the scenario, with no material conflict unresolved. Use in primary economics. This is contractual compatibility, not proof of future payout.                   |
+| **B - compatible with a bounded caveat**     | Material eligibility and termination conditions are checked; a specific remaining caveat is identified and does not hide an unknown essential condition. Show conditional economics separately and explain what must be resolved.         |
+| **C - evidenced risk or incompatibility**    | A specific applicable condition or documented conflict makes receipt unsafe/incompatible. Explain the evidence and exclude from primary economics.                                                                                        |
+| **Not yet assessed - insufficient evidence** | Essential terms, applicable campaign/version or eligibility are missing/conflicting. Do not assign A/B, call it a proven negative risk, or count the amount. State what is missing. This is an evidence state, not a fourth safety class. |
 
-For every serious candidate, capture or calculate:
+Use the same standard across candidates. Record operational evidence about disputed bonus payout separately; a contractual A does not override an evidenced payout problem or imply that complaint research was completed. An invoice credit or promised bonus is not confirmation of bank settlement.
 
-- Arbeitspreis in ct/kWh
-- Grundpreis per month or year
-- annual cost before bonuses at the user's supplied consumption (identify measured, average or estimated basis)
-- Sofortbonus
-- Neukundenbonus
-- other one-time credits or discounts
-- effective first-year cost using only bonuses classified as realistically attainable
-- base/no-bonus annual cost as downside and second-year indicator
-- expected monthly Abschlag if available
-- source date
+## 5. Environmental quality and operational reliability
 
-Use transparent arithmetic. Do not rely on a portal's displayed monthly average if the underlying components allow independent calculation.
+Distinguish 100% renewable electricity backed by Herkunftsnachweise from independently evidenced additional Energiewende contribution. Check the exact tariff's current Grüner Strom Label, ok-power, newer-plant criteria, renewable investment or equivalent evidence. A green brand or portal badge is insufficient; certification need not cover every product. Explain ecological trade-offs without turning a preference into an unrequested hard exclusion.
 
-### Annual-switch strategy
+For operational reliability investigate recurring, recent evidence around Kündigung/extension, Zählerstand and Schätzung, annual/final billing, Guthaben, bonus payment, excessive Abschläge, correction delays, support and failed switches. Separate individual allegations, repeated patterns and documented findings; do not infer a pattern from one review or reliability from a star average. Keep product-specific problems distinct (for example dynamic billing versus fixed supply, or membership versus supply contracts).
 
-For an intentional annual switcher, **effective first-year cost after safe bonuses is the primary economic metric**.
+A preliminary scan for signals is not a completed comparative reliability assessment. State the assessment's scope and gaps consistently across candidates. Do not imply that no found complaint means no problem exists; no fixed source/review counts are required.
 
-A bonus is not negative merely because it makes the first year unusually cheap. The relevant question is whether it can be obtained safely under the user's intended switching behavior.
+For frequent switching, check current acceptance evidence and relevant corporate relationships. Distinguish old Bonusjäger reports from current policy; the user's own rejections are particularly relevant. Low consumption alone is not evidence of rejection risk. Where acceptance uncertainty matters, keep viable application alternatives for the user rather than drifting into a poor fallback after failures.
 
-Base/no-bonus cost remains important as:
+## 6. Strategic reserves
 
-- downside if the bonus is lost;
-- indicator of second-year economics;
-- signal of how aggressively the tariff depends on acquisition subsidies.
+A reserve is a provider-level fallback for a reasonable stay of about 2-3 years, not a temporarily cheap bonus tariff or a requirement to sign a 2-3 year contract.
 
-For a non-annual customer, rebalance toward ongoing/base price and expected multi-year economics.
+- **Reserve candidate:** being evaluated; remains eligible for ordinary annual optimization.
+- **Designated Strategic Reserve:** explicitly agreed and appointed by the user; exclude from ordinary optimization and label **do not use in normal switching** until the user changes that decision.
 
-## 7. Bonus safety
+Propose a small set, typically 1-2, only when evidence supports suitability. Evaluate location-specific ordinary pricing, manageable terms, operational reliability, likelihood of supply and usefulness for a longer stay. Consider local/nationwide diversification and past use without automatically disqualifying a previous provider. Do not select by the largest bonus. If price, service or suitability remains unverified, keep the proposal unconfirmed or state that no suitable reserve is established; do not fill a quota.
 
-Classify each economically relevant bonus.
+Repeated rejections or clear switching friction may justify moving from optimize to stabilize and recommending reserve activation to the user. Roughly 2-3 failed applications can prompt reassessment, not an automatic rule: consider reasons, remaining time and alternatives. Do not silently redesignate or activate reserves.
 
-### A — safe enough for primary economics
+## 7. Report and completion criteria
 
-Use in effective first-year cost when evidence supports that:
+Use the workspace persistence and language rules in SKILL.md. Structure a compact decision report around the following information; prefer a readable comparison table plus short notes over paragraphs inside wide cells.
 
-- Neukunde eligibility is clear;
-- required Belieferungsdauer is compatible with the intended contract term;
-- ordinary Kündigung for the end of the first year does not void the bonus;
-- no requirement effectively forces supply materially beyond the first year;
-- no `ungekündigt` condition conflicts with timely cancellation;
-- payout timing is clear enough;
-- no strong repeated pattern of disputed or withheld bonus payout is found.
+- **Context:** researched-at date, mode, actual intended and quotation Lieferbeginn, primary kWh and its provenance, location reference to the private profile, current benchmark, strategy, defaults/overrides and missing inputs.
+- **Options:** a small watchlist/shortlist, normally no more than 3-5 ordinary candidates unless requested. For verified offers show provider/tariff, rates, base cost, bonuses with evidence states, first-year cost, instalment if available, term/notice/continuation, guarantee scope, Ökostrom evidence, operational assessment and acceptance caveats, source and offer dates. Keep unknown fields unknown, never zero.
+- **Reserves:** separate candidates from designated providers, explain evidence and gaps, preserve existing decisions.
+- **Near-misses:** include only useful exclusions grounded in the selected quotation scenario; distinguish failure of a filter from an unverified condition or a real-date booking limitation.
+- **Decision:** explain trade-offs and the next step for the user, including the exact offer terms/documents still needed before their own application or cancellation.
 
-### B — usable with caveat
+### Preliminary Research completion
 
-The bonus looks compatible, but an offer-specific clause or eligibility detail must be preserved and checked before Abschluss.
+Established context, investigated market options, material conditions/risks and explicit evidence gaps are sufficient for a preliminary watchlist. Explain which current prices were obtained, which were not and why, and whether an earlier quotation date was used. Do not label the watchlist a verified price ranking or claim the market prevented pricing when pricing was simply outside the chosen scope.
 
-Show both economics with and without the bonus.
+### Switching Simulation completion
 
-### C — risky or unresolved
+Compare real current address-specific offers for the chosen quotation scenario and show base and first-year economics with the bonus treatment above. Explicitly separate the simulated choice from feasibility at the actual intended start. If pricing attempts fail or essential terms remain unresolved, save the partial results with reasons and label the simulation incomplete; do not silently downgrade it to completed Preliminary Research.
 
-Do not include the bonus in the primary effective-cost comparison.
-
-Investigate:
-
-- exact definition of Neukunde;
-- look-back period for the same provider or corporate group;
-- minimum continuous supply period;
-- whether the contract must still be active or ungekündigt at payout;
-- whether moving, early termination, Sonderkündigung, or delayed start affects eligibility;
-- payout channel and timing;
-- known complaint patterns about bonus denial.
-
-Preserve the offer-specific Vertragszusammenfassung, Preisblatt, AGB, or bonus terms before contract completion whenever possible.
-
-## 8. Preisgarantie and contract terms
-
-For every candidate verify:
-
-- Erstlaufzeit
-- Kündigungsfrist
-- automatic continuation after initial term
-- Preisgarantie duration
-- Preisgarantie type/scope
-- excluded components such as Steuern, Abgaben, Umlagen, Netzentgelte, Messstellenbetrieb
-- any special iMS/mME or meter-related charges
-- payment cadence and Abschlag logic
-
-Do not summarize a partial guarantee as if the total customer price were completely fixed.
-
-Online cancellation is convenient but not automatically a hard requirement. Reliable written cancellation methods can be acceptable.
-
-## 9. Ökostrom quality
-
-Apply the sustainability default from SKILL.md unless the user overrides it.
-
-Distinguish:
-
-1. 100% renewable electricity / Herkunftsnachweise only;
-2. tariffs with independently evidenced additional Energiewende contribution;
-3. stronger labels or mechanisms such as Grüner Strom Label, ok-power, newer-plant criteria, provider investment in renewable generation, or equivalent evidence.
-
-Do not infer environmental additionality from a green brand name or portal badge alone.
-
-For each shortlisted tariff, state the evidence actually found. Keep ecological quality separate from price. Do not reject a materially better overall option solely because the strongest additionality product is unavailable; explain the trade-off.
-
-## 10. Operational reliability
-
-Annual switchers are especially exposed to operational problems at the end of a contract. Search specifically for recurring patterns involving:
-
-- Kündigung ignored or not confirmed
-- unexpected extension
-- Zählerstand not transmitted or ignored
-- consumption estimated despite supplied readings
-- wrong Schlussrechnung
-- delayed Schlussrechnung
-- excessive or poorly adjusted Abschläge
-- delayed Guthaben refunds
-- bonus disputes
-- correction delays
-- ineffective support
-- failed or delayed supplier switch
-
-Distinguish isolated complaints from repeated patterns.
-
-Do not use generic review averages as proof. Search for concrete failure modes and date the evidence.
-
-## 11. Frequent-switcher / acceptance risk
-
-For users who switch frequently, investigate evidence that a provider may reject customers based on previous contracts, promotional history, or perceived Bonusjäger behavior.
-
-Important:
-
-- distinguish current evidence from old historical reports;
-- do not assume an old policy is still active;
-- note provider-group relationships when relevant;
-- record explicit rejections from the user's own history as stronger personal evidence;
-- do not treat low household consumption itself as evidence of rejection risk without support.
-
-When acceptance uncertainty is meaningful, keep at least 2–3 ordinary candidates available in sequence.
-
-If repeated applications fail, stop optimizing rather than drifting accidentally into an unsuitable fallback.
-
-## 12. Strategic reserve providers
-
-Evaluate reserves separately from the ordinary shortlist.
-
-### Purpose
-
-A strategic reserve provider is a provider deliberately kept unused during normal annual switching so the user has a credible fallback if frequent switching becomes difficult.
-
-The reserve is selected at **provider level**, not as one temporary tariff.
-
-### Selection principles
-
-If the user has no reserves, identify **1–2** suitable providers.
-
-A reserve should:
-
-- be a provider the user could reasonably stay with for about **2–3 years**;
-- have broadly reasonable, normal-market pricing rather than an obvious high-price outlier;
-- not need to be among the cheapest providers;
-- have a sensible ordinary tariff structure that does not depend on a one-year promotional trick;
-- show acceptable operational reliability;
-- be likely to serve the user's location;
-- have contract terms that are understandable and manageable;
-- ideally diversify the fallback set when there is a useful local/regional vs. nationwide distinction.
-
-Do not select reserves primarily by current Neukundenbonus.
-
-Consider the user's provider history. A provider used recently may have reduced strategic value because of Neukunde rules, acceptance history, or simply because the reserve has already been consumed.
-
-### Preservation rule
-
-Once a provider is designated as strategic reserve:
-
-- exclude it from the normal annual-switch candidate pool;
-- do not consume it merely because one year's promotional price is attractive;
-- keep it visible in a separate **Strategic Reserve — do not use in normal switching** section.
-
-### Activation rule
-
-Switch from **optimize** to **stabilize** when repeated rejections, clear Bonusjäger friction, or other market failures make further optimization unattractive.
-
-Roughly 2–3 failed applications can be a useful trigger, but do not turn this into an inflexible rule. Consider timing, reason for rejection, contract deadline, and remaining candidate quality.
-
-When a reserve is activated, select a reasonable ordinary tariff from that provider and accept a moderate price premium in exchange for reliability.
-
-## 13. Evidence hierarchy
-
-Use evidence according to purpose:
-
-1. **Offer-specific facts:** provider AGB, Preisblatt, Vertragszusammenfassung, official tariff calculator, and official bonus terms.
-2. **Consumer/regulatory baseline:** Verbraucherzentrale/vzbv, Bundesnetzagentur, Schlichtungsstelle Energie, court/regulator material, and Stiftung Warentest.
-3. **Independent specialist context:** Finanztip and high-quality specialist or mainstream reporting.
-4. **Operational pattern evidence:** large review platforms, Google reviews, Reddit, forums, and community reports.
-
-For reviews:
-
-- search by failure mode, not just star rating;
-- look for repeated, recent patterns;
-- separate allegations from documented findings;
-- do not imply that an undetected complaint means the problem does not exist.
-
-Use citations for factual claims and include the date/time relevance of market data.
-
-## 14. Decision model
-
-Keep hard filters separate from ranking criteria.
-
-### Hard filters
-
-Reject candidates that violate the user's explicit constraints or the baseline contract-safety defaults the user has not overridden: Festpreis, Erstlaufzeit up to 12 months, Kündigungsfrist up to 1 month, Preisgarantie through the initial term, monthly Abschläge, and no Vorkasse/Kaution/Pakettarif. Treat the stronger Ökostrom baseline as a preference unless the user explicitly makes it a hard requirement.
-
-### Primary factors for an annual switcher
-
-- effective first-year cost with safe bonuses
-- bonus safety
-- contract and Preisgarantie fit
-- operational reliability
-- acceptance/frequent-switcher risk where evidenced
-
-### Secondary factors
-
-- no-bonus/base price
-- Ökostrom quality according to the default or user preference
-- regionality / municipal ownership / local value
-- evidenced Energiewende investment
-- social or corporate behavior when supported by concrete evidence
-
-Do not let soft tie-breakers override a serious operational or contractual problem.
-
-## 15. Required output
-
-Produce a compact decision report with:
-
-### A. Assumptions and current benchmark
-
-State:
-
-- location basis (refer to the single private supply profile rather than repeating a full street address)
-- consumption and whether the value is measured, averaged or estimated
-- supply start
-- switching strategy
-- baseline defaults and user overrides
-- current-contract benchmark if known
-
-### B. Normal shortlist
-
-Return no more than **3–5** serious candidates unless the user explicitly requests more.
-
-For each show:
-
-- Anbieter / Tarif
-- Arbeitspreis
-- Grundpreis
-- annual base cost
-- bonuses
-- effective first-year cost
-- bonus-safety classification
-- Erstlaufzeit / Kündigungsfrist
-- Preisgarantie and scope
-- Ökostrom evidence
-- operational-risk summary
-- acceptance-risk note if relevant
-- source / offer date
-- important caveat
-
-### C. Strategic reserves
-
-List 1–2 provider-level reserves separately.
-
-For each explain:
-
-- why it is suitable for a 2–3 year fallback;
-- whether its ordinary pricing is broadly market-reasonable;
-- relevant operational evidence;
-- why it should remain unused during normal optimization.
-
-Label clearly:
-
-**Strategic Reserve — do not use in normal switching**
-
-### D. Near-misses / rejected candidates
-
-Include only candidates whose rejection teaches something useful: failed hard filter, unsafe bonus, weak guarantee, operational pattern, or reserve-preservation rule.
-
-### E. Decision and next action
-
-Give a practical recommendation or small set of choices with trade-offs.
-
-Before Abschluss, tell the user exactly what still needs offer-specific confirmation. Prefer the provider's official checkout path.
-
-### F. Saved research and workspace updates
-
-For **every** run, including a one-time or preliminary comparison:
-
-1. Confirm the target directory, read prior context if present and create the standard workspace layout described in `SKILL.md` where absent.
-2. Save this entire report as `<target>/<target-year>/research/YYYY-MM-DD.md`; preserve earlier reports by adding a suffix on collisions. Include researched-at date, source links, quoted-offer dates and unresolved gaps.
-3. Update the annual `README.md` with current status, shortlist, milestones and a link to this report. Update the root `README.md` profile if verified input changes; do not copy the full address into every report.
-4. Read `history.md` and `fallback.md` before drawing conclusions. Update them only with known events or explicitly approved reserve decisions.
-5. In the response, say where the report was saved. If filesystem write is impossible, provide the report and clearly state that persistence failed; do not claim success.
-
-## 16. Final verification checklist
-
-Before finalizing:
-
-- [ ] Target directory identified; relevant profile, history, reserves and prior research read first.
-- [ ] Full supply address obtained or reused, including separate Hausnummerzusatz (or none), without unnecessarily exposing it in reports.
-- [ ] Supplied consumption used consistently and marked measured, averaged or estimated.
-- [ ] Location/address specificity is sufficient for quoted prices.
-- [ ] Current benchmark included when available.
-- [ ] Applied baseline defaults and user overrides stated.
-- [ ] Current Verbraucherzentrale / Stiftung Warentest guidance checked for material changes when doing substantive research.
-- [ ] Portal rankings treated as leads, not authority.
-- [ ] Portal snapshot controls interpreted cautiously; missing checkbox/radio state not treated as evidence.
-- [ ] Direct-provider offers checked.
-- [ ] Hard filters enforced.
-- [ ] First-year and no-bonus economics both shown.
-- [ ] Every counted bonus has a safety classification.
-- [ ] Kündigung compatibility checked for annual switching.
-- [ ] Preisgarantie scope checked, not merely duration.
-- [ ] Ökostrom additionality checked under the default or user override.
-- [ ] Operational failure modes researched.
-- [ ] Review evidence distinguished from regulator/documentary evidence.
-- [ ] Frequent-switcher evidence dated and not overgeneralized.
-- [ ] Strategic reserves separated from normal candidates.
-- [ ] Reserved providers excluded from ordinary optimization.
-- [ ] Major uncertainties and missing offer-specific documents stated.
-- [ ] Dated report saved for this run, including one-off runs; annual overview updated and exact file path reported, or inability to write disclosed.
-- [ ] Historic reports preserved; history and reserve statuses altered only with supporting events/decisions.
+Before delivering, check that the conclusion matches the evidence and mode, all comparisons use the same scenario and consumption, reserve decisions remain intact, and the dated report/annual overview are actually saved with previous reports preserved. Report persistence failure honestly.

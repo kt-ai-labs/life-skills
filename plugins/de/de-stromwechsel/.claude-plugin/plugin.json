@@ -1,17 +1,13 @@
 {
   "name": "de-stromwechsel",
   "displayName": "Jährlicher Stromwechsel (DE)",
-  "version": "0.1.1",
-  "description": "Research and plan household electricity-provider switches in Germany, including tariffs, bonuses, and switching risks.",
+  "version": "0.1.2",
+  "description": "Research and simulate self-managed household electricity-provider switches in Germany, including tariffs, bonuses, reliability, and strategic reserves.",
   "author": {
     "name": "KT-AI Labs",
     "url": "https://github.com/kt-ai-labs"
   },
   "repository": "https://github.com/kt-ai-labs/life-skills",
   "license": "MIT",
-  "keywords": [
-    "germany",
-    "electricity",
-    "utilities"
-  ]
+  "keywords": ["germany", "electricity", "utilities"]
 }

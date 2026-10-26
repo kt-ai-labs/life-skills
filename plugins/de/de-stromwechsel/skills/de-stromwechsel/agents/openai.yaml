@@ -1,4 +1,4 @@
 interface:
   display_name: "Jährlicher Stromwechsel (DE)"
-  short_description: "Jährlichen Stromanbieterwechsel in Deutschland planen"
-  default_prompt: "Use $de-stromwechsel to research and plan my next German household electricity switch, including bonus safety, operational risks, direct offers, and strategic reserve providers."
+  short_description: "Selbstständigen Stromwechsel recherchieren und simulieren"
+  default_prompt: "Use $de-stromwechsel to research and plan my self-managed German electricity switch, choosing Preliminary Research or Switching Simulation from my goal and saving the findings."
