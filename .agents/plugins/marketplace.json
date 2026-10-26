@@ -17,10 +17,10 @@
       "category": "Productivity"
     },
     {
-      "name": "general-browser-research",
+      "name": "browser-research",
       "source": {
         "source": "local",
-        "path": "./plugins/general/general-browser-research"
+        "path": "./plugins/general/browser-research"
       },
       "policy": {
         "installation": "AVAILABLE",

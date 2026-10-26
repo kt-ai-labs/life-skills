@@ -1,9 +1,9 @@
 ---
-name: general-browser-research
+name: browser-research
 description: Efficient interactive research of websites in local coding-agent environments. Use when navigating dynamic sites, following multi-step page flows, finding specific on-page facts, or comparing information that plain search cannot reliably expose. Prefer existing browser tools or an installed Playwright CLI, keep browser output focused, and never silently install dependencies.
 ---
 
-# General Browser Research
+# Browser Research
 
 Browse only when it materially helps the task. A web search, accessible official document, or direct provider page may be more appropriate than browser automation. Do not invoke browser tools simply because they exist.
 

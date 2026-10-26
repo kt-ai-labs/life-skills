@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "general-browser-research",
+  "name": "browser-research",
   "version": "0.1.0",
   "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI.",
   "author": {

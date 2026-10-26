@@ -1,5 +1,5 @@
 {
-  "name": "general-browser-research",
+  "name": "browser-research",
   "displayName": "Browser Research",
   "version": "0.1.0",
   "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI.",

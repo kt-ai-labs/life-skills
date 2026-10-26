@@ -11,8 +11,8 @@
       "description": "Research and plan household electricity-provider switches in Germany, including tariffs, bonuses, and switching risks."
     },
     {
-      "name": "general-browser-research",
-      "source": "./plugins/general/general-browser-research",
+      "name": "browser-research",
+      "source": "./plugins/general/browser-research",
       "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI."
     }
   ]

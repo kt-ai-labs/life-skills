@@ -7,9 +7,9 @@ Reusable AI skills for practical everyday decisions and procedures. Each indepen
 | Plugin | Purpose | Extra software |
 | --- | --- | --- |
 | [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md) | Research and plan a German household electricity-provider switch, including bonuses, provider reliability, and strategic reserves. | None required |
-| [`general-browser-research`](plugins/general/general-browser-research/skills/general-browser-research/SKILL.md) | Navigate and inspect websites efficiently using an available local browser tool. | Playwright CLI optional |
+| [`browser-research`](plugins/general/browser-research/skills/browser-research/SKILL.md) | Navigate and inspect websites efficiently using an available local browser tool. | Playwright CLI optional |
 
-Plugins are installed **independently**. `de-stromwechsel` does not require `general-browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it.
+Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it.
 
 ## Install in Codex (CLI / VS Code workflow)
 
@@ -36,7 +36,7 @@ For a project-specific Codex CLI configuration in a trusted project, plugins fro
 claude plugin marketplace add kt-ai-labs/life-skills
 claude plugin install de-stromwechsel@kt-ai-labs-life-skills
 # Optional, independent plugin:
-claude plugin install general-browser-research@kt-ai-labs-life-skills
+claude plugin install browser-research@kt-ai-labs-life-skills
 ```
 
 Check installed plugins with `claude plugin list`, then start a new session. Claude Code provides `claude plugin validate .` to validate the marketplace locally.
@@ -56,10 +56,10 @@ plugins/
         agents/openai.yaml
         references/research-prompt.md
   general/
-    general-browser-research/
+    browser-research/
       plugin.json
       .claude-plugin/plugin.json
-      skills/general-browser-research/
+      skills/browser-research/
         SKILL.md
         references/playwright-cli.md
 ```
