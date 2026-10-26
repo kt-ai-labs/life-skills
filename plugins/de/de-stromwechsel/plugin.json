@@ -1,0 +1,27 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "de-stromwechsel",
+  "version": "0.1.0",
+  "description": "Research and plan household electricity-provider switches in Germany, including tariffs, bonuses, and switching risks.",
+  "author": {
+    "name": "KT-AI Labs",
+    "url": "https://github.com/kt-ai-labs"
+  },
+  "repository": "https://github.com/kt-ai-labs/life-skills",
+  "license": "MIT",
+  "keywords": [
+    "germany",
+    "electricity",
+    "utilities"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Jährlicher Stromwechsel (DE)",
+        "shortDescription": "German household electricity-switch research",
+        "developerName": "KT-AI Labs",
+        "category": "Productivity"
+      }
+    }
+  }
+}

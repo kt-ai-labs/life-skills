@@ -1,0 +1,32 @@
+{
+  "name": "kt-ai-labs-life-skills",
+  "interface": {
+    "displayName": "KT-AI Labs Life Skills"
+  },
+  "plugins": [
+    {
+      "name": "de-stromwechsel",
+      "source": {
+        "source": "local",
+        "path": "./plugins/de/de-stromwechsel"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "general-browser-research",
+      "source": {
+        "source": "local",
+        "path": "./plugins/general/general-browser-research"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
