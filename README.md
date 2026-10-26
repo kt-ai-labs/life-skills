@@ -4,10 +4,10 @@ Reusable AI skills for practical everyday decisions and procedures. Each indepen
 
 ## Available plugins
 
-| Plugin | Purpose | Extra software |
-| --- | --- | --- |
-| [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md) | Research and plan a German household electricity-provider switch, including bonuses, provider reliability, and strategic reserves. | None required |
-| [`browser-research`](plugins/general/browser-research/skills/browser-research/SKILL.md) | Navigate and inspect websites efficiently using an available local browser tool. | Playwright CLI optional |
+| Plugin                                                                                  | Purpose                                                                                                                            | Extra software          |
+| --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md)         | Research and plan a German household electricity-provider switch, including bonuses, provider reliability, and strategic reserves. | None required           |
+| [`browser-research`](plugins/general/browser-research/skills/browser-research/SKILL.md) | Navigate and inspect websites efficiently using an available local browser tool.                                                   | Playwright CLI optional |
 
 Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it.
 

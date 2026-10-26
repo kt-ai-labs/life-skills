@@ -1,0 +1,21 @@
+{
+  "name": "life-skills",
+  "version": "1.0.0",
+  "description": "Life: Collect and track information about life, use AI skills for that",
+  "homepage": "https://github.com/ktarmyshov/life-skills#readme",
+  "bugs": {
+    "url": "https://github.com/ktarmyshov/life-skills/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktarmyshov/life-skills.git"
+  },
+  "author": "Konstantin Tarmyshov",
+  "scripts": {
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,14 @@
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+
+# Some AI content
+.github/skills/
+.claude/skills/
+.agents/skills/
+
+# Local Python virtual environment
+.venv/

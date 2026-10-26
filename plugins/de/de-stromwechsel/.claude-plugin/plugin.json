@@ -9,9 +9,5 @@
   },
   "repository": "https://github.com/kt-ai-labs/life-skills",
   "license": "MIT",
-  "keywords": [
-    "germany",
-    "electricity",
-    "utilities"
-  ]
+  "keywords": ["germany", "electricity", "utilities"]
 }
