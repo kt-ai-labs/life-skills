@@ -1,0 +1,19 @@
+{
+  "name": "kt-ai-labs-life-skills",
+  "description": "Independent practical skills for everyday tasks. Codex and Claude Code.",
+  "owner": {
+    "name": "KT-AI Labs"
+  },
+  "plugins": [
+    {
+      "name": "de-stromwechsel",
+      "source": "./plugins/de/de-stromwechsel",
+      "description": "Research and plan household electricity-provider switches in Germany, including tariffs, bonuses, and switching risks."
+    },
+    {
+      "name": "browser-research",
+      "source": "./plugins/general/browser-research",
+      "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI."
+    }
+  ]
+}

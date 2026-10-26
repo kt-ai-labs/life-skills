@@ -1,0 +1,18 @@
+{
+  "name": "browser-research",
+  "displayName": "Browser Research",
+  "version": "0.1.0",
+  "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI.",
+  "author": {
+    "name": "KT-AI Labs",
+    "url": "https://github.com/kt-ai-labs"
+  },
+  "repository": "https://github.com/kt-ai-labs/life-skills",
+  "license": "MIT",
+  "keywords": [
+    "browser",
+    "research",
+    "playwright",
+    "web"
+  ]
+}

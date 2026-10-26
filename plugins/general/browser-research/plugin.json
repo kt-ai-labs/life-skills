@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "browser-research",
+  "version": "0.1.0",
+  "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI.",
+  "author": {
+    "name": "KT-AI Labs",
+    "url": "https://github.com/kt-ai-labs"
+  },
+  "repository": "https://github.com/kt-ai-labs/life-skills",
+  "license": "MIT",
+  "keywords": [
+    "browser",
+    "research",
+    "playwright",
+    "web"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Browser Research",
+        "shortDescription": "Efficient local browser research with optional Playwright CLI",
+        "developerName": "KT-AI Labs",
+        "category": "Productivity"
+      }
+    }
+  }
+}
