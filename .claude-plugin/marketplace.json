@@ -13,7 +13,7 @@
     {
       "name": "browser-research",
       "source": "./plugins/general/browser-research",
-      "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI."
+      "description": "Efficient interactive website research that prefers isolated sessions and requires permission for personal browser profiles."
     }
   ]
 }

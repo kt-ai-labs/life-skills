@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "browser-research",
-  "version": "0.1.0",
-  "description": "Efficient, careful interactive website research using locally available browser tools such as Playwright CLI.",
+  "version": "0.1.1",
+  "description": "Efficient interactive website research that prefers isolated sessions and requires permission for personal browser profiles.",
   "author": {
     "name": "KT-AI Labs",
     "url": "https://github.com/kt-ai-labs"

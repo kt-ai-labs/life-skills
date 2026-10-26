@@ -29,6 +29,7 @@ Read existing root and yearly README files, history, reserves and the latest use
 - **Supply address:** PLZ, Ort, Straße, Hausnummer and separate **Hausnummerzusatz (Zusatz)**, or explicitly none. For `Musterstraße 22C`, Hausnummer is `22` and Zusatz is `C`. Calculator fields may say only `Zusatz`; leave them empty when absent. Do not confuse it with an apartment, floor or other address addition, and do not substitute a billing address. Use the full location when a calculator requires it.
 - **Jahresverbrauch:** select one primary annual figure using the rules below.
 - **Switching context:** current supplier/tariff, contract end or intended Lieferbeginn (approximate is acceptable for exploration), recent providers, exclusions, switching strategy and already designated reserves where known.
+- **Personal provider experience:** reuse known positive/negative service experiences and stable preferences; ask about them only when relevant information is missing. Keep preferences in the private root README and dated experiences, their evidence and outcomes in history.md. A reported event is not automatically document-verified or a provider exclusion; apply the targeted assessment in the research protocol.
 - **Historical documents:** offer the option to supply an existing archive directory for contracts, Rechnungen, Schlussrechnungen, switch confirmations and bonus terms. Reuse its location if already documented instead of asking again.
 
 ### Consumption basis
@@ -67,6 +68,6 @@ Use the intended actual new-supply year, even for a simulation with an earlier q
 
 Give brief, substantive updates at meaningful points: reconstructed context, important contradictions, price results or blockers, and decisions about the next research step. Explain a material scope change promptly, especially a retreat from price comparison to a watchlist; avoid narration of every technical operation.
 
-Use the user's working language for responses and saved Stromwechsel reports, README, history and fallback unless they explicitly choose another. A general preference for English code or technical documentation does not automatically determine the language of these household reports. On continuation, honor explicit language choices without translating historical reports solely for consistency. Preserve precise German contract terms.
+Use the user's working language for responses and saved Stromwechsel reports, README, history and fallback unless they explicitly choose another. A general preference for English code or technical documentation does not automatically determine the language of these household reports. On continuation, honor explicit language choices and write each updated semantic section coherently in that language, without translating historical reports solely for consistency. Preserve precise German contract terms.
 
 The final response must give the result, main options and confirmed comparative costs where available, or clearly say that reliable prices were not obtained. State the principal uncertainties and next action; list saved report paths separately. File paths alone are not a result.
