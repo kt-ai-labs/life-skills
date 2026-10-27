@@ -1,7 +1,7 @@
 {
   "name": "browser-research",
   "displayName": "Browser Research",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Efficient interactive website research that prefers isolated sessions and requires permission for personal browser profiles.",
   "author": {
     "name": "KT-AI Labs",

@@ -4,11 +4,13 @@ Read when material verification needs human assistance, research documents are r
 
 ## Closing a blocked verification
 
-After diagnosing a material obstacle and trying reasonable safe alternatives, offer narrowly scoped human help if it could supply missing evidence. Examples include applicable Bonusbedingungen, a PDF viewer or `blob:` document unreadable by the tool, a stalled calculator, or difficult Preisblatt/contract navigation. These are examples, not automatic handoff triggers. Explain the provider/product, missing evidence, attempts and safe action; use existing isolated shared control if actually supported, otherwise provide a link/verified navigation and request a saved document. Use the available tool's handoff rules; no other skill or browser integration is required.
+For ordinary tariff research, **no registration or account login by default**. Do not suggest creating an account to read terms or advance into an application to obtain documents. A login wall closes that route, not all public research.
+
+After diagnosis and reasonable public alternatives, offer scoped human help for a material gap. Explain the provider/product/channel, exact question, prior checks, stopping point and sufficient evidence. Offer both an existing isolated shared browser where control is actually supported, and an independent-browser route with the source link, search inputs and verified navigation; label unverified steps. Accept a screenshot, copied text or PDF as appropriate, not a PDF by default. Follow the available tool's handoff rules for pausing and resuming; no other skill or browser integration is required.
 
 Never perform or ask the user to perform an application, contract acceptance, paid-service confirmation or irreversible checkout just to obtain research evidence. If the document is available only after contracting, stop that route and record the limitation. Human help does not authorize bypassing a tool/security restriction; an independently user-provided document can be inspected through permitted file access.
 
-Ask for the saved location when unclear and verify actual access before reading. Do not assume a browser download is in system Downloads. Use existing file/PDF tools and validate the provider, product/channel, campaign/version and relevant conditions against the research question. A general AGB, a wrong-campaign PDF or an unreadable file does not close an offer-specific gap. Keep received evidence distinct from the bonus/contract assessment in the research protocol.
+For a saved file, ask for its location when unclear and verify actual access before reading. Do not assume a browser download is in system Downloads. Use existing file/PDF tools and validate the provider, product/channel, campaign/version and relevant conditions against the research question. A general AGB, a wrong-campaign PDF or an unreadable file does not close an offer-specific gap. Keep received evidence distinct from the bonus/contract assessment in the research protocol, then continue that assessment rather than stopping at file retention.
 
 ## Optional durable archive
 
@@ -26,9 +28,9 @@ On a collision, reuse an identical document or add a short product/campaign/vers
 
 ## One yearly user-action register
 
-Create `<workspace>/<target-year>/action-required.md` only when an unresolved action genuinely needs the user's participation. Reuse it across runs and keep resolved entries as evidence; it is not a list of future agent research or a new per-run task file. Offer help in the conversation, rather than merely recording a silent request. If the user defers or cannot help, preserve the gap and continue independent verification.
+Create `<workspace>/<target-year>/action-required.md` only when an unresolved action genuinely needs the user's participation. Reuse it across runs and keep resolved entries as evidence; it is not a list of future agent research or a new per-run task file. Offer help in the conversation, rather than merely recording a silent request. Keep user-deferred topics in the research context, not as `waiting` tasks. Questions the agent can still investigate, and technical blocks without a requested human action, stay in the report. If help is declined or fails, preserve the outcome and continue independent verification.
 
-Use stable local task IDs and these statuses:
+Only entries that meet this human-action criterion use stable local task IDs and these statuses; `blocked` does not create an entry for unfinished agent research:
 
 | Status     | Meaning                                                                                                                   |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------- |

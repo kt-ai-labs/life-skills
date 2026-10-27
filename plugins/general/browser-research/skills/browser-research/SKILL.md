@@ -23,10 +23,14 @@ Obtain explicit permission before accessing an existing personal browser profile
 
 Isolation is enforced by the browser environment and connection configuration, not this skill. Verify the relevant capability before documenting or using tool-specific isolation commands; honor host restrictions and do not install tools to bypass them.
 
+## Cookie consent
+
+In a confirmed temporary isolated session, use a simple **Reject All / Only Necessary** when available. If rejection requires complex settings and the user has authorized the simpler path, **Accept All** is permissible with awareness of third-party data transmission and applicable permissions. In a personal browser or when isolation is unconfirmed, do not automatically accept optional cookies. Cookie consent never authorizes registration, a contract or payment.
+
 ## Research and interaction
 
 - Define the specific question and expected evidence before opening a page. Prioritize provider-direct and primary sources for official terms, prices, and requirements.
-- Prefer searching within a page or a targeted DOM section over collecting entire pages. Extract only the fields needed to answer the question.
+- Prefer searching within the relevant card/dialog or a targeted DOM section over collecting entire pages; narrow the scope when a result is overly broad. Extract only the fields needed to answer the question.
 - After an unsuccessful action, inspect the actual page state and cause (for example disabled input, wrong/hidden target, pending navigation or a tool restriction). Retarget or use a reasonable permitted alternative before calling a site feature unavailable; do not blindly retry or bypass access restrictions. Distinguish failed interaction, tool limitation and provider restriction in the result.
 - Verify URL, provider, relevant date, and important qualifications. Distinguish live findings from assumptions and stale cached material.
 - For forms, contracts, payments, account changes, and other consequential actions, get user authorization before submitting. Do not bypass CAPTCHAs, rate limits, paywalls, or website access controls.
@@ -44,6 +48,7 @@ When a material check remains blocked after diagnosis and reasonable safe altern
 - Use `--raw` or similarly compact output when only one value or an extracted field is needed.
 - Read saved snapshots and screenshots only when their content directly answers the task. Avoid repeated reading of the same material.
 - Keep diagnostic artifacts temporary and untracked. When the task calls for a durable research report, retain only useful compact evidence of changing results (an excerpt, table or screenshot), minimizing personal data and recording source, inputs and date. Do not generate test suites, tracing, or videos for routine research.
+- If a session disappears, diagnose its current state, launch configuration and relevant errors before restoring it. Do not repeat the same failed launch without new information; restore only what is needed.
 - Use a dedicated named session. Keep a supported handoff session available while the user acts, verify temporary downloads before closing it, and close only sessions started for the task. Do not indiscriminately terminate other users' browser sessions.
 
 ## Report results

@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "de-stromwechsel",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Research and simulate self-managed household electricity-provider switches in Germany, including tariffs, bonuses, reliability, and strategic reserves.",
   "author": {
     "name": "KT-AI Labs",

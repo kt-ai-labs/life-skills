@@ -34,11 +34,11 @@ Read existing root and yearly README files, history, reserves, the latest useful
 
 ### Consumption basis
 
-1. Honor an explicit required calculation value from the user.
-2. If the user gives an approximate figure and documents establish a more recent complete annual Verbrauch, use that confirmed value and briefly explain the difference.
-3. Without a complete annual figure, a user estimate is acceptable if labelled accordingly. If provenance is unknown, label it unknown rather than calling it measured or estimated.
+1. Honor an explicitly required calculation value from the user. Merely providing a number does not make it a required scenario.
+2. Otherwise use the latest reliable complete annual Verbrauch unless there is reason to consider it unrepresentative; briefly explain any difference from the reported figure.
+3. Without a suitable complete-year document, use the reported figure with its actual provenance. Unknown provenance is neither confirmed measurement nor a confirmed estimate.
 
-Never treat a partial-year bill automatically as annual consumption. Use one primary Jahresverbrauch consistently; add a second scenario only if it materially affects the choice or the user requests it. Do not silently replace an unqualified user value: retain it with its provenance unresolved or clarify if the distinction matters.
+Keep the user-reported figure, documented annual figure and selected calculation basis distinct in the private profile. Never record the agent's selection as a user requirement or infer provenance solely from how round a number looks. Do not automatically annualize a partial-year bill. Use one primary Jahresverbrauch consistently; add another scenario only if it materially affects the choice or the user requests it.
 
 ### Documents and privacy
 
@@ -72,6 +72,6 @@ Use the intended actual new-supply year, even for a simulation with an earlier q
 
 Give brief, substantive updates at meaningful points: reconstructed context, important contradictions, price results or blockers, and decisions about the next research step. Explain a material scope change promptly, especially a retreat from price comparison to a watchlist; avoid narration of every technical operation.
 
-Use the user's working language for responses and saved Stromwechsel reports, README, history and fallback unless they explicitly choose another. A general preference for English code or technical documentation does not automatically determine the language of these household reports. On continuation, honor explicit language choices and write each updated semantic section coherently in that language, without translating historical reports solely for consistency. Preserve precise German contract terms.
+Use the user's working language for responses and all new household documents: profile, history, fallback, yearly overview, report and user-action register, unless they explicitly choose another. A general preference for English code or technical documentation does not automatically determine the language of these household reports. On continuation, honor explicit language choices and write each updated semantic section coherently in that language, without translating historical reports solely for consistency. Preserve precise German contract terms.
 
 The final response must give the result, main options and confirmed comparative costs where available, or clearly say that reliable prices were not obtained. State the principal uncertainties and next action; list saved report paths separately. File paths alone are not a result.
