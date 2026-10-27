@@ -24,7 +24,7 @@ If documents reveal an active or possibly active automatic switching service, re
 
 Every research run, including a preliminary or one-off comparison, produces a dated saved report. Use the expressly supplied directory or an unambiguous existing Stromwechsel workspace; otherwise ask where to save results before substantive research. Keep persistent outputs within that directory. If persistence is unavailable, provide the report in the response and disclose that it could not be saved.
 
-Read existing root and yearly README files, history, reserves and the latest useful research first. Reuse verified inputs; stored prices and conditions remain historical until refreshed. Ask only for missing information that affects the research:
+Read existing root and yearly README files, history, reserves, the latest useful research and any existing yearly action-required.md first. Reuse verified inputs; stored prices and conditions remain historical until refreshed. Ask only for missing information that affects the research:
 
 - **Supply address:** PLZ, Ort, Straße, Hausnummer and separate **Hausnummerzusatz (Zusatz)**, or explicitly none. For `Musterstraße 22C`, Hausnummer is `22` and Zusatz is `C`. Calculator fields may say only `Zusatz`; leave them empty when absent. Do not confuse it with an apartment, floor or other address addition, and do not substitute a billing address. Use the full location when a calculator requires it.
 - **Jahresverbrauch:** select one primary annual figure using the rules below.
@@ -46,6 +46,8 @@ Start with the current contract, latest annual/final bills, switch confirmations
 
 Use existing PDF capabilities; no particular PDF tool or new script is required. Minimize temporary extracts containing personal data, restrict their exposure and remove the agent's own unnecessary temporary copies after processing. Never delete or alter the user's source archive.
 
+When a material verification needs human help, a document is received for retention, or yearly user actions exist, read [documents and user actions](references/documents-and-actions.md). It owns the optional document archive and persistent action states.
+
 Store the full address once in the root profile of a private workspace, not in each report. Before writing it in a potentially public/shared Git workspace, flag exposure and obtain a private location or informed approval. Do not silently commit or publish personal data.
 
 ### Durable layout
@@ -60,6 +62,8 @@ Reuse a compatible organization or initialize:
   <target-year>/
     README.md               # cycle status, milestones, options and latest report link
     research/YYYY-MM-DD.md
+    docs/<provider>/        # optional: retained research documents, created on receipt
+    action-required.md      # optional: one yearly register of unresolved user actions
 ```
 
 Use the intended actual new-supply year, even for a simulation with an earlier quotation date. If that year is unknown, use the research year and explain. Preserve prior reports with a suffix/time on date collisions. Update the annual overview and changed verified profile inputs. Keep history and designated reserve status factual: update only for confirmed events or explicit user decisions; label unknowns rather than inventing them.

@@ -24,6 +24,12 @@ CLI 0.1.22 help and the [official manual](https://github.com/microsoft/playwrigh
 
 Use this config in the launch example below, only where CLI browser control is permitted. Inspect effective configuration and relevant environment overrides for extension/CDP/remote attachment, persistent user-data directories and loaded storage state; do not import personal state. Do not use `attach`, `--persistent`, `--profile` or `state-load` as an isolation recipe. A reused session name is not proof of a fresh profile. Verify the actual launch mode; these documented settings are not a runtime isolation test. Close only the task session and remove its own temporary config when done.
 
+## Interactive handoff capabilities
+
+The [official monitoring documentation](https://github.com/microsoft/playwright-cli#monitoring) describes Dashboard control of a selected session. CLI 0.1.22 locally exposes named sessions, `open --headed`, `show` and `snapshot` in its help; this establishes command support, not successful shared control. Verify behavior on the actual host before promising it.
+
+When permitted and available, keep the same isolated session open, use `playwright-cli show` to expose the Dashboard, and identify the task session for the user. The documented Dashboard lets the user select its viewport to take control and release it with Escape. Pause agent page actions during that interaction. After confirmation, `playwright-cli -s=research1 snapshot --depth=3` reads fresh state for continuing the existing session. These are ordinary commands around a conversational handoff, not a `handoff` or human-handoff `resume` command. Do not use the CLI debugger's unrelated resume controls for this workflow. If Dashboard control is unavailable, use the link/manual-file fallback in [human assistance](human-assistance.md).
+
 ## Efficient commands
 
 The examples below use `playwright-cli` to mean the selected, verified executable. For local installs, substitute its executable path. Replace `research1` with a unique session name.

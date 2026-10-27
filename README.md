@@ -1,36 +1,38 @@
 # KT-AI Labs Life Skills — Plugins for Codex & Claude Code
 
-**Stromwechsel Skill für Codex und Claude Code:** [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md) helps you research and compare **Stromtarife in Deutschland**, choose a **Stromanbieter**, and plan an **Anbieterwechsel** (including annual switches). It is an open-source AI Agent Skill, **not** a tariff comparison service or an MCP server.
+**German Stromwechsel skill for Codex and Claude Code:** [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md) helps you research and compare **Stromtarife in Deutschland**, choose a **Stromanbieter**, and plan an **Anbieterwechsel** (including annual switches). It is an open-source AI Agent Skill, **not** a tariff comparison service or an MCP server.
 
 Reusable AI skills for practical everyday decisions and procedures. Each task is packaged as an independent plugin for **OpenAI Codex CLI** and **Anthropic Claude Code**. Both share the same `SKILL.md` and research references; their marketplace manifests differ.
 
-## Stromanbieter wechseln in Deutschland: `de-stromwechsel`
+## Switching electricity providers in Germany: `de-stromwechsel`
 
-**Gibt es einen Stromwechsel-Skill für ChatGPT Codex oder Claude Code?** Ja: `de-stromwechsel` bietet einen strukturierten Workflow für die unabhängige Recherche und Bewertung deutscher Stromanbieter und Stromtarife.
+**Is there a Stromwechsel skill for ChatGPT Codex or Claude Code?** Yes: `de-stromwechsel` provides a structured workflow for independent research and assessment of German electricity providers and tariffs.
 
-- **Zwei Recherchemodi:** **Preliminary Research** untersucht Ausgangslage, aktuelle Tarife, Anbieter, Bedingungen und Risiken; eine Watchlist ohne Preisranking ist möglich, wenn fehlende Preise erklärt werden. **Switching Simulation** versucht echte adressbezogene Angebote zu erhalten und vergleicht Kosten mit und ohne erreichbare Boni, als würde der Nutzer heute wählen. Liegt der echte Lieferbeginn außerhalb eines Buchungsfensters, nutzt die Simulation einen ausdrücklich getrennten aktuellen Berechnungstermin. Ein ferner Wechseltermin schließt heutige Preisrecherche nicht aus. Der Modus wird aus dem Anliegen abgeleitet und nur bei wesentlicher Unklarheit erfragt.
-- **Gezielte Verifikation:** Nach einem begrenzten Marktüberblick und Screening prüft der Agent bevorzugte Angebote gründlich; er erweitert die Suche nur, wenn geeignete Alternativen fehlen. Ergebniszahlen eines Portals gelten nicht als geprüfte Angebote. Lieferbeginn, Netzgebiet, Pflichtkosten und offene Prüfungen bleiben nachvollziehbar.
-- **Strompreisvergleich mit Quellenprüfung:** recherchiert aktuelle Angebote über verfügbare Web-/Browser-Tools oder anhand bereitgestellter CHECK24-/Verivox-Ergebnisse; sucht auch direkt bei Energieversorgern. Keine vorgetäuschten Livepreise ohne entsprechende Daten.
-- **Jährlicher Stromanbieterwechsel:** berechnet Erstjahreskosten mit realistisch erreichbaren Neukunden- und Sofortboni und zeigt Kosten **ohne Bonus** separat.
-- **AGB, Preisgarantie und Kündigungsfrist:** prüft Vertragslaufzeit, Bonusbedingungen, Zahlungsweise und Risiken beim Wechsel.
-- **Erfahrungen und Zuverlässigkeit:** vergleicht operative Risiken der engeren Auswahl und berücksichtigt persönliche positive wie negative Erfahrungen. Jahreskosten, Liquiditätsbelastung durch Abschläge und Guthabenrückzahlung werden getrennt bewertet; ein Einzelfall beweist kein allgemeines Anbieterverhalten. Präferenzen und Erfahrungen bleiben im privaten Profil bzw. in der Historie.
-- **Ökostrom und Plan B:** bewertet nachvollziehbare Ökostrom-Kriterien und mögliche Reserveanbieter. Nur vom Nutzer ausdrücklich benannte strategische Reserven werden aus der normalen Optimierung ausgeschlossen; ungeprüfte Reservekandidaten bleiben vergleichbar.
+- **Two research modes:** **Preliminary Research** investigates the starting situation, current tariffs, providers, conditions and risks; a watchlist without a price ranking is acceptable if missing prices are explained. **Switching Simulation** attempts real supply-point-specific offers and compares costs with and without attainable bonuses as if the user were choosing today. If the actual Lieferbeginn is outside a booking window, it uses an explicitly separate current quotation scenario. A distant switch date does not preclude today's price research. The mode follows user intent and is only queried when materially unclear.
+- **Focused verification:** after bounded market discovery and screening, the agent prioritizes detailed checks of promising offers and expands discovery only if viable alternatives are lacking. Portal result counts do not count as inspected offers. Lieferbeginn, Netzgebiet, mandatory costs and unresolved checks remain explicit.
+- **Source-based price comparison:** uses available web/browser tools or supplied CHECK24/Verivox results, and searches suppliers directly. It never claims live prices without evidence.
+- **Annual switching:** calculates first-year costs with attainable Neukundenbonus and Sofortbonus, showing costs **without bonuses** separately.
+- **AGB, Preisgarantie and Kündigungsfrist:** checks contract duration, bonus conditions, payment terms and switching risks.
+- **Experience and reliability:** compares finalists' operational risks and considers positive and negative personal experiences. Annual costs, liquidity tied up in Abschläge and Guthaben refunds are assessed separately; an individual incident does not establish a company-wide pattern. Preferences and experiences stay in the private profile/history.
+- **Ökostrom and plan B:** assesses evidenced environmental criteria and possible reserve providers. Only explicitly designated strategic reserves are excluded from ordinary optimization; unconfirmed reserve candidates remain eligible for comparison.
 
-**Dokumentierte Ergebnisse, auch einmalig:** Der Skill nutzt einen vorhandenen Stromwechsel-Arbeitsordner oder fragt nach einem Zielordner. Er liest Profil, Historie, Reserven und auf Wunsch einen Dokumentenordner mit Verträgen und Rechnungen. Benötigt werden die Lieferadresse mit separatem **Hausnummerzusatz (Zusatz)** und ein Jahresverbrauch. Ein ausdrücklich vorgegebener Rechenwert hat Vorrang; andernfalls ersetzt ein neuerer bestätigter voller Jahresverbrauch eine ungefähre Angabe. Teiljahreswerte werden nicht automatisch als Jahresverbrauch behandelt. Ein Hauptverbrauch genügt, sofern zusätzliche Szenarien nicht entscheidungsrelevant sind.
+**Saved results, including one-off research:** the skill reuses an existing Stromwechsel workspace or asks for a destination. It reads the profile, history, reserves and, when supplied, an archive of contracts and bills. Inputs include the supply address with separate **Hausnummerzusatz (Zusatz)** and annual consumption. An explicit required calculation value takes priority; otherwise a newer confirmed full-year Verbrauch replaces an approximate figure. Partial-year amounts are not automatically annualized. One primary consumption figure suffices unless another scenario materially affects the decision.
 
-Der Agent organisiert Jahresordner und speichert bei jeder Recherche einen datierten Bericht mit Modus, Quellen und Grenzen der Prüfung. Berichte, README, Historie und Reserven folgen der Arbeitssprache des Nutzers, sofern nichts anderes gewählt ist; alte Berichte werden nicht allein zur Übersetzung umgeschrieben. Die vollständige Adresse steht nur im privaten Profil; vor Speicherung in möglicherweise öffentlichen oder geteilten Git-Arbeitsordnern ist Zustimmung erforderlich. Unnötige eigene temporäre Dokumentauszüge werden entfernt, Originale bleiben unangetastet.
+The agent organizes yearly folders and saves a dated report with mode, sources and verification limits on every run. Reports, README, history, reserves and user-action records follow the user's chosen working language; old reports are not rewritten solely for translation. The complete address is stored only in the private profile; potentially public/shared Git storage requires informed approval. Unnecessary agent-created temporary extracts are removed; originals are preserved.
 
-**Selbstständiger Wechsel durch den Nutzer:** Der Agent recherchiert, vergleicht, plant und erstellt bei Bedarf Anleitungen oder Entwürfe. Der Nutzer selbst stellt Anträge, schließt Verträge ab und versendet Kündigungen; auch eine Simulation führt keine solchen Aktionen aus. Bei Hinweisen auf einen automatischen Wechselservice warnt der Agent vor konkurrierenden Anträgen. Eine gesonderte Prüfung von Vollmacht, Ausstieg, Fristen und Gebühren erfolgt nur nach Zustimmung und hält die Tarifrecherche bei Ablehnung nicht auf.
+**Research documents and human assistance:** when a material check remains blocked after diagnosis and safe alternatives, the agent offers help with obtaining evidence without applications or contract acceptance. Relevant documents can be retained in `<workspace>/<target-year>/docs/<provider>/`, using their own document dates and preserving versions. A single yearly `action-required.md` is created only for actual unresolved user actions; receiving a PDF, verifying it and closing the substantive gap are separate states. Storage can be any accessible filesystem location; Git, cloud APIs and additional services are not required.
 
-**Aktuelle Verbraucherempfehlungen:** Verbraucherzentrale, Stiftung Warentest und Finanztip werden zu Beginn in ihren zugänglichen aktuellen Materialien geprüft. Abweichende Empfehlungen werden zur Nutzerstrategie eingeordnet; Paywalls und technische Lücken werden offengelegt. CHECK24/Verivox dienen zusätzlich der Angebotssuche, nicht als Ranking-Autorität; beide Portale sind nicht zwingend erforderlich.
+**The user performs the switch:** the agent researches, compares, plans and prepares instructions or drafts. The user submits applications, signs contracts and sends Kündigungen; a simulation performs none of these actions. If an automatic switching service may be active, the agent warns about conflicting applications. Investigation of authority, exit terms, deadlines and fees is separate and opt-in; declining it does not stop tariff research. Neither the agent nor the user is asked to contract just to obtain research documents.
 
-**Keine Pflicht-Integration:** Weder MCP, API-Key noch ein Konto bei einem Vergleichsportal sind für die Installation erforderlich. Für eine _aktuelle_ Marktanalyse benötigt der Agent allerdings verfügbare Recherchetools, aktuelle Quellen oder ein vom Nutzer geliefertes Tarifangebot. Es gibt keine verpflichtende Integration mit einem Wechselservice.
+**Current consumer guidance:** accessible current materials from Verbraucherzentrale, Stiftung Warentest and Finanztip are checked at the start. Differences are interpreted for the user's strategy, and paywalls/technical gaps are disclosed. CHECK24/Verivox also provide discovery leads rather than ranking authority; using both portals is not mandatory.
 
-**Beispiel-Prompt (Deutsch):**
+**No mandatory integration:** installation requires no MCP, API key or comparison-portal account. A _current_ market assessment needs available research tools, current sources or a user-supplied offer. No switching-service integration is required.
+
+**Example prompt (German):**
 
 > Nutze den Skill `de-stromwechsel`. Speichere die Recherche in `./de-stromwechsel` und organisiere dort Jahresordner, Berichte, Anbieterhistorie und Reserveanbieter. Führe eine Switching Simulation für meinen selbstständigen Stromwechsel durch. Verwende vorhandene Angaben oder frage nach Lieferadresse (mit separatem Zusatz, falls vorhanden), Jahresverbrauch und echtem Wechselzeitraum. Versuche aktuelle adressbezogene Preise zu erhalten und trenne einen nötigen simulierten Lieferbeginn vom echten Termin. Vergleiche Erstjahreskosten mit und ohne erreichbare Boni, Preisgarantie, Fristen, Ökostrom und Zuverlässigkeit. Speichere den Bericht in meiner Arbeitssprache. Ich führe Anträge und Kündigungen selbst aus.
 
-**Skill oder MCP?** Ein Skill beschreibt _wie_ dein Agent recherchiert, Angebote überprüft und eine Entscheidung vorbereitet. Ein Stromvergleich-MCP wie [Choov](https://www.choov.de/) liefert dagegen Angebote über einen externen Datenanbieter; ein Wechselservice wie [Wechselpilot](https://wechselpilot.com/) kann nach Registrierung einen Wechsel übernehmen. Solche Dienste können optional als Quellen dienen, sind aber **nicht** Bestandteil dieses Plugins und ersetzen keine unabhängige Prüfung.
+**Skill or MCP?** A skill describes _how_ the agent researches, verifies offers and prepares a decision. An electricity-comparison MCP such as [Choov](https://www.choov.de/) supplies offers through an external data provider; a switching service such as [Wechselpilot](https://wechselpilot.com/) may arrange a switch after registration. These can be optional sources, but are **not** part of this plugin and do not replace independent verification.
 
 ## Available plugins
 
@@ -39,7 +41,7 @@ Der Agent organisiert Jahresordner und speichert bei jeder Recherche einen datie
 | [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md)         | Research or simulate a self-managed German electricity switch, including bonuses, provider reliability, and strategic reserves. | None required           |
 | [`browser-research`](plugins/general/browser-research/skills/browser-research/SKILL.md) | Navigate and inspect websites efficiently using an available local browser tool.                                                | Playwright CLI optional |
 
-Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it. `browser-research` prefers verified isolated temporary sessions, with observable operation where available, and requires explicit permission before accessing a personal browser profile. New tabs or session names do not prove isolation. The host browser and connection settings enforce isolation; the skill alone cannot guarantee it.
+Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it. `browser-research` prefers verified isolated temporary sessions, with observable operation where available, and requires explicit permission before accessing a personal browser profile. New tabs or session names do not prove isolation. The host browser and connection settings enforce isolation; the skill alone cannot guarantee it. If safe agent attempts fail, it supports an explicit human handoff where the tool allows shared control, or a link/manual-file fallback. Page automation pauses while the user acts; results are verified before research resumes. Dashboard support, filesystem access and download locations depend on the actual environment.
 
 ## Install the Stromwechsel Skill in Codex CLI
 
@@ -85,6 +87,7 @@ plugins/
         SKILL.md
         agents/openai.yaml
         references/research-prompt.md
+        references/documents-and-actions.md
   general/
     browser-research/
       plugin.json
@@ -92,6 +95,7 @@ plugins/
       skills/browser-research/
         SKILL.md
         references/playwright-cli.md
+        references/human-assistance.md
 ```
 
 ## Add a new plugin

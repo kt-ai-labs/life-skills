@@ -1,0 +1,49 @@
+# Research documents and user actions
+
+Read when material verification needs human assistance, research documents are retained, or an existing yearly action register needs review. Keep the user's workspace language and privacy rules from SKILL.md.
+
+## Closing a blocked verification
+
+After diagnosing a material obstacle and trying reasonable safe alternatives, offer narrowly scoped human help if it could supply missing evidence. Examples include applicable Bonusbedingungen, a PDF viewer or `blob:` document unreadable by the tool, a stalled calculator, or difficult Preisblatt/contract navigation. These are examples, not automatic handoff triggers. Explain the provider/product, missing evidence, attempts and safe action; use existing isolated shared control if actually supported, otherwise provide a link/verified navigation and request a saved document. Use the available tool's handoff rules; no other skill or browser integration is required.
+
+Never perform or ask the user to perform an application, contract acceptance, paid-service confirmation or irreversible checkout just to obtain research evidence. If the document is available only after contracting, stop that route and record the limitation. Human help does not authorize bypassing a tool/security restriction; an independently user-provided document can be inspected through permitted file access.
+
+Ask for the saved location when unclear and verify actual access before reading. Do not assume a browser download is in system Downloads. Use existing file/PDF tools and validate the provider, product/channel, campaign/version and relevant conditions against the research question. A general AGB, a wrong-campaign PDF or an unreadable file does not close an offer-specific gap. Keep received evidence distinct from the bonus/contract assessment in the research protocol.
+
+## Optional durable archive
+
+Retain material research documents under `<workspace>/<target-year>/docs/<provider>/` only when documents exist to save; keep AGB, Preisblatt, Bonusbedingungen and other relevant documents separately. This is an ordinary accessible folder on local storage, OneDrive, a Git workspace or another filesystem location; no Git workflow, cloud API or service is required. Honor available permissions and disclose persistence failure. Do not migrate or duplicate the user's historical archive indiscriminately.
+
+Copy user downloads or temporary browser files into the archive, verify the saved copy and keep originals intact. Minimize personal data in stored evidence and apply the private-workspace rules; never silently publish or commit it. Do not delete old versions automatically.
+
+Use kebab-case provider folders and filenames without underscores:
+
+`<document-date>-<document-type>.<extension>`
+
+Use the document's own date/revision, not download date: `YYYY-MM-DD`, `YYYY-MM`, or `unknown-date`. Examples: `2027/docs/yello/2026-08-01-agb-strom.pdf`, `2026-10-21-bonusbedingungen.pdf`, `2025-01-agb-strom.pdf`, `unknown-date-preisblatt.pdf`. These illustrate naming, not actual retained documents. Do not invent a date or document type; use `unknown-type` if identification remains unresolved and explain it.
+
+On a collision, reuse an identical document or add a short product/campaign/version distinction supported by its contents. Never overwrite a different document; if no distinction is established, append a short content-hash suffix and record the unresolved version distinction. In the existing report or action entry link the saved file, source URL/page (or user-provided origin), retrieval date and associated research report/offer. No separate document index is needed.
+
+## One yearly user-action register
+
+Create `<workspace>/<target-year>/action-required.md` only when an unresolved action genuinely needs the user's participation. Reuse it across runs and keep resolved entries as evidence; it is not a list of future agent research or a new per-run task file. Offer help in the conversation, rather than merely recording a silent request. If the user defers or cannot help, preserve the gap and continue independent verification.
+
+Use stable local task IDs and these statuses:
+
+| Status     | Meaning                                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `waiting`  | A specific user action is requested; no usable result has been supplied.                                                  |
+| `provided` | The user supplied a file/result; agent verification is pending.                                                           |
+| `verified` | The agent checked the result and established its applicability; the substantive research question still needs assessment. |
+| `closed`   | The material information gap is answered and the conclusion/evidence is recorded.                                         |
+| `blocked`  | Assistance was attempted but failed, or no permitted route remains; the gap is still open.                                |
+
+Record the check and conclusion explicitly. A wrong campaign or missing conditions returns the task to `waiting` for a specified correction, or `blocked` if no route remains, with the failed verification explained. A checked but unsuitable file is not a successful `verified` result. Transition through intermediate statuses within one turn when justified; do not stop after file verification instead of completing the assessment. Reopen a closed task if later evidence invalidates its conclusion.
+
+Each compact entry needs:
+
+- ID, current status/date, provider/offer, missing question and the condition for closing it.
+- The human action, why the agent needs it, prior checks, source page/session or file location, prohibited legal actions, and a link to the relevant report.
+- What was received, saved document/result link, verification outcome and remaining gap or closing conclusion. Keep these fields unknown until evidence exists.
+
+At the start of each new substantive report briefly summarize important unresolved actions with task links and their impact; include enough context for the report to stand alone. Read the existing register on continuation, update the same entries and link verified evidence in the report. Downloading a file is not equivalent to checking its conditions or closing the task.
