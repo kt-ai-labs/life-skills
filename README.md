@@ -219,7 +219,7 @@ Enable the global RTK integration for the agent(s) you actually use.
 **Codex CLI:**
 
 ~~~bash
-rtk init --global --codex --auto-patch
+rtk init --global --codex
 ~~~
 
 **Claude Code:**
