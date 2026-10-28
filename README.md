@@ -275,7 +275,7 @@ playwright-cli --help
 
 Avoid installing the **same CLI** through multiple package managers: duplicate binaries can cause confusing PATH conflicts.
 
-### 5. Codex Life Skills plugins
+### Update Codex Life Skills plugins
 
 First refresh the Git-backed marketplace, then inspect installed plugins:
 
@@ -301,7 +301,7 @@ codex plugin remove browser-research@kt-ai-labs-life-skills
 codex plugin add browser-research@kt-ai-labs-life-skills
 ~~~
 
-### 6. Claude Code Life Skills plugins
+### Update Claude Code Life Skills plugins
 
 Refresh the marketplace catalog:
 
