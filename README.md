@@ -46,6 +46,40 @@ Plugins are installed **independently**. `de-stromwechsel` does not require `bro
 
 ## Getting started on macOS
 
+### Quick setup — one command
+
+On macOS with [Homebrew](https://brew.sh/) already installed, the [update-env.sh script](scripts/update-env.sh) can perform the full Life Skills setup and update it on later runs. **Read the linked script before executing it**: the command below downloads and executes the current `main` version, which can install software and change user-level plugin settings.
+
+~~~bash
+curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash
+~~~
+
+This shortcut installs or updates **Codex CLI, Claude Code and Playwright CLI** using Homebrew where possible; installs the Playwright browser and agent skill; and installs or updates Life Skills plugins for both coding agents. It does not replace an existing non-Homebrew CLI installation. By default, it updates only the relevant Homebrew packages — it does **not** upgrade unrelated apps.
+
+Running locally from this repository instead:
+
+~~~bash
+./scripts/update-env.sh
+~~~
+
+Both invocation methods use the **current working directory**. If it contains `package.json`, the script runs `npm install` when a `package-lock.json` exists, or `npm install --no-package-lock` otherwise. Without `package.json`, npm installation is skipped. For a remote quick setup, run the `curl` command in a directory where you **do not** want unrelated project dependencies installed.
+
+To explicitly upgrade **all** Homebrew-managed packages and casks as well, use:
+
+~~~bash
+./scripts/update-env.sh --all-brew
+~~~
+
+You can also pass `--all-brew` to the remote version:
+
+~~~bash
+curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash -s -- --all-brew
+~~~
+
+Homebrew is a prerequisite, not auto-installed by the script. Sign in to the CLIs when prompted during normal use. If you prefer choosing every tool and plugin yourself, use the manual steps below.
+
+### Manual setup
+
 These steps prepare a Mac for **any** Life Skills plugin, not just `de-stromwechsel`. **Homebrew is the default installer and updater** for all available CLI tools. Open **Terminal** and work through the steps you actually need. If a command is already installed, skip its installation step.
 
 **Basic setup:** Codex CLI **or** Claude Code, plus the desired Life Skills plugins. **Recommended browser setup:** add Playwright CLI for skills that inspect interactive sites. Playwright is **optional but strongly recommended**, not a required dependency of either plugin.
