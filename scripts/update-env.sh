@@ -179,7 +179,7 @@ if ! command -v rtk >/dev/null 2>&1 || ! rtk gain >/dev/null 2>&1; then
 fi
 echo "==> Registering global RTK integrations for detected coding agents"
 if [[ "$install_codex" == true ]]; then
-  rtk init --global --codex --auto-patch </dev/null
+  rtk init --global --codex </dev/null
 fi
 if [[ "$install_claude" == true ]]; then
   rtk init --global --auto-patch </dev/null
