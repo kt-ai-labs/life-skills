@@ -177,7 +177,7 @@ if ! command -v rtk >/dev/null 2>&1 || ! rtk gain >/dev/null 2>&1; then
   echo "Check https://github.com/rtk-ai/rtk and resolve any name conflict manually." >&2
   exit 1
 fi
-echo "==> Registering global RTK integrations for: $agents"
+echo "==> Registering global RTK integrations for detected coding agents"
 if [[ "$install_codex" == true ]]; then
   rtk init --global --codex --auto-patch </dev/null
 fi
@@ -292,7 +292,8 @@ fi
 if [[ "$install_claude" == true ]]; then
 echo "==> Configuring Life Skills for Claude Code"
 # Adding an existing marketplace from the same source is supported and reused.
-if claude plugin marketplace list | grep -Fq "$marketplace_name"; then
+claude_marketplaces="$(claude plugin marketplace list)"
+if grep -Fq "$marketplace_name" <<< "$claude_marketplaces"; then
   echo "==> Claude marketplace already registered"
 else
   claude plugin marketplace add "$marketplace_source"
@@ -304,7 +305,7 @@ claude plugin marketplace update "$marketplace_name"
 claude_plugins="$(claude plugin list)"
 for plugin in de-stromwechsel browser-research; do
   qualified="${plugin}@${marketplace_name}"
-  if printf '%s\n' "$claude_plugins" | grep -Fq "$qualified"; then
+  if grep -Fq "$qualified" <<< "$claude_plugins"; then
     echo "==> Updating Claude plugin: $plugin"
     claude plugin update "$qualified"
   else
