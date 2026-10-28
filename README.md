@@ -88,7 +88,7 @@ If you have cloned this repository, run the same script locally:
 
 Both methods use the **current working directory**. If there is a `package.json`, the script runs `npm install` (or `npm install --no-package-lock` when no `package-lock.json` exists); otherwise it skips npm dependencies. Run the remote shortcut from a directory without an unrelated `package.json`.
 
-The script leaves existing non-Homebrew Codex, Claude Code, Playwright and RTK executables alone rather than installing duplicate copies. Restart coding-agent sessions after plugin and RTK hook updates. For installation choices that you want to control individually, follow the manual steps below.
+The script leaves existing non-Homebrew Codex, Claude Code, Playwright and RTK executables alone rather than installing duplicate copies. If Homebrew was newly installed, follow its printed shell PATH instructions for future terminals (the script configures PATH for its own run). Restart coding-agent sessions after plugin and RTK hook updates. For installation choices that you want to control individually, follow the manual steps below.
 
 ### Manual setup
 
