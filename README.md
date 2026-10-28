@@ -154,18 +154,19 @@ Use an isolated temporary browser configuration for real research, verify the ef
 
 ### 6. Install the Life Skills plugins
 
-Continue with **one** of the installation sections below: Codex CLI or Claude Code. Install `de-stromwechsel` and, for browser research, optionally add the independent `browser-research` plugin. Installing a plugin **does not** install Playwright CLI automatically.
+Continue with **one** of the installation sections below: Codex CLI or Claude Code. Both `de-stromwechsel` and `browser-research` are installed in the examples so browser research is ready to use. The plugins remain independent; installing them **does not** install Playwright CLI automatically.
 
-## Install the Stromwechsel Skill in Codex CLI
+## Install Life Skills plugins in Codex CLI
 
-Register the GitHub plugin marketplace, then install `de-stromwechsel`:
+Register the GitHub plugin marketplace, then install both plugins:
 
 ```bash
 codex plugin marketplace add kt-ai-labs/life-skills --ref main
 codex plugin add de-stromwechsel@kt-ai-labs-life-skills
+codex plugin add browser-research@kt-ai-labs-life-skills
 ```
 
-Optional browser research plugin: `codex plugin add browser-research@kt-ai-labs-life-skills`. Check installs with `codex plugin list`; start a new session to pick up the skills. Adding a marketplace alone does **not** install its plugins.
+Check installs with `codex plugin list`; start a new session to pick up the skills. Adding a marketplace alone does **not** install its plugins.
 
 To refresh the Git-backed marketplace:
 
@@ -175,12 +176,11 @@ codex plugin marketplace upgrade kt-ai-labs-life-skills
 
 **Client compatibility:** Codex Plugins are available through supported clients such as **Codex CLI**; as of October 2026, the **Codex VS Code IDE extension does not support Plugins**. You can manage and run the plugin through Codex CLI in the VS Code terminal, but don't assume a CLI-installed plugin will be loaded by the IDE extension. See [OpenAI's Plugins documentation](https://learn.chatgpt.com/docs/plugins).
 
-## Install the Stromwechsel Skill in Claude Code
+## Install Life Skills plugins in Claude Code
 
 ```bash
 claude plugin marketplace add kt-ai-labs/life-skills
 claude plugin install de-stromwechsel@kt-ai-labs-life-skills
-# Optional, independent browser research plugin:
 claude plugin install browser-research@kt-ai-labs-life-skills
 ```
 
