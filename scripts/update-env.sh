@@ -3,26 +3,33 @@ set -euo pipefail
 
 # macOS environment bootstrap + repeatable updater for Life Skills.
 # Runs from any working directory; only the optional npm step uses $PWD.
-# Usage: ./scripts/update-env.sh [--all-brew]
+# Usage: ./scripts/update-env.sh [--agent codex|claude|both] [--all-brew]
 #        curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash
 
 usage() {
-  echo "Usage: update-env.sh [--all-brew]"
-  echo "By default only Life Skills CLI tools are upgraded."
+  echo "Usage: update-env.sh [--agent codex|claude|both] [--all-brew]"
+  echo "When agents are installed, update only those already present unless --agent overrides."
+  echo "When neither is installed, ask which agent(s) to install (requires a terminal)."
   echo "--all-brew additionally upgrades every outdated Homebrew package and cask."
 }
 
 mode="selected"
-case "${1:-}" in
-  "") ;;
-  --all-brew) mode="all" ;;
-  -h|--help) usage; exit 0 ;;
-  *) usage >&2; exit 2 ;;
+agents=""
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --all-brew) mode="all"; shift ;;
+    --agent)
+      if [[ $# -lt 2 ]]; then usage >&2; exit 2; fi
+      agents="$2"; shift 2 ;;
+    --agent=*) agents="${1#--agent=}"; shift ;;
+    -h|--help) usage; exit 0 ;;
+    *) usage >&2; exit 2 ;;
+  esac
+done
+case "$agents" in
+  ""|codex|claude|both) ;;
+  *) echo "Error: --agent must be codex, claude or both." >&2; exit 2 ;;
 esac
-if [[ $# -gt 1 ]]; then
-  usage >&2
-  exit 2
-fi
 
 if [[ "$(uname -s)" != "Darwin" ]]; then
   echo "Error: this script supports macOS only." >&2
@@ -94,10 +101,76 @@ if ! command -v npm >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "==> Ensuring Codex CLI, Claude Code and Playwright CLI"
-ensure_cask codex codex
-ensure_cask claude-code claude
+# Do not silently install a second coding agent on an existing machine.
+# With neither installed, ask explicitly; piped curl runs read from /dev/tty.
+if [[ -z "$agents" ]]; then
+  if command -v codex >/dev/null 2>&1 && command -v claude >/dev/null 2>&1; then
+    agents="both"
+  elif command -v codex >/dev/null 2>&1; then
+    agents="codex"
+  elif command -v claude >/dev/null 2>&1; then
+    agents="claude"
+  else
+    if [[ ! -r /dev/tty ]]; then
+      echo "Error: no coding agent found and interactive terminal unavailable." >&2
+      echo "Rerun with --agent codex, --agent claude, or --agent both." >&2
+      exit 1
+    fi
+    echo "No Codex or Claude Code installation found."
+    echo "Choose an agent: [1] Codex CLI  [2] Claude Code  [3] Both"
+    if ! read -r -p "Your choice (1/2/3): " choice </dev/tty; then
+      echo "Error: could not read selection from terminal. Use --agent." >&2
+      exit 1
+    fi
+    case "$choice" in
+      1) agents="codex" ;;
+      2) agents="claude" ;;
+      3) agents="both" ;;
+      *) echo "Error: invalid selection; no agents installed." >&2; exit 2 ;;
+    esac
+  fi
+fi
+
+install_codex=false
+install_claude=false
+case "$agents" in
+  codex) install_codex=true ;;
+  claude) install_claude=true ;;
+  both) install_codex=true; install_claude=true ;;
+esac
+echo "==> Selected coding agent(s): $agents"
+if [[ "$install_codex" == true ]]; then
+  ensure_cask codex codex
+fi
+if [[ "$install_claude" == true ]]; then
+  ensure_cask claude-code claude
+fi
 ensure_formula playwright-cli playwright-cli
+
+# RTK (Rust Token Killer) is a separate CLI, not a Life Skills plugin.
+# The Homebrew tap avoids confusing it with the unrelated Rust Type Kit.
+echo "==> Ensuring RTK token optimizer"
+if brew list --formula rtk-ai/tap/rtk >/dev/null 2>&1; then
+  if [[ "$mode" == "selected" ]]; then
+    brew upgrade rtk-ai/tap/rtk
+  fi
+elif command -v rtk >/dev/null 2>&1; then
+  echo "==> RTK already exists outside the expected Homebrew tap; leaving it unchanged"
+else
+  brew install rtk-ai/tap/rtk
+fi
+if ! command -v rtk >/dev/null 2>&1 || ! rtk gain >/dev/null 2>&1; then
+  echo "Error: Rust Token Killer is missing or this 'rtk' binary is not the token optimizer." >&2
+  echo "Check https://github.com/rtk-ai/rtk and resolve any name conflict manually." >&2
+  exit 1
+fi
+echo "==> Registering global RTK integrations for: $agents"
+if [[ "$install_codex" == true ]]; then
+  rtk init --global --codex --auto-patch </dev/null
+fi
+if [[ "$install_claude" == true ]]; then
+  rtk init --global --auto-patch </dev/null
+fi
 
 # If an older npm installation shadows Brew's Playwright binary, use the
 # Homebrew-managed binary. Do not modify other installations.
@@ -131,6 +204,7 @@ else
   echo "==> No package.json in $PWD; skipping npm install"
 fi
 
+if [[ "$install_codex" == true ]]; then
 echo "==> Configuring Life Skills for Codex CLI"
 if ! codex plugin marketplace --help >/dev/null 2>&1; then
   echo "Error: this Codex CLI does not support plugins; update it via its installer." >&2
@@ -198,7 +272,9 @@ while read -r plugin action; do
     current) echo "==> Codex plugin up to date: $plugin" ;;
   esac
 done <<< "$plugin_actions"
+fi
 
+if [[ "$install_claude" == true ]]; then
 echo "==> Configuring Life Skills for Claude Code"
 # Adding an existing marketplace from the same source is supported and reused.
 if claude plugin marketplace list | grep -Fq "$marketplace_name"; then
@@ -221,13 +297,20 @@ for plugin in de-stromwechsel browser-research; do
     claude plugin install "$qualified" --scope user
   fi
 done
+fi
 
 echo "==> Finished"
-echo "Codex: $(codex --version)"
-echo "Claude: $(claude --version)"
+if [[ "$install_codex" == true ]]; then
+  echo "Codex: $(codex --version)"
+  echo "Codex Life Skills plugins:"
+  codex plugin list --marketplace "$marketplace_name"
+fi
+if [[ "$install_claude" == true ]]; then
+  echo "Claude: $(claude --version)"
+  echo "Claude Code plugins:"
+  claude plugin list
+fi
 echo "Playwright CLI: $("$playwright_cli" --version)"
-echo "Codex Life Skills plugins:"
-codex plugin list --marketplace "$marketplace_name"
-echo "Claude Code plugins:"
-claude plugin list
-echo "Restart your CLI sessions to load updated plugins."
+echo "RTK: $(rtk --version)"
+echo "RTK savings: rtk gain"
+echo "Restart your CLI sessions to load updated plugins and RTK hooks."
