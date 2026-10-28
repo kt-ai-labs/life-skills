@@ -43,6 +43,119 @@ The agent organizes yearly folders and saves a dated report with mode, sources a
 
 Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it. `browser-research` prefers verified isolated temporary sessions, with observable operation where available, and requires explicit permission before accessing a personal browser profile. New tabs or session names do not prove isolation. The host browser and connection settings enforce isolation; the skill alone cannot guarantee it. If safe agent attempts fail, it supports an explicit human handoff where the tool allows shared control, alongside an independent-browser link/navigation route accepting copied text, screenshots or PDFs. Page automation pauses while the user acts; results are verified before research resumes. Dashboard support, filesystem access and download locations depend on the actual environment.
 
+
+## Getting started on macOS
+
+These steps prepare a Mac for **any** Life Skills plugin, not just `de-stromwechsel`. Open **Terminal** and work through the steps you actually need. If a command is already installed, skip its installation step.
+
+**Basic setup:** Codex CLI **or** Claude Code, plus the desired Life Skills plugins. **Recommended browser setup:** add Playwright CLI for skills that inspect interactive sites. Playwright is **optional but strongly recommended**, not a required dependency of either plugin.
+
+### 1. Check what's already installed
+
+Run these checks individually. A `command not found` or missing path simply means that tool needs setup; you do **not** need both Codex and Claude Code.
+
+~~~bash
+command -v brew
+command -v node
+command -v npm
+command -v codex
+command -v claude
+command -v playwright-cli
+~~~
+
+### 2. Homebrew (only if missing)
+
+[Homebrew](https://brew.sh/) is a macOS package manager. If `brew` is unavailable and you want to use it to install Node.js, follow its official installer:
+
+~~~bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+~~~
+
+Review the installer before confirming it. **Follow the terminal's post-install `shellenv` / PATH instructions** and open a new terminal before continuing. Administrator approval or developer tools may be needed.
+
+### 3. Node.js and npm (only if missing)
+
+Playwright CLI and the npm installation route for Codex use Node.js/npm. If a compatible Node.js is already installed via `nvm` or `fnm`, keep that installation rather than adding a competing one.
+
+~~~bash
+brew install node
+~~~
+
+Check the results:
+
+~~~bash
+node --version
+npm --version
+~~~
+
+### 4. Choose your coding agent
+
+**Codex CLI** — install with npm if it is not already available:
+
+~~~bash
+npm install -g @openai/codex@latest
+~~~
+
+~~~bash
+codex --version
+~~~
+
+**Claude Code** — an **alternative**, not an additional requirement. Anthropic recommends its native installer:
+
+~~~bash
+curl -fsSL https://claude.ai/install.sh | bash
+~~~
+
+~~~bash
+claude --version
+~~~
+
+Start `codex` or `claude` and complete the host's normal sign-in before using plugins. See [Codex CLI](https://developers.openai.com/codex/cli/) and [Claude Code setup](https://code.claude.com/docs/en/setup).
+
+### 5. Playwright CLI — optional, **strongly recommended**
+
+For browser-heavy skills, Playwright CLI can inspect dynamic pages through targeted snapshots and commands, potentially using fewer tokens than repeatedly reading full pages or screenshots. A headed browser or the Dashboard can make the agent's work observable. An appropriately configured **isolated** session separates research from your personal browser profile; visibility alone does **not** establish isolation. The `browser-research` skill handles browser selection, isolation checks, cookie consent and human handoff where supported.
+
+Install Playwright CLI only if you want this browser capability:
+
+~~~bash
+npm install -g @playwright/cli@latest
+~~~
+
+~~~bash
+playwright-cli --help
+~~~
+
+Install its browser binary (a separate download):
+
+~~~bash
+playwright-cli install-browser
+~~~
+
+Optional example using a public, non-personal page and a named browser session:
+
+~~~bash
+playwright-cli -s=life-skills-demo open https://example.com --headed
+~~~
+
+To watch running sessions through the visual Dashboard, when supported:
+
+~~~bash
+playwright-cli show
+~~~
+
+When finished with the example:
+
+~~~bash
+playwright-cli -s=life-skills-demo close
+~~~
+
+Use an isolated temporary browser configuration for real research, verify the effective connection mode, and do not attach to a personal browser profile without explicit permission. Playwright can help handle cookie dialogs but cannot guarantee that every site works. The browser extension, shared-control Dashboard and downloads may behave differently across host environments. See [Playwright CLI](https://github.com/microsoft/playwright-cli).
+
+### 6. Install the Life Skills plugins
+
+Continue with **one** of the installation sections below: Codex CLI or Claude Code. Install `de-stromwechsel` and, for browser research, optionally add the independent `browser-research` plugin. Installing a plugin **does not** install Playwright CLI automatically.
+
 ## Install the Stromwechsel Skill in Codex CLI
 
 Register the GitHub plugin marketplace, then install `de-stromwechsel`:
@@ -72,6 +185,138 @@ claude plugin install browser-research@kt-ai-labs-life-skills
 ```
 
 Check installed plugins with `claude plugin list`, then start a new session. Claude Code provides `claude plugin validate .` to validate the marketplace locally.
+
+
+## Update your macOS environment and plugins
+
+Update only tools you actually installed. Each block below is independent; **do not run everything blindly**. Close active agent/browser sessions before updating their binaries, and start new agent sessions afterwards.
+
+### 1. Homebrew and Homebrew-managed tools
+
+Refresh Homebrew's package information:
+
+~~~bash
+brew update
+~~~
+
+If you installed Node.js with Homebrew, upgrade that package:
+
+~~~bash
+brew upgrade node
+~~~
+
+For a Codex CLI installed **as a Homebrew cask** rather than with npm, use this instead of the npm Codex update below:
+
+~~~bash
+brew upgrade --cask codex
+~~~
+
+For a **Homebrew-managed** Claude Code installation, update its cask rather than relying on native auto-update:
+
+~~~bash
+brew upgrade claude-code
+~~~
+
+### 2. Codex CLI (npm-managed installation)
+
+~~~bash
+npm install -g @openai/codex@latest
+~~~
+
+~~~bash
+codex --version
+~~~
+
+### 3. Claude Code (native installation)
+
+Native Claude Code generally auto-updates; this requests an immediate update:
+
+~~~bash
+claude update
+~~~
+
+~~~bash
+claude --version
+~~~
+
+### 4. Playwright CLI and browser
+
+For a globally installed Playwright CLI:
+
+~~~bash
+npm install -g @playwright/cli@latest
+~~~
+
+Refresh the browser binary as needed after a CLI update:
+
+~~~bash
+playwright-cli install-browser
+~~~
+
+~~~bash
+playwright-cli --help
+~~~
+
+### 5. Codex Life Skills plugins
+
+First refresh the Git-backed marketplace, then inspect installed plugins:
+
+~~~bash
+codex plugin marketplace upgrade kt-ai-labs-life-skills
+~~~
+
+~~~bash
+codex plugin list
+~~~
+
+**Marketplace refresh is not a promise that every installed plugin was replaced.** If an installed plugin is still out of date, reinstall **that plugin only** after checking its installed version and accepting that the operation removes/re-adds its local installation:
+
+~~~bash
+codex plugin remove de-stromwechsel@kt-ai-labs-life-skills
+codex plugin add de-stromwechsel@kt-ai-labs-life-skills
+~~~
+
+For an outdated optional browser plugin, do the same separately:
+
+~~~bash
+codex plugin remove browser-research@kt-ai-labs-life-skills
+codex plugin add browser-research@kt-ai-labs-life-skills
+~~~
+
+### 6. Claude Code Life Skills plugins
+
+Refresh the marketplace catalog:
+
+~~~bash
+claude plugin marketplace update kt-ai-labs-life-skills
+~~~
+
+Update each plugin **that you actually installed**; updating a marketplace listing from the shell alone does not upgrade installed plugins:
+
+~~~bash
+claude plugin update de-stromwechsel@kt-ai-labs-life-skills
+~~~
+
+Optional browser plugin:
+
+~~~bash
+claude plugin update browser-research@kt-ai-labs-life-skills
+~~~
+
+Check the installed plugins:
+
+~~~bash
+claude plugin list
+~~~
+
+Start a **new** Codex or Claude Code session after installing or updating a plugin. See [Codex plugin commands](https://learn.chatgpt.com/docs/developer-commands) and [Claude Code plugin management](https://code.claude.com/docs/en/discover-plugins).
+
+## Troubleshooting setup and research access
+
+- **No built-in web search:** that alone is not a blocker. If an approved browser is available, the agent can navigate directly to known websites or use a search engine in the browser. `browser-research` provides a reusable approach; without any accessible live source, the agent must disclose that current prices or guidance could not be verified.
+- **Plugin is not detected:** make sure you installed the plugin (not just the marketplace), are using the relevant **CLI** and started a new session. The Codex VS Code IDE extension does not currently load Codex CLI plugins.
+- **`brew`, `npm`, or a CLI command is missing:** revisit the relevant installation/PATH instructions; do not use `sudo npm install -g` as an improvised permissions fix.
+- **Playwright cannot open a browser:** check that `playwright-cli` is installed, run `playwright-cli install-browser`, and inspect the error. Do not attach a personal browser profile just to work around an isolation error.
 
 ## Repository layout
 
