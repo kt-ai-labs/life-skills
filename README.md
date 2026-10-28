@@ -148,7 +148,7 @@ Start the chosen CLI and complete its normal sign-in. See [Codex CLI](https://de
 
 ### 4. Node.js — optional for other tools
 
-**Node.js/npm are not prerequisites for installing these two agent CLIs via Homebrew.** Homebrew handles dependencies of its formulae. If a separate project requires Node.js, and you do not already use a version manager or an existing Node.js installation, install it through Homebrew:
+**Node.js/npm are not prerequisites for installing these two agent CLIs via Homebrew.** Homebrew handles dependencies of its formulae. If a separate project requires Node.js and you do not have Node.js installed, you can install it through Homebrew:
 
 ~~~bash
 brew install node
