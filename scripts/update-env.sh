@@ -201,7 +201,11 @@ done <<< "$plugin_actions"
 
 echo "==> Configuring Life Skills for Claude Code"
 # Adding an existing marketplace from the same source is supported and reused.
-claude plugin marketplace add "$marketplace_source"
+if claude plugin marketplace list | grep -Fq "$marketplace_name"; then
+  echo "==> Claude marketplace already registered"
+else
+  claude plugin marketplace add "$marketplace_source"
+fi
 claude plugin marketplace update "$marketplace_name"
 
 # Claude Code's shell marketplace update refreshes the catalog but does NOT
