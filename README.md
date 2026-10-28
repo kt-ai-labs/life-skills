@@ -48,35 +48,47 @@ Plugins are installed **independently**. `de-stromwechsel` does not require `bro
 
 ### Quick setup — one command
 
-On macOS with [Homebrew](https://brew.sh/) already installed, the [update-env.sh script](scripts/update-env.sh) can perform the full Life Skills setup and update it on later runs. **Read the linked script before executing it**: the command below downloads and executes the current `main` version, which can install software and change user-level plugin settings.
+[Review the setup script](scripts/update-env.sh) before running it. This convenience script is for macOS: it can install Homebrew, run **`brew update` and `brew upgrade` on all Homebrew packages**, install RTK and Playwright CLI, configure available coding agents and update Life Skills plugins.
+
+Run without cloning the repository:
 
 ~~~bash
 curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash
 ~~~
 
-This shortcut installs or updates **Codex CLI, Claude Code and Playwright CLI** using Homebrew where possible; installs the Playwright browser and agent skill; and installs or updates Life Skills plugins for both coding agents. It does not replace an existing non-Homebrew CLI installation. By default, it updates only the relevant Homebrew packages — it does **not** upgrade unrelated apps.
+It displays the following overview and asks for confirmation **before changing anything**:
 
-Running locally from this repository instead:
+~~~text
+Life Skills — Environment Setup & Update
+
+This script will:
+- Install Homebrew if it is missing
+- Run brew update and brew upgrade
+- Ask to install Codex CLI and/or Claude Code if neither is installed
+- Install missing recommended tools (RTK, Playwright CLI)
+- Set up or update Life Skills plugins
+- Install npm dependencies if package.json exists
+
+Do you want to continue? [y/N]:
+~~~
+
+If at least one agent is already installed, only the installed agents are configured; no second agent is installed automatically. If neither is found, the script separately asks **Install Codex CLI? [y/N]** and **Install Claude Code? [y/N]**. Answering No to both ends the script without changes.
+
+Skip **only the first confirmation** with `-y` or `--yes`; the two agent-installation questions still appear if neither CLI exists:
+
+~~~bash
+curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash -s -- --yes
+~~~
+
+If you have cloned this repository, run the same script locally:
 
 ~~~bash
 ./scripts/update-env.sh
 ~~~
 
-Both invocation methods use the **current working directory**. If it contains `package.json`, the script runs `npm install` when a `package-lock.json` exists, or `npm install --no-package-lock` otherwise. Without `package.json`, npm installation is skipped. For a remote quick setup, run the `curl` command in a directory where you **do not** want unrelated project dependencies installed.
+Both methods use the **current working directory**. If there is a `package.json`, the script runs `npm install` (or `npm install --no-package-lock` when no `package-lock.json` exists); otherwise it skips npm dependencies. Run the remote shortcut from a directory without an unrelated `package.json`.
 
-To explicitly upgrade **all** Homebrew-managed packages and casks as well, use:
-
-~~~bash
-./scripts/update-env.sh --all-brew
-~~~
-
-You can also pass `--all-brew` to the remote version:
-
-~~~bash
-curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash -s -- --all-brew
-~~~
-
-Homebrew is a prerequisite, not auto-installed by the script. Sign in to the CLIs when prompted during normal use. If you prefer choosing every tool and plugin yourself, use the manual steps below.
+The script leaves existing non-Homebrew Codex, Claude Code, Playwright and RTK executables alone rather than installing duplicate copies. Restart coding-agent sessions after plugin and RTK hook updates. For installation choices that you want to control individually, follow the manual steps below.
 
 ### Manual setup
 
@@ -95,6 +107,7 @@ command -v npm
 command -v codex
 command -v claude
 command -v playwright-cli
+command -v rtk
 ~~~
 
 ### 2. Homebrew (only if missing)
@@ -186,7 +199,38 @@ playwright-cli -s=life-skills-demo close
 
 Use an isolated temporary browser configuration for real research, verify the effective connection mode, and do not attach to a personal browser profile without explicit permission. Playwright can help handle cookie dialogs but cannot guarantee that every site works. The browser extension, shared-control Dashboard and downloads may behave differently across host environments. See [Playwright CLI](https://github.com/microsoft/playwright-cli).
 
-### 6. Install the Life Skills plugins
+### 6. RTK — recommended CLI output optimization
+
+[RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk) reduces the output sent back to coding agents for supported shell commands. It is a separate CLI and agent hook, **not** a plugin in our Life Skills marketplace. Install it using the official Homebrew tap:
+
+~~~bash
+brew install rtk-ai/tap/rtk
+~~~
+
+Verify you installed Rust Token Killer rather than the unrelated Rust Type Kit:
+
+~~~bash
+rtk --version
+rtk gain
+~~~
+
+Enable the global RTK integration for the agent(s) you actually use.
+
+**Codex CLI:**
+
+~~~bash
+rtk init --global --codex --auto-patch
+~~~
+
+**Claude Code:**
+
+~~~bash
+rtk init --global --auto-patch
+~~~
+
+These commands update global agent hook settings. See the [RTK installation guide](https://www.rtk-ai.app/docs/getting-started/installation/) and [supported agents](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/getting-started/supported-agents.md).
+
+### 7. Install the Life Skills plugins
 
 Continue with **one** of the installation sections below: Codex CLI or Claude Code. Both `de-stromwechsel` and `browser-research` are installed in the examples so browser research is ready to use. The plugins remain independent; installing them **does not** install Playwright CLI automatically.
 
@@ -273,6 +317,12 @@ Playwright CLI:
 brew upgrade playwright-cli
 ~~~
 
+RTK:
+
+~~~bash
+brew upgrade rtk-ai/tap/rtk
+~~~
+
 Optional Node.js:
 
 ~~~bash
@@ -282,7 +332,7 @@ brew upgrade node
 Or upgrade multiple installed tools together (remove names of anything you don't have):
 
 ~~~bash
-brew upgrade codex claude-code playwright-cli
+brew upgrade codex claude-code playwright-cli rtk-ai/tap/rtk
 ~~~
 
 If Playwright needs to refresh its downloaded browser after upgrading the CLI, run:
@@ -305,6 +355,12 @@ claude --version
 
 ~~~bash
 playwright-cli --help
+~~~
+
+RTK:
+
+~~~bash
+rtk --version
 ~~~
 
 Avoid installing the **same CLI** through multiple package managers: duplicate binaries can cause confusing PATH conflicts.
