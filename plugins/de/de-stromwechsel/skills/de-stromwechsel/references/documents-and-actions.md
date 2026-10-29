@@ -1,12 +1,12 @@
 # Research documents and user actions
 
-Read when material verification needs human assistance, research documents are retained, or an existing yearly action register needs review. Keep the user's workspace language and privacy rules from SKILL.md.
+Read when material verification needs human assistance, documents or material web evidence are retained, or an existing yearly action register needs review. Keep the user's workspace language and privacy rules from SKILL.md.
 
 ## Closing a blocked verification
 
 For ordinary tariff research, **no registration or account login by default**. Do not suggest creating an account to read terms or advance into an application to obtain documents. A login wall closes that route, not all public research.
 
-After diagnosis and reasonable public alternatives, offer scoped human help for a material gap. Explain the provider/product/channel, exact question, prior checks, stopping point and sufficient evidence. Offer both an existing isolated shared browser where control is actually supported, and an independent-browser route with the source link, search inputs and verified navigation; label unverified steps. Accept a screenshot, copied text or PDF as appropriate, not a PDF by default. Follow the available tool's handoff rules for pausing and resuming; no other skill or browser integration is required.
+After diagnosis and reasonable public alternatives, offer scoped human help for a material gap. Explain the provider/product/channel, exact question, prior checks, stopping point and sufficient evidence. Offer both an existing isolated shared browser where control is actually supported, and an independent-browser route with the source link, search inputs and verified navigation; label unverified steps. Accept a screenshot, copied text or PDF as appropriate, not a PDF by default. Use the existing Human Assistance protocol in `browser-research` when available, otherwise the available tool's handoff rules, including **Full Research Pause**: after requesting help, stop all research until the user explicitly confirms completion or returns control. No other skill or browser integration is required.
 
 Never perform or ask the user to perform an application, contract acceptance, paid-service confirmation or irreversible checkout just to obtain research evidence. If the document is available only after contracting, stop that route and record the limitation. Human help does not authorize bypassing a tool/security restriction; an independently user-provided document can be inspected through permitted file access.
 
@@ -14,21 +14,30 @@ For a saved file, ask for its location when unclear and verify actual access bef
 
 ## Optional durable archive
 
-Retain material research documents under `<workspace>/<target-year>/docs/<provider>/` only when documents exist to save; keep AGB, Preisblatt, Bonusbedingungen and other relevant documents separately. This is an ordinary accessible folder on local storage, OneDrive, a Git workspace or another filesystem location; no Git workflow, cloud API or service is required. Honor available permissions and disclose persistence failure. Do not migrate or duplicate the user's historical archive indiscriminately.
+Retain documents and web evidence that materially support or change a decision under `<workspace>/<target-year>/docs/<provider>/`; keep AGB, Preisblatt, Bonusbedingungen and other relevant sources separately. This includes tariff prices/conditions, guarantee scope/exclusions, bonus eligibility/termination/payout conditions, campaign disclosures and other decision-critical web-only terms. Archive selectively, not every visited page or browser interaction. This is an ordinary accessible folder on local storage, OneDrive, a Git workspace or another filesystem location; no Git workflow, cloud API or service is required. Honor available permissions and disclose persistence failure. Do not migrate or duplicate the user's historical archive indiscriminately.
 
-Copy user downloads or temporary browser files into the archive, verify the saved copy and keep originals intact. Minimize personal data in stored evidence and apply the private-workspace rules; never silently publish or commit it. Do not delete old versions automatically.
+Copy downloaded original PDFs and other original files byte-for-byte into the archive and verify the saved copy; keep originals intact. Never reconstruct an original PDF from extracted text or screenshots. Keep agent interpretation in a separate note or report. Minimize personal data in stored evidence, refer to the private profile rather than repeating the full supply address, and apply the private-workspace rules; never silently publish or commit it. Do not delete old versions automatically.
+
+When an HTML/web page is the relevant source, especially without a downloadable document or for changing offer-specific conditions, save a compact Markdown evidence document in the same provider folder. Include:
+
+- Provider, product/tariff, relevant channel/campaign and original source URL. State the applicable quotation scenario or offer version where relevant; label unestablished applicability/version as unknown.
+- Source publication/revision date, or explicitly unknown; retrieval/observation timestamp; and a separate evidence-file creation/generation timestamp. Include timezone for both timestamps; do not infer a source date from either.
+- Relevant factual excerpts or concise faithful descriptions of the observed conditions, clearly separated from agent interpretation/assessment.
+- Links to the relevant report or offer where useful.
+
+This Markdown file records observed evidence; it is not an original provider document. Use existing file capabilities without new dependencies or conversion tools.
 
 Use kebab-case provider folders and filenames without underscores:
 
 `<document-date>-<document-type>.<extension>`
 
-Use the document's own date/revision, not download date: `YYYY-MM-DD`, `YYYY-MM`, or `unknown-date`. Examples: `2027/docs/yello/2026-08-01-agb-strom.pdf`, `2026-10-21-bonusbedingungen.pdf`, `2025-01-agb-strom.pdf`, `unknown-date-preisblatt.pdf`. These illustrate naming, not actual retained documents. Do not invent a date or document type; use `unknown-type` if identification remains unresolved and explain it.
+Use the original document's or web source's own date/revision, not download, retrieval or evidence-file creation date: `YYYY-MM-DD`, `YYYY-MM`, or `unknown-date`. Examples: `2027/docs/yello/2026-08-01-agb-strom.pdf`, `2026-10-21-bonusbedingungen.pdf`, `2025-01-agb-strom.pdf`, `unknown-date-preisblatt.pdf`, `unknown-date-bonusbedingungen-web-evidence.md`. These illustrate naming, not actual retained documents. Do not invent a date or document type; use `unknown-type` if identification remains unresolved and explain it.
 
-On a collision, reuse an identical document or add a short product/campaign/version distinction supported by its contents. Never overwrite a different document; if no distinction is established, append a short content-hash suffix and record the unresolved version distinction. In the existing report or action entry link the saved file, source URL/page (or user-provided origin), retrieval date and associated research report/offer. No separate document index is needed.
+On a collision, reuse an identical document or add a short product/campaign/version distinction supported by its contents. Never overwrite a different document; if no distinction is established, append a short content-hash suffix and record the unresolved version distinction. Link important retained evidence from the existing research report, preserving the source URL/page (or user-provided origin), retrieval date and associated offer; link it from an action entry when relevant. No separate archive index or database is needed.
 
 ## One yearly user-action register
 
-Create `<workspace>/<target-year>/action-required.md` only when an unresolved action genuinely needs the user's participation. Reuse it across runs and keep resolved entries as evidence; it is not a list of future agent research or a new per-run task file. Offer help in the conversation, rather than merely recording a silent request. Keep user-deferred topics in the research context, not as `waiting` tasks. Questions the agent can still investigate, and technical blocks without a requested human action, stay in the report. If help is declined or fails, preserve the outcome and continue independent verification.
+Create `<workspace>/<target-year>/action-required.md` only when an unresolved action genuinely needs the user's participation. Reuse it across runs and keep resolved entries as evidence; it is not a list of future agent research or a new per-run task file. Offer help in the conversation, rather than merely recording a silent request. Keep user-deferred topics in the research context, not as `waiting` tasks. Questions the agent can still investigate, and technical blocks without a requested human action, stay in the report. If help is declined or fails, preserve the outcome and continue useful independent verification only after explicit return of control under Full Research Pause.
 
 Only entries that meet this human-action criterion use stable local task IDs and these statuses; `blocked` does not create an entry for unfinished agent research:
 

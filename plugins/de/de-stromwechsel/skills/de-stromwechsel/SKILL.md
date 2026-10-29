@@ -46,7 +46,7 @@ Start with the current contract, latest annual/final bills, switch confirmations
 
 Use existing PDF capabilities; no particular PDF tool or new script is required. Minimize temporary extracts containing personal data, restrict their exposure and remove the agent's own unnecessary temporary copies after processing. Never delete or alter the user's source archive.
 
-When a material verification needs human help, a document is received for retention, or yearly user actions exist, read [documents and user actions](references/documents-and-actions.md). It owns the optional document archive and persistent action states.
+When a material verification needs human help, documents or material web evidence are retained, or yearly user actions exist, read [documents and user actions](references/documents-and-actions.md). It owns domain-specific evidence retention and persistent action states.
 
 Store the full address once in the root profile of a private workspace, not in each report. Before writing it in a potentially public/shared Git workspace, flag exposure and obtain a private location or informed approval. Do not silently commit or publish personal data.
 
