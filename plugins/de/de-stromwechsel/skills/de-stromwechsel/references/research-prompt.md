@@ -140,9 +140,15 @@ A reserve is a provider-level fallback for a reasonable stay of about 2-3 years,
 - **Reserve candidate:** being evaluated; remains eligible for ordinary annual optimization.
 - **Designated Strategic Reserve:** explicitly agreed and appointed by the user; exclude from ordinary optimization and label **do not use in normal switching** until the user changes that decision.
 
+Unless the user narrows the scope, a full Switching Simulation includes a proportionate strategic reserve assessment. Investigate and recommend candidates autonomously; only designation requires the user's explicit decision.
+
+Apply Discovery, Screening and Question-driven Verification to the fallback decision separately from annual bonus optimization. Reuse existing evidence and consider plausible alternatives when an initial candidate remains unsuitable or insufficiently verified. A question that cannot change the annual winner may still matter to reserve suitability. "Do not fill a quota" limits recommendations, not reasonable investigation.
+
 Propose a small set, typically 1-2, only when evidence supports suitability. Evaluate location-specific ordinary pricing, manageable terms, operational reliability, likelihood of supply and usefulness for a longer stay. Consider local/nationwide diversification and past use without automatically disqualifying a previous provider. Do not select by the largest bonus. If price, service or suitability remains unverified, keep the proposal unconfirmed or state that no suitable reserve is established; do not fill a quota.
 
 Repeated rejections or clear switching friction may justify moving from optimize to stabilize and recommending reserve activation to the user. Roughly 2-3 failed applications can prompt reassessment, not an automatic rule: consider reasons, remaining time and alternatives. Do not silently redesignate or activate reserves.
+
+A focused reserve-only continuation may reuse the completed simulation, provider history and applicable evidence, researching only the missing reserve questions and updating the existing reports and fallback.md under the current retention rules.
 
 ## 7. Report and completion criteria
 
@@ -150,7 +156,7 @@ Use the workspace persistence and language rules in SKILL.md. Structure a compac
 
 - **Context:** at the start, summarize important unresolved user actions if any, with their effect and links to the yearly register; keep the report self-contained. Include researched-at date, mode and whether its completion criteria are met, actual intended and quotation Lieferbeginn, primary kWh and its provenance, location reference to the private profile, current benchmark, strategy, defaults/overrides and missing inputs.
 - **Options:** a small watchlist/shortlist, normally no more than 3-5 ordinary candidates unless requested. Lead with verified base costs and suitability, then show first-year cost using the bonus treatment above. Keep unassessed advertising potential separate from the decision ranking. For serious offers show provider/tariff/channel, rates, mandatory extras, each bonus and evidence state, instalment/payment count, term/notice/continuation, guarantee scope, Ökostrom evidence, comparative operational assessment and acceptance caveats, source and offer dates. Keep unknown fields unknown, never zero; identify the material check states established during verification.
-- **Reserves:** separate candidates from designated providers, explain evidence and gaps, preserve existing decisions.
+- **Reserves:** report research coverage separately from user designation, in the report, fallback.md and the final response. State whether research was not performed, is partial, is complete with defensible candidate recommendations, or is complete with no defensible candidate found after reasonable investigation. Identify providers considered, material evidence, remaining questions and the reason for any incomplete or negative result. Propose focused follow-up when useful. Keep unverified possibilities distinct from supported recommendations and preserve existing designations.
 - **Near-misses:** include only useful exclusions grounded in the selected quotation scenario; distinguish failure of a filter from an unverified condition or a real-date booking limitation.
 - **Decision:** explain trade-offs and the next step for the user, including the exact offer terms/documents still needed before their own application or cancellation.
 
@@ -159,6 +165,8 @@ Use the workspace persistence and language rules in SKILL.md. Structure a compac
 Established context, investigated market options, material conditions/risks and explicit evidence gaps are sufficient for a preliminary watchlist. Explain which current prices were obtained, which were not and why, and whether an earlier quotation date was used. Do not label the watchlist a verified price ranking or claim the market prevented pricing when pricing was simply outside the chosen scope.
 
 ### Switching Simulation completion
+
+Completion of annual tariff optimization does not imply completion of reserve research, and incomplete reserve research does not invalidate an otherwise completed annual Switching Simulation. Report both outcomes separately. Within the authorized scope, continue useful reserve verification after selecting the annual winner; for reserve research, request a user decision only for designation or a genuine need for user participation.
 
 Compare real current address-specific offers for the chosen quotation scenario and show base and first-year economics with the bonus treatment above. Explicitly separate the simulated choice from feasibility at the actual intended start.
 
