@@ -1,0 +1,4 @@
+interface:
+  display_name: "Browser Research"
+  short_description: "Interactive website research and human assistance"
+  default_prompt: "Use $browser-research to investigate a dynamic website and verify its results."
