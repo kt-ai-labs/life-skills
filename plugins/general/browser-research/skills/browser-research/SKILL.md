@@ -9,7 +9,7 @@ Browse only when it materially helps the task. Ordinary web search and accessibl
 
 ## Select an available tool
 
-1. Prefer native interactive browser/computer-use capabilities actually exposed by the current environment and permitted by the host. ChatGPT or Codex branding alone does not establish availability; a search-only tool is not an interactive browser. Read [native browser guidance](references/chatgpt-browser.md) when using this mechanism.
+1. Prefer native interactive browser/computer-use capabilities actually exposed by the current environment and permitted by the host. ChatGPT or Codex branding alone does not establish availability; a search-only tool is not an interactive browser. Read [native browser guidance](references/native-browser.md) when using this mechanism.
 2. If native interactive capabilities are unavailable or not permitted, use an already-installed Playwright CLI where shell browser control is allowed. Prefer a project-local executable, otherwise a global `playwright-cli`; read [CLI guidance](references/playwright-cli.md) and verify `--help` before relying on commands. A referenced skill is not proof of an executable.
 3. If neither mechanism is available and permitted, report that interactive browser research cannot proceed and that installed Playwright CLI is the supported fallback. Identify the blocked verification; use non-interactive sources only for checks they can actually support. Do not install dependencies or modify the user's environment as part of this workflow.
 
