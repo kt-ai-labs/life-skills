@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# macOS environment bootstrap + repeatable updater for Life Skills.
+# macOS environment bootstrap + repeatable updater for coding-agent tooling.
 # The optional npm step uses the caller's working directory ($PWD).
 # Works locally or when streamed into bash over curl.
 
@@ -26,14 +26,14 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 1
 fi
 
-echo "Life Skills — Environment Setup & Update"
+echo "Coding Agent Tools — Environment Setup & Update"
 echo
 echo "This script will:"
 echo "- Install Homebrew if it is missing"
 echo "- Run brew update and brew upgrade"
 echo "- Ask to install Codex CLI and/or Claude Code if neither is installed"
 echo "- Install missing recommended tools (RTK, Playwright CLI)"
-echo "- Set up or update Life Skills plugins"
+echo "- Leave skills, plugins, and marketplaces to project-local or manual setup"
 echo "- Install npm dependencies if package.json exists"
 echo
 
@@ -101,8 +101,6 @@ fi
 
 # Homebrew may prompt for upgrades on newer versions. Keep this local to the process.
 export HOMEBREW_NO_ASK=1
-marketplace_name="kt-ai-labs-life-skills"
-marketplace_source="kt-ai-labs/life-skills"
 brew_prefix="$(brew --prefix)"
 
 echo "==> Updating Homebrew metadata"
@@ -145,8 +143,8 @@ ensure_cask() {
   fi
 }
 
-# Node is required for the Codex marketplace's JSON output. It is not a
-# prerequisite for installing the Codex or Claude binaries via Homebrew.
+# Node/npm supports optional dependency installation in the current project.
+# It is not a prerequisite for installing Codex or Claude binaries via Homebrew.
 echo "==> Ensuring Node.js is available"
 ensure_formula node node
 if ! command -v npm >/dev/null 2>&1; then
@@ -198,15 +196,6 @@ if ! "$playwright_cli" install-browser; then
   echo "Warning: Playwright browser installation failed; browser research may be unavailable." >&2
 fi
 
-# Keep the existing global Codex Playwright CLI skill setup. It is additional
-# to the independent Life Skills browser-research plugin.
-if [[ "$install_codex" == true ]]; then
-  echo "==> Installing/updating global Playwright CLI skill for Codex"
-  if ! "$playwright_cli" install --skills=agents -g; then
-    echo "Warning: Playwright CLI agent skill installation failed." >&2
-  fi
-fi
-
 # npm belongs to the CURRENT working directory, not the script's location.
 if [[ -f "$PWD/package.json" ]]; then
   echo "==> Installing project npm dependencies in: $PWD"
@@ -219,114 +208,15 @@ else
   echo "==> No package.json in $PWD; skipping npm install"
 fi
 
-if [[ "$install_codex" == true ]]; then
-echo "==> Configuring Life Skills for Codex CLI"
-if ! codex plugin marketplace --help >/dev/null 2>&1; then
-  echo "Error: this Codex CLI does not support plugins; update it via its installer." >&2
-  exit 1
-fi
-marketplace_json="$(codex plugin marketplace list --json)"
-registered="$(printf '%s' "$marketplace_json" | node -e '
-  let input = "";
-  process.stdin.setEncoding("utf8");
-  process.stdin.on("data", chunk => input += chunk);
-  process.stdin.on("end", () => {
-    const parsed = JSON.parse(input);
-    if (!Array.isArray(parsed.marketplaces))
-      throw new Error("Unexpected Codex marketplace JSON");
-    process.stdout.write(parsed.marketplaces.some(m => m.name === process.argv[1]) ? "yes" : "no");
-  });
-' "$marketplace_name")"
-if [[ "$registered" == "yes" ]]; then
-  codex plugin marketplace upgrade "$marketplace_name"
-else
-  codex plugin marketplace add "$marketplace_source" --ref main
-fi
-
-echo "==> Installing/updating available Life Skills plugins in Codex"
-plugin_json="$(codex plugin list --marketplace "$marketplace_name" --available --json)"
-plugin_actions="$(printf '%s' "$plugin_json" | node -e '
-  let input = "";
-  process.stdin.setEncoding("utf8");
-  process.stdin.on("data", chunk => input += chunk);
-  process.stdin.on("end", () => {
-    const parsed = JSON.parse(input);
-    if (!Array.isArray(parsed.installed) || !Array.isArray(parsed.available))
-      throw new Error("Unexpected Codex plugin list JSON");
-    const marketplace = process.argv[1];
-    const installed = new Map(parsed.installed
-      .filter(p => p.marketplaceName === marketplace)
-      .map(p => [p.name, p]));
-    const available = parsed.available
-      .filter(p => p.marketplaceName === marketplace && p.installPolicy !== "NOT_AVAILABLE");
-    if (!available.length) throw new Error("No installable Life Skills plugins found");
-    const seen = new Set();
-    for (const p of available) {
-      if (!/^[a-z0-9][a-z0-9._-]*$/.test(p.name)) throw new Error("Invalid plugin name");
-      if (seen.has(p.name)) continue;
-      seen.add(p.name);
-      const existing = installed.get(p.name);
-      let action = "install";
-      if (existing) {
-        action = existing.version && p.version && existing.version !== p.version
-          ? "upgrade" : "current";
-      }
-      process.stdout.write(p.name + " " + action + "\n");
-    }
-  });
-' "$marketplace_name")"
-while read -r plugin action; do
-  [[ -n "$plugin" ]] || continue
-  case "$action" in
-    install) codex plugin add "${plugin}@${marketplace_name}" ;;
-    upgrade)
-      echo "==> Updating Codex plugin: $plugin"
-      codex plugin remove "${plugin}@${marketplace_name}"
-      codex plugin add "${plugin}@${marketplace_name}"
-      ;;
-    current) echo "==> Codex plugin up to date: $plugin" ;;
-  esac
-done <<< "$plugin_actions"
-fi
-
-if [[ "$install_claude" == true ]]; then
-echo "==> Configuring Life Skills for Claude Code"
-# Adding an existing marketplace from the same source is supported and reused.
-claude_marketplaces="$(claude plugin marketplace list)"
-if grep -Fq "$marketplace_name" <<< "$claude_marketplaces"; then
-  echo "==> Claude marketplace already registered"
-else
-  claude plugin marketplace add "$marketplace_source"
-fi
-claude plugin marketplace update "$marketplace_name"
-
-# Claude Code's shell marketplace update refreshes the catalog but does NOT
-# automatically update the plugins. Update installed plugins individually.
-claude_plugins="$(claude plugin list)"
-for plugin in de-stromwechsel browser-research; do
-  qualified="${plugin}@${marketplace_name}"
-  if grep -Fq "$qualified" <<< "$claude_plugins"; then
-    echo "==> Updating Claude plugin: $plugin"
-    claude plugin update "$qualified"
-  else
-    echo "==> Installing Claude plugin: $plugin"
-    claude plugin install "$qualified" --scope user
-  fi
-done
-fi
-
 echo "==> Finished"
 if [[ "$install_codex" == true ]]; then
   echo "Codex: $(codex --version)"
-  echo "Codex Life Skills plugins:"
-  codex plugin list --marketplace "$marketplace_name"
 fi
 if [[ "$install_claude" == true ]]; then
   echo "Claude: $(claude --version)"
-  echo "Claude Code plugins:"
-  claude plugin list
 fi
 echo "Playwright CLI: $("$playwright_cli" --version)"
 echo "RTK: $(rtk --version)"
 echo "RTK savings: rtk gain"
-echo "Restart your CLI sessions to load updated plugins and RTK hooks."
+echo "Skills, plugins, and marketplaces are not managed by this script."
+echo "Restart your coding-agent sessions to load updated tool integrations."
