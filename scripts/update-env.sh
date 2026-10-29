@@ -196,6 +196,15 @@ if ! "$playwright_cli" install-browser; then
   echo "Warning: Playwright browser installation failed; browser research may be unavailable." >&2
 fi
 
+# Keep the existing global Codex Playwright CLI skill setup. It is additional
+# to the independent Life Skills browser-research plugin.
+if [[ "$install_codex" == true ]]; then
+  echo "==> Installing/updating global Playwright CLI skill for Codex"
+  if ! "$playwright_cli" install --skills=agents -g; then
+    echo "Warning: Playwright CLI agent skill installation failed." >&2
+  fi
+fi
+
 # npm belongs to the CURRENT working directory, not the script's location.
 if [[ -f "$PWD/package.json" ]]; then
   echo "==> Installing project npm dependencies in: $PWD"
