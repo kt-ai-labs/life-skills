@@ -7,6 +7,8 @@ description: Research German household electricity tariffs and plan a self-manag
 
 Help the user investigate and compare German household electricity providers and prepare their own switch. Before substantive research, read [the research protocol](references/research-prompt.md); it owns tariff checks, economics, evidence standards and report contents.
 
+Before the first interactive browser operation, locate and read the available `browser-research` skill's `SKILL.md` and its references relevant to the chosen browser mechanism and task, then follow them. Merely mentioning the skill does not count as loading it. Delegate generic browser policies to `browser-research`: tool selection, cookies, dynamic forms, unexpected navigation recovery, downloads, and Full Research Pause. Tariff evaluation, legal boundaries, evidence applicability and retention remain owned by this skill and its references. Ordinary web search and non-interactive document analysis do not require loading `browser-research`. If the skill is unavailable, disclose the limitation; do not claim its instructions were followed.
+
 ## Research mode
 
 Infer the mode from the request and existing context. If the choice materially changes the scope or result and intent is unclear, briefly offer both options. Do not repeat a settled mode question. Record the mode in each report; a later run can change mode while reusing the workspace and history.
