@@ -1,36 +1,39 @@
 ---
 name: browser-research
-description: Efficient interactive research of websites in local coding-agent environments. Use when navigating dynamic sites, following multi-step page flows, finding specific on-page facts, or comparing information that plain search cannot reliably expose. Prefer existing browser tools or an installed Playwright CLI, keep browser output focused, and never silently install dependencies.
+description: Research dynamic websites and multi-step page flows when plain search cannot reliably expose the needed facts. Prefer available native browser capabilities, otherwise an installed Playwright CLI; verify application state and keep evidence focused.
 ---
 
 # Browser Research
 
-Browse only when it materially helps the task. A web search, accessible official document, or direct provider page may be more appropriate than browser automation. Do not invoke browser tools simply because they exist.
+Browse only when it materially helps the task. Ordinary web search and accessible public documents can answer non-interactive questions, but do not replace required interactive verification. Do not invoke browser tools simply because they exist.
 
 ## Select an available tool
 
-1. Check what the current agent can actually use: built-in web/browser tools, local shell access, or neither. Never assume a referenced skill makes an executable available.
-2. Choose an available tool that satisfies the browser-session boundary below and the host's tool restrictions. When local CLI use is allowed, prefer an installed project-local Playwright CLI, otherwise check for a global `playwright-cli`; verify `--help` before relying on commands. Availability alone does not justify connecting to a personal browser.
-3. Read [references/playwright-cli.md](references/playwright-cli.md) only when Playwright CLI will be used. Do not load its whole command catalog unless needed.
-4. If the browser is not installed and a browser is needed, ask whether the user wants to install it or wants the agent to do so. Obtain explicit approval before changing dependencies or installing globally. Installation is possible only with shell access and sufficient permissions.
-5. If installation is declined, impossible, or unnecessary, use available research tools or tell the user which verification was blocked. Never claim browser verification that did not happen.
+1. Prefer native interactive browser/computer-use capabilities actually exposed by the current environment and permitted by the host. ChatGPT or Codex branding alone does not establish availability; a search-only tool is not an interactive browser. Read [native browser guidance](references/chatgpt-browser.md) when using this mechanism.
+2. If native interactive capabilities are unavailable or not permitted, use an already-installed Playwright CLI where shell browser control is allowed. Prefer a project-local executable, otherwise a global `playwright-cli`; read [CLI guidance](references/playwright-cli.md) and verify `--help` before relying on commands. A referenced skill is not proof of an executable.
+3. If neither mechanism is available and permitted, report that interactive browser research cannot proceed and that installed Playwright CLI is the supported fallback. Identify the blocked verification; use non-interactive sources only for checks they can actually support. Do not install dependencies or modify the user's environment as part of this workflow.
+
+These are the only supported automation mechanisms. Do not add extensions, CDP attachment, imported profiles, or connections to the user's personal Chrome. If a required capability is missing, diagnose it and request assistance rather than inventing an integration.
 
 ## Browser-session boundary
 
-Before opening or claiming browser tabs, establish from the tool's documented connection mode and effective configuration whether it launches an isolated session or accesses an existing profile. Prefer a verified temporary session without the user's personal profile, cookies, authentication or imported storage state. Use a visible/observable mode where supported; visibility and isolation are separate properties. State the selected mode briefly and never claim isolation from a session name, new tab/window or Incognito alone.
+Before opening or claiming browser tabs, inspect the documented connection mode and effective configuration. Prefer verified isolation without personal profiles or imported state. Treat a native profile as potentially persistent unless stronger isolation is verified. Use an observable mode where supported; visibility and isolation are separate properties. State the selected mode and any uncertainty briefly; a session name, new tab/window or Incognito alone is not proof of isolation.
 
-Obtain explicit permission before accessing an existing personal browser profile, including through an extension. Permission to visit a site or transmit particular data is not itself permission to use that profile. If isolation cannot be established, do not connect to the personal profile silently: continue useful non-interactive research and explain the available choice. Do not change Google Sync, accounts or personal browser settings yourself.
+Use only native surfaces exposed and authorized by the host. Obtain explicit permission before accessing an existing personal browser profile; permission to visit a site or transmit data is not itself permission to use that profile. This does not authorize adding the prohibited integrations above. Do not change sync, accounts or personal browser settings, or clear unrelated browsing data. Closing a tab or finishing a task does not establish deletion of cookies, authentication or history.
 
-Isolation is enforced by the browser environment and connection configuration, not this skill. Verify the relevant capability before documenting or using tool-specific isolation commands; honor host restrictions and do not install tools to bypass them.
+Isolation is enforced by the environment and configuration, not this skill. Verify capabilities before using isolation or cleanup commands; honor host restrictions.
 
 ## Cookie consent
 
-In a confirmed temporary isolated session, use a simple **Reject All / Only Necessary** when available. If rejection requires complex settings and the user has authorized the simpler path, **Accept All** is permissible with awareness of third-party data transmission and applicable permissions. In a personal browser or when isolation is unconfirmed, do not automatically accept optional cookies. Cookie consent never authorizes registration, a contract or payment.
+Ignore a cookie banner completely unless it blocks the required interaction. If it blocks interaction, prefer **Reject All / Deny All / Decline All**, otherwise **Necessary Only / Essential Only**, otherwise open preferences, disable all optional categories and save. Never automatically select **Accept All** or enable optional analytics, marketing or personalization. If safe completion is not possible, request human assistance with the original page available and let the user choose settings. Do not abandon the selected source because of consent UI. Cookie consent never authorizes registration, a contract or payment.
 
 ## Research and interaction
 
 - Define the specific question and expected evidence before opening a page. Prioritize provider-direct and primary sources for official terms, prices, and requirements.
+- The calling domain skill or user owns source, provider and product selection and evaluation. Interaction difficulty does not authorize silently substituting another source or provider. Diagnose and seek assistance when necessary; normal navigation within the requested research scope remains permitted.
 - Prefer searching within the relevant card/dialog or a targeted DOM section over collecting entire pages; narrow the scope when a result is overly broad. Extract only the fields needed to answer the question.
+- Successful typing or clicking does not prove application acceptance. Observe completion of debounce processing, required autocomplete selection, valid dependent fields, enabled controls and completed calculations. Verify results against the current accepted inputs; old results may remain visible after invalidation. Prefer condition-based observation over fixed sleeps or network idle alone.
+- Use the site's exposed controls for readonly fields. Changes to a parent field can reset dependent selections (for example postal code and district). Do not alter a valid completed calculation merely for diagnostics; if inputs change, revalidate the relevant form and results together.
 - After an unsuccessful action, inspect the actual page state and cause (for example disabled input, wrong/hidden target, pending navigation or a tool restriction). Retarget or use a reasonable permitted alternative before calling a site feature unavailable; do not blindly retry or bypass access restrictions. Distinguish failed interaction, tool limitation and provider restriction in the result.
 - Verify URL, provider, relevant date, and important qualifications. Distinguish live findings from assumptions and stale cached material.
 - For forms, contracts, payments, account changes, and other consequential actions, get user authorization before submitting. Do not bypass CAPTCHAs, rate limits, paywalls, or website access controls.
@@ -39,18 +42,19 @@ In a confirmed temporary isolated session, use a simple **Reject All / Only Nece
 
 ## Human assistance
 
-When a material check remains blocked after diagnosis and reasonable safe alternatives, offer focused human assistance rather than silently abandoning it. Read [human assistance and downloads](references/human-assistance.md) when handing over a page or receiving a manually saved file. It covers pausing page automation, resuming the same session, verifying results and bounded file discovery; assistance does not expand authorization or bypass tool/security restrictions.
+When a material check remains blocked after diagnosis and reasonable safe alternatives within scope, request focused human assistance rather than silently abandoning it. Read [human assistance and downloads](references/human-assistance.md) before requesting help or receiving a manually saved file.
+
+**Full Research Pause:** after requesting assistance, stop the entire research workflow until explicit user confirmation of completion or return of control. No automated browser actions, tab creation/switching/navigation/reloads/closure, independent research in other sessions, parallel research tasks or other research work while waiting. Preserve state; tool-retry approval is not completion. On return, inspect fresh page state or supplied evidence, verify the result and continue the original research. Assistance does not expand authorization or bypass restrictions.
 
 ## Keep browser work context-efficient
 
 - Use browser interactions to resolve specific unanswered questions, not as a continuous screenshot/snapshot loop.
-- Prefer `find` and short, targeted snapshots. Limit snapshot depth; request full-page output only if necessary.
-- Use `--raw` or similarly compact output when only one value or an extracted field is needed.
+- Prefer the selected tool's targeted search, short snapshots and compact extraction capabilities. Limit output depth where supported; request full-page output only if necessary.
 - Read saved snapshots and screenshots only when their content directly answers the task. Avoid repeated reading of the same material.
 - Keep diagnostic artifacts temporary and untracked. When the task calls for a durable research report, retain only useful compact evidence of changing results (an excerpt, table or screenshot), minimizing personal data and recording source, inputs and date. Do not generate test suites, tracing, or videos for routine research.
-- If a session disappears, diagnose its current state, launch configuration and relevant errors before restoring it. Do not repeat the same failed launch without new information; restore only what is needed.
-- Use a dedicated named session. Keep a supported handoff session available while the user acts, verify temporary downloads before closing it, and close only sessions started for the task. Do not indiscriminately terminate other users' browser sessions.
+- Outside a Full Research Pause, if a session disappears, diagnose its current state, launch configuration and relevant errors before restoring it. Do not repeat the same failed launch without new information; restore only what is needed.
+- Use dedicated task tabs or a named task session where supported. Outside a Full Research Pause, verify temporary downloads before cleanup and close only tabs/sessions created for the task. Never close a handed-over page while waiting or indiscriminately terminate unrelated sessions.
 
 ## Report results
 
-Report concrete findings with source URLs and caveats. State which tools were used and which pages could not be inspected. If an interactive browser was unavailable, give a useful fallback instead of treating installation as mandatory.
+Report verified findings with source URLs and caveats, separately from assumptions and unresolved checks. State which tools were used and which pages could not be inspected; never claim interactive verification that did not happen.

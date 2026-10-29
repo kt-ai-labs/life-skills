@@ -43,7 +43,6 @@ The agent organizes yearly folders and saves a dated report with mode, sources a
 
 Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it. `browser-research` prefers verified isolated temporary sessions, with observable operation where available, and requires explicit permission before accessing a personal browser profile. New tabs or session names do not prove isolation. The host browser and connection settings enforce isolation; the skill alone cannot guarantee it. If safe agent attempts fail, it supports an explicit human handoff where the tool allows shared control, alongside an independent-browser link/navigation route accepting copied text, screenshots or PDFs. Page automation pauses while the user acts; results are verified before research resumes. Dashboard support, filesystem access and download locations depend on the actual environment.
 
-
 ## Getting started on macOS
 
 ### Quick setup — one command
@@ -52,13 +51,13 @@ Plugins are installed **independently**. `de-stromwechsel` does not require `bro
 
 Run without cloning the repository:
 
-~~~bash
+```bash
 curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash
-~~~
+```
 
 It displays the following overview and asks for confirmation **before changing anything**:
 
-~~~text
+```text
 Life Skills — Environment Setup & Update
 
 This script will:
@@ -70,21 +69,21 @@ This script will:
 - Install npm dependencies if package.json exists
 
 Do you want to continue? [y/N]:
-~~~
+```
 
 If at least one agent is already installed, only the installed agents are configured; no second agent is installed automatically. If neither is found, the script separately asks **Install Codex CLI? [y/N]** and **Install Claude Code? [y/N]**. Answering No to both ends the script without changes.
 
 Skip **only the first confirmation** with `-y` or `--yes`; the two agent-installation questions still appear if neither CLI exists:
 
-~~~bash
+```bash
 curl -fsSL https://raw.githubusercontent.com/kt-ai-labs/life-skills/main/scripts/update-env.sh | bash -s -- --yes
-~~~
+```
 
 If you have cloned this repository, run the same script locally:
 
-~~~bash
+```bash
 ./scripts/update-env.sh
-~~~
+```
 
 Both methods use the **current working directory**. If there is a `package.json`, the script runs `npm install` (or `npm install --no-package-lock` when no `package-lock.json` exists); otherwise it skips npm dependencies. Run the remote shortcut from a directory without an unrelated `package.json`.
 
@@ -100,7 +99,7 @@ These steps prepare a Mac for **any** Life Skills plugin, not just `de-stromwech
 
 Run these checks individually. A `command not found` or missing path simply means that tool needs setup; you do **not** need both Codex and Claude Code.
 
-~~~bash
+```bash
 command -v brew
 command -v node
 command -v npm
@@ -108,15 +107,15 @@ command -v codex
 command -v claude
 command -v playwright-cli
 command -v rtk
-~~~
+```
 
 ### 2. Homebrew (only if missing)
 
 [Homebrew](https://brew.sh/) is a macOS package manager. If `brew` is unavailable, follow its official installer:
 
-~~~bash
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-~~~
+```
 
 Review the installer before confirming it. **Follow the terminal's post-install `shellenv` / PATH instructions** and open a new terminal before continuing. Administrator approval or developer tools may be needed.
 
@@ -126,23 +125,23 @@ Use **Homebrew** for the CLI that you want. Codex and Claude Code are alternativ
 
 **Codex CLI:**
 
-~~~bash
+```bash
 brew install --cask codex
-~~~
+```
 
-~~~bash
+```bash
 codex --version
-~~~
+```
 
 **Claude Code:**
 
-~~~bash
+```bash
 brew install --cask claude-code
-~~~
+```
 
-~~~bash
+```bash
 claude --version
-~~~
+```
 
 Start the chosen CLI and complete its normal sign-in. See [Codex CLI](https://developers.openai.com/codex/cli/), [Claude Code setup](https://code.claude.com/docs/en/setup), and the [Homebrew Codex](https://formulae.brew.sh/cask/codex) / [Claude Code](https://formulae.brew.sh/cask/claude-code) listings.
 
@@ -150,14 +149,14 @@ Start the chosen CLI and complete its normal sign-in. See [Codex CLI](https://de
 
 **Node.js/npm are not prerequisites for installing these two agent CLIs via Homebrew.** Homebrew handles dependencies of its formulae. If a separate project requires Node.js and you do not have Node.js installed, you can install it through Homebrew:
 
-~~~bash
+```bash
 brew install node
-~~~
+```
 
-~~~bash
+```bash
 node --version
 npm --version
-~~~
+```
 
 ### 5. Playwright CLI — optional, **strongly recommended**
 
@@ -165,37 +164,37 @@ For browser-heavy skills, Playwright CLI can inspect dynamic pages through targe
 
 Install Playwright CLI via Homebrew if you want this browser capability:
 
-~~~bash
+```bash
 brew install playwright-cli
-~~~
+```
 
-~~~bash
+```bash
 playwright-cli --help
-~~~
+```
 
 Install its browser binary (a separate download, not an npm installation):
 
-~~~bash
+```bash
 playwright-cli install-browser
-~~~
+```
 
 Optional example using a public, non-personal page and a named browser session:
 
-~~~bash
+```bash
 playwright-cli -s=life-skills-demo open https://example.com --headed
-~~~
+```
 
 To watch running sessions through the visual Dashboard, when supported:
 
-~~~bash
+```bash
 playwright-cli show
-~~~
+```
 
 When finished with the example:
 
-~~~bash
+```bash
 playwright-cli -s=life-skills-demo close
-~~~
+```
 
 Use an isolated temporary browser configuration for real research, verify the effective connection mode, and do not attach to a personal browser profile without explicit permission. Playwright can help handle cookie dialogs but cannot guarantee that every site works. The browser extension, shared-control Dashboard and downloads may behave differently across host environments. See [Playwright CLI](https://github.com/microsoft/playwright-cli).
 
@@ -203,30 +202,30 @@ Use an isolated temporary browser configuration for real research, verify the ef
 
 [RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk) reduces the output sent back to coding agents for supported shell commands. It is a separate CLI and agent hook, **not** a plugin in our Life Skills marketplace. Install it using the official Homebrew tap:
 
-~~~bash
+```bash
 brew install rtk-ai/tap/rtk
-~~~
+```
 
 Verify you installed Rust Token Killer rather than the unrelated Rust Type Kit:
 
-~~~bash
+```bash
 rtk --version
 rtk gain
-~~~
+```
 
 Enable the global RTK integration for the agent(s) you actually use.
 
 **Codex CLI:**
 
-~~~bash
+```bash
 rtk init --global --codex
-~~~
+```
 
 **Claude Code:**
 
-~~~bash
+```bash
 rtk init --global --auto-patch
-~~~
+```
 
 These commands update global agent hook settings. See the [RTK installation guide](https://www.rtk-ai.app/docs/getting-started/installation/) and [supported agents](https://github.com/rtk-ai/rtk/blob/develop/docs/guide/getting-started/supported-agents.md).
 
@@ -264,7 +263,6 @@ claude plugin install browser-research@kt-ai-labs-life-skills
 
 Check installed plugins with `claude plugin list`, then start a new session. Claude Code provides `claude plugin validate .` to validate the marketplace locally.
 
-
 ## Update your macOS environment and plugins
 
 **Homebrew updates the CLI tools; Codex/Claude manage their installed plugins separately.** Use either Option A or Option B for Homebrew, then update any Life Skills plugins you installed. Close active agent/browser sessions before replacing CLI binaries, and start new sessions after plugin changes.
@@ -273,95 +271,95 @@ Check installed plugins with `claude plugin list`, then start a new session. Cla
 
 First refresh Homebrew's package information:
 
-~~~bash
+```bash
 brew update
-~~~
+```
 
 Optional: see which installed packages have updates:
 
-~~~bash
+```bash
 brew outdated
-~~~
+```
 
 Upgrade all outdated Homebrew packages (not just tools used by Life Skills):
 
-~~~bash
+```bash
 brew upgrade
-~~~
+```
 
 ### Option B — update selected Homebrew tools
 
 First refresh package information:
 
-~~~bash
+```bash
 brew update
-~~~
+```
 
 Then choose the blocks for the **tools you have installed**:
 
 Codex CLI:
 
-~~~bash
+```bash
 brew upgrade --cask codex
-~~~
+```
 
 Claude Code:
 
-~~~bash
+```bash
 brew upgrade --cask claude-code
-~~~
+```
 
 Playwright CLI:
 
-~~~bash
+```bash
 brew upgrade playwright-cli
-~~~
+```
 
 RTK:
 
-~~~bash
+```bash
 brew upgrade rtk-ai/tap/rtk
-~~~
+```
 
 Optional Node.js:
 
-~~~bash
+```bash
 brew upgrade node
-~~~
+```
 
 Or upgrade multiple installed tools together (remove names of anything you don't have):
 
-~~~bash
+```bash
 brew upgrade codex claude-code playwright-cli rtk-ai/tap/rtk
-~~~
+```
 
 If Playwright needs to refresh its downloaded browser after upgrading the CLI, run:
 
-~~~bash
+```bash
 playwright-cli install-browser
-~~~
+```
 
 ### Check your CLI versions
 
 Run checks only for the CLIs you use:
 
-~~~bash
+```bash
 codex --version
-~~~
+```
 
-~~~bash
+```bash
 claude --version
-~~~
+```
 
-~~~bash
+```bash
 playwright-cli --help
-~~~
+```
 
 RTK:
 
-~~~bash
+```bash
 rtk --version
-~~~
+```
 
 Avoid installing the **same CLI** through multiple package managers: duplicate binaries can cause confusing PATH conflicts.
 
@@ -369,53 +367,53 @@ Avoid installing the **same CLI** through multiple package managers: duplicate b
 
 First refresh the Git-backed marketplace, then inspect installed plugins:
 
-~~~bash
+```bash
 codex plugin marketplace upgrade kt-ai-labs-life-skills
-~~~
+```
 
-~~~bash
+```bash
 codex plugin list
-~~~
+```
 
 **Marketplace refresh is not a promise that every installed plugin was replaced.** If an installed plugin is still out of date, reinstall **that plugin only** after checking its installed version and accepting that the operation removes/re-adds its local installation:
 
-~~~bash
+```bash
 codex plugin remove de-stromwechsel@kt-ai-labs-life-skills
 codex plugin add de-stromwechsel@kt-ai-labs-life-skills
-~~~
+```
 
 For an outdated optional browser plugin, do the same separately:
 
-~~~bash
+```bash
 codex plugin remove browser-research@kt-ai-labs-life-skills
 codex plugin add browser-research@kt-ai-labs-life-skills
-~~~
+```
 
 ### Update Claude Code Life Skills plugins
 
 Refresh the marketplace catalog:
 
-~~~bash
+```bash
 claude plugin marketplace update kt-ai-labs-life-skills
-~~~
+```
 
 Update each plugin **that you actually installed**; updating a marketplace listing from the shell alone does not upgrade installed plugins:
 
-~~~bash
+```bash
 claude plugin update de-stromwechsel@kt-ai-labs-life-skills
-~~~
+```
 
 Optional browser plugin:
 
-~~~bash
+```bash
 claude plugin update browser-research@kt-ai-labs-life-skills
-~~~
+```
 
 Check the installed plugins:
 
-~~~bash
+```bash
 claude plugin list
-~~~
+```
 
 Start a **new** Codex or Claude Code session after installing or updating a plugin. See [Codex plugin commands](https://learn.chatgpt.com/docs/developer-commands) and [Claude Code plugin management](https://code.claude.com/docs/en/discover-plugins).
 
