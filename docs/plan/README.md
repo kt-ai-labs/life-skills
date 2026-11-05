@@ -63,7 +63,7 @@ The agreed initial skill layout is deliberately small:
 - **Proposed:** a shared provider knowledge base may live in the skill repository's references, with later contributions reviewed by the maintainer. Its format and workflow remain undecided; Phase 0.1 must not depend on it.
 - **Proposed:** choose models and reasoning effort to fit the work and observed results rather than binding each phase to a particular model.
 
-See [phase definitions and status](phases.md) and [shared provider knowledge](knowledge-base.md) for the working detail. Update this plan as phase design and real testing resolve open questions.
+See [phase definitions and status](phases.md) and [shared provider knowledge](knowledge-base.md) for the working detail. The [decision log](decisions.md) keeps concise dated records and links decisions that supersede or override earlier ones. Update this plan as phase design and real testing resolve open questions.
 
 ## Development cycle
 
