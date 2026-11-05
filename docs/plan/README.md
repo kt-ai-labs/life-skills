@@ -1,6 +1,6 @@
 # Electricity Switching Skill v2 — Plan
 
-**Status:** The architectural direction is agreed. The rewrite and Phase 0.1 implementation have not started. This plan records the decisions and the questions that should remain open while the skill is developed and tested.
+**Status:** The architectural direction is agreed. The old active workflow has been replaced by a minimal phase-based skeleton. Phase 0.1 instructions and execution are not implemented yet. This plan records the decisions and the questions that should remain open while the skill is developed and tested.
 
 ## Vision
 

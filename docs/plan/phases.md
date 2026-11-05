@@ -62,7 +62,7 @@ Phase 0.1 establishes actual contract dates and terms where available. It does n
 
 ### Current status
 
-Phase 0.1 is the next implementation target and has not been implemented. Its specific outputs, state format, completion criteria, and detailed procedures are to be settled through implementation and tests on real user documents. The expected first skill rewrite is a minimal `SKILL.md` plus `references/phases/0-preparation/0.1-as-is/instructions.md`, with further files added only when needed.
+Phase 0.1 is the next implementation target. Its phase path and placeholder file now exist, but the procedure is not implemented or executable. Its specific outputs, state format, completion criteria, and detailed procedures are to be settled through implementation and tests on real user documents. Add further files only when needed.
 
 ## Checkpoints and resumability
 
