@@ -17,3 +17,9 @@ Start each repository work session with `README.md`; consult the other plan docu
 **Status:** Current
 
 Give each important decision a stable ID and a dated subsection. Link later decisions to earlier ones with **Supersedes** for full replacement or **Overrides** for a scoped change, and add a reverse link on the earlier entry. Preserve the earlier decision text.
+
+### D-003: User-selected Stromwechsel workspace
+
+**Status:** Current
+
+Create lowercase `de-stromwechsel/` under the user's selected working folder, with `internal/` for agent-managed state and `reports/` for user-readable Markdown. Year folders for documents the skill handles sit alongside it. Inventory old user documents where they are and record their locations; do not sort, move, copy, or rename them. Reuse suitable year folders for skill-handled documents, keep personal paths and cloud-provider choices out of shared instructions, and leave the exact internal state format open.

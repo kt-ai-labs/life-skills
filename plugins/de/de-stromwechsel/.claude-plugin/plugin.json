@@ -2,7 +2,7 @@
   "name": "de-stromwechsel",
   "displayName": "Jährlicher Stromwechsel (DE)",
   "version": "0.1.5",
-  "description": "Research and simulate self-managed household electricity-provider switches in Germany, including tariffs, bonuses, reliability, and strategic reserves.",
+  "description": "Research German household electricity supply and tariffs, establish the current situation from existing documents, compare offers, assess costs, bonuses, contract terms, environmental criteria, and provider reliability, and prepare an evidence-based recommendation for a self-managed switch.",
   "author": {
     "name": "KT-AI Labs",
     "url": "https://github.com/kt-ai-labs"

@@ -10,16 +10,16 @@ Begin with broad market discovery, then reduce the candidate set through increas
 
 ## Working phase hierarchy
 
-| Phase | Working name               | Intended objective                                                              | Status                                                       |
-| ----- | -------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| 0.1   | As-Is Research             | Establish the current electricity-supply picture and organize existing records. | **Agreed first implementation target; not yet implemented.** |
-| 0.2   | Discovery Configuration    | Prepare research inputs and criteria for discovery.                             | Identified as part of Phase 0; scope is not designed yet.    |
-| 1     | Market Discovery           | Gather a broad set of potentially relevant offers.                              | **Proposed.**                                                |
-| 2     | Cheap Screening            | Remove duplicates and perform low-cost initial checks.                          | **Proposed.**                                                |
-| 3     | Contractual Knockout       | Find contract conditions that disqualify an offer.                              | **Proposed; order needs testing.**                           |
-| 4     | Operational Risk Screening | Screen for provider-service and financial risks.                                | **Proposed; order needs testing.**                           |
-| 5     | Deep Investigation         | Resolve material evidence gaps for remaining candidates.                        | **Proposed.**                                                |
-| 6     | Final Evaluation           | Compare suitable candidates and explain a recommendation.                       | **Proposed.**                                                |
+| Phase | Working name               | Intended objective                                                                                                | Status                                                                                         |
+| ----- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| 0.1   | As-Is Research             | Inventory existing records in place, establish the current supply picture, and save a resumable report and state. | **Instructions implemented and locally validated; test with the user's real archive pending.** |
+| 0.2   | Discovery Configuration    | Prepare research inputs and criteria for discovery.                                                               | Identified as part of Phase 0; scope is not designed yet.                                      |
+| 1     | Market Discovery           | Gather a broad set of potentially relevant offers.                                                                | **Proposed.**                                                                                  |
+| 2     | Cheap Screening            | Remove duplicates and perform low-cost initial checks.                                                            | **Proposed.**                                                                                  |
+| 3     | Contractual Knockout       | Find contract conditions that disqualify an offer.                                                                | **Proposed; order needs testing.**                                                             |
+| 4     | Operational Risk Screening | Screen for provider-service and financial risks.                                                                  | **Proposed; order needs testing.**                                                             |
+| 5     | Deep Investigation         | Resolve material evidence gaps for remaining candidates.                                                          | **Proposed.**                                                                                  |
+| 6     | Final Evaluation           | Compare suitable candidates and explain a recommendation.                                                         | **Proposed.**                                                                                  |
 
 The hierarchy is illustrative, not a finalized implementation contract. Phase numbers, labels, boundaries, and sequence may change. In particular, test whether contractual screening or operational-risk screening should come first. The handoff's market-size example of roughly 20–30 offers is a planning idea, not a quota or required coverage target.
 
@@ -31,7 +31,7 @@ Phase 0 prepares a reliable account of the user's starting situation and the inp
 
 ### Objective and value
 
-Reconstruct the user's current electricity-supply situation from available records and leave an organized, understandable starting point for future work. Phase 0.1 should be useful on its own, even if the user does not continue to tariff discovery. Do not assume the user's files are unorganized or that their archive starts empty.
+Reconstruct the user's current electricity-supply situation from available records and leave an understandable, resumable starting point for future work. Phase 0.1 should be useful on its own, even if the user does not continue to tariff discovery. Inventory existing documents where they are and record their locations; do not sort or reorganize the user's old files.
 
 ### Sources
 
@@ -39,14 +39,15 @@ Potential inputs include accessible local folders; current and previous contract
 
 ### Initial workflow
 
-This sequence is a starting scope for implementation, not a mandate to create a rigid document taxonomy before seeing the user's files.
+This sequence is a starting scope for implementation, not a mandate to create a rigid taxonomy for the user's existing files.
 
-1. **Inspect:** review the existing folder structure and relevant records; identify represented providers and contract periods.
-2. **Identify and reconcile:** classify documents, note likely duplicates, conflicting facts, missing materials, and which versions appear current or superseded.
-3. **Propose organization:** if the current arrangement impedes use, suggest a clearer structure and names based on the actual records. Do not impose a fixed structure in advance.
-4. **Apply after agreement:** obtain the user's agreement before renaming, moving, or deleting existing originals. Do not alter originals before that agreement.
-5. **Enrich if permitted:** if the user approves email research, look for relevant confirmations, bills, contract terms, price changes, meter readings, and previous-provider records; use findings to improve the local history.
-6. **Create a current-state record:** describe the supply situation, known history, sources, gaps, uncertainty, and contradictions. The exact format and naming convention remain open until implementation and testing.
+1. **Choose locations:** ask where the user's existing electricity documents are and where the skill should keep its work, unless those locations are already known and accessible. The user may choose the same folder for both. Treat a cloud-provider name as an access route, not as a path; if the files are not accessible, ask for a usable local path, mount, or upload.
+2. **Create the skill workspace:** in the selected work folder, create or reuse `de-stromwechsel/internal/` for agent-managed state and `de-stromwechsel/reports/` for readable reports. Year-based folders for documents the skill handles sit at the same level as `de-stromwechsel/`; reuse existing folders where suitable and create a year folder when a new document needs to be stored. This applies to documents the skill handles from this point forward, not to the user's old archive. Do not copy old source documents into the workspace as part of inventory.
+3. **Inventory in place:** inspect accessible folders and file metadata to learn how the archive is arranged, identify likely electricity documents, and record their original paths. If existing records are already grouped by year, start with the newest relevant documents and expand when gaps or conflicts require it. If not, search broadly enough to find the relevant records without deep-reading every file automatically.
+4. **Estimate extraction effort:** identify text-searchable files, image-only scans, and any available OCR companions where tools allow. Before bulk OCR or deep reading of a large scan-heavy archive, tell the user the estimated scope and ask whether to proceed. If supported, mention a lower-cost model as an option; do not change models automatically. If the user declines, continue with searchable and already-extracted evidence and record the limitation. Exact thresholds remain open.
+5. **Identify and reconcile:** review the records that can establish the current supply and relevant history; note likely duplicates, conflicting facts, missing materials, and which versions appear current or superseded. Use older records only where they establish a transition, resolve a conflict, or clarify a material term.
+6. **Enrich if permitted:** email is an optional source. Obtain explicit permission before searching it. If permission is declined or email is unavailable, continue from other accessible sources.
+7. **Save a current-state record:** create a user-readable report and a minimal resumable state in the skill workspace. Link to source documents and record where each was found; do not sort, move, rename, or otherwise reorganize the old source archive.
 
 ### Information to establish
 
@@ -54,7 +55,7 @@ Where evidence permits, record the current provider and tariff; contract start a
 
 ### Repeated runs
 
-**Proposed:** later runs should reuse saved state, look for changes, and avoid reprocessing a full archive without reason. Complex synchronization is explicitly out of scope for the first implementation; develop only the minimum state and update behavior that real Phase 0.1 tests require.
+**Proposed:** later runs should reuse saved state, look for changes, and avoid reprocessing a full archive without reason. The initial implementation may use a concise Markdown state index in `internal/` that points to the detailed report in `reports/`; its fields and naming should be validated in real use. Complex synchronization is out of scope for the first implementation.
 
 ### Boundary with future market research
 
@@ -62,13 +63,13 @@ Phase 0.1 establishes actual contract dates and terms where available. It does n
 
 ### Current status
 
-Phase 0.1 is the next implementation target. Its phase path and placeholder file now exist, but the procedure is not implemented or executable. Its specific outputs, state format, completion criteria, and detailed procedures are to be settled through implementation and tests on real user documents. Add further files only when needed.
+Phase 0.1 instructions are implemented in `references/phases/0-preparation/0.1-as-is/instructions.md` and pass local skill validation. Validation on the user's real archive is pending. The initial report and state conventions are provisional and should be adjusted from observed use. Phase 0.2 instructions are not part of this implementation. Add further files only when needed.
 
 ## Checkpoints and resumability
 
 At the end of each completed phase, save its result and provide a short checkpoint that tells the user what was examined, what was found and remains unknown, which material decisions or exclusions were made and why, and what phase is next. Then stop so the user can review, continue, refine criteria, request more research, repeat part of the phase, or override a decision.
 
-Checkpoints are phase boundaries, not per-action approval prompts. Specific consent rules still apply, including the user's permission before email search and agreement before reorganizing original files.
+Checkpoints are phase boundaries, not per-action approval prompts. Specific consent rules still apply, including the user's permission before email search. Phase 0.1 treats the old source archive as read-only and does not reorganize its files.
 
 Saved artifacts should let a later run identify the completed phase, research performed, verified facts, open questions, decisions, and next action without depending on chat history alone. The exact persistence layout and schema are **open**; design the minimum needed while testing Phase 0.1.
 

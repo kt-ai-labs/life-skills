@@ -10,6 +10,8 @@ This document describes the future direction for provider-specific research know
 - The skill should not automatically overwrite shared knowledge during an individual's research.
 - Future contributions should be reviewable by the skill maintainer before they are added. A central user database, feedback service, or similar infrastructure is not required by this direction.
 - Phase 0.1 must work without an existing provider knowledge base.
+- Keep personal research in the user's selected working folder, separate from shared provider references. The project workspace uses `de-stromwechsel/internal/` for agent-managed state and `de-stromwechsel/reports/` for user-readable Markdown; year folders for documents the skill handles sit alongside it. The user chooses the working-folder location, so do not encode a personal path or cloud provider in shared instructions.
+- Phase 0.1 inventories old source documents in place and records their locations in private state and reports. It does not sort, move, copy, or rename them. Year folders are for documents handled by the skill from that point forward; reuse suitable existing year folders.
 
 ## Proposed organization and use
 
@@ -31,7 +33,7 @@ The format compatibility in step 4 depends on a future format decision; it is no
 
 **Proposed:** a user could later share new or updated research as a ZIP or through a GitHub Issue or pull request. The maintainer would review it and verify the evidence before incorporating it. These are possible contribution paths, not implemented workflows.
 
-Only non-personal provider evidence belongs in shared knowledge. Exclude private contracts and bills, names, addresses, meter numbers, and other identifying or household-specific information. Keep private research in the user's own local workspace; its exact directory layout and file format remain open and are to be designed only as needed by the phase being implemented.
+Only non-personal provider evidence belongs in shared knowledge. Exclude private contracts and bills, names, addresses, meter numbers, and other identifying or household-specific information. The user's workspace location is selected at runtime; the exact files and schema within `de-stromwechsel/internal/` remain open and should be designed only as needed by the phase being implemented.
 
 ## Open questions
 

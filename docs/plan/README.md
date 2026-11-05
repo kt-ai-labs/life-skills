@@ -1,12 +1,12 @@
 # Electricity Switching Skill v2 — Plan
 
-**Status:** The architectural direction is agreed. The old active workflow has been replaced by a minimal phase-based skeleton. Phase 0.1 instructions and execution are not implemented yet. This plan records the decisions and the questions that should remain open while the skill is developed and tested.
+**Status:** The architectural direction is agreed. The old active workflow has been replaced by a phase-based skill. Phase 0.1 instructions are implemented and pass local skill validation; testing with the user's real document archive remains pending. This plan records decisions and questions that should remain open while the skill is developed and tested.
 
 ## Vision
 
 Build a skill that researches German household electricity supply and tariffs, supports an evidence-backed choice, and leaves durable results that can be resumed. Its workflow is the **Progressive Discovery Funnel**: begin with broad discovery, reduce the candidate set through proportionate checks, and spend more research effort only where it can still change the decision.
 
-The first version is intended to cover the research and assessment funnel through a final recommendation. Phase 0.1 must also provide standalone value by organizing and describing the user's existing electricity records.
+The first version is intended to cover the research and assessment funnel through a final recommendation. Phase 0.1 must also provide standalone value by establishing and describing the user's current electricity situation from existing records. It inventories the existing archive in place; it does not sort or reorganize the user's old documents.
 
 ## Decision labels
 
@@ -28,6 +28,7 @@ The labels apply throughout this plan. A listed phase, example, count, date, thr
 - **Opinionated defaults:** the skill applies its standard assessment and exclusion method without repeatedly asking the user to make routine decisions. It distinguishes confirmed failure from insufficient evidence and allows user preferences to affect their own recommendation.
 - **Checkpoint control:** users review results at phase boundaries. Ordinary research should not require approval for every small step, while specific consent boundaries such as searching personal email remain explicit.
 - **Durable and resumable research:** save results and unresolved questions so later runs can continue without relying on chat history alone. The exact state format is not decided.
+- **User-selected personal workspace:** obtain the user's working folder and create a lowercase `de-stromwechsel/` directory there. Keep agent-managed state in `de-stromwechsel/internal/` and readable Markdown reports in `de-stromwechsel/reports/`. Year-based folders for documents the skill handles sit alongside `de-stromwechsel/`; reuse existing year folders where present. Inventory the user's old documents in place and record their locations. Do not sort, move, copy, or rename them. Keep provider-specific paths out of the shared skill plan. The exact contents and format of `internal/` remain open for implementation.
 - **Combined financial exposure:** assess operational risks such as excessive advance payments and delayed final bills or credit refunds, including how they can compound into cash-flow exposure. Keep this distinct from tariff cost.
 - **Private and shared knowledge stay separate:** personal research data is not published into shared provider knowledge. See [the knowledge-base plan](knowledge-base.md).
 - **Incremental evidence-led development:** run phases on real documents and research tasks, inspect results, fix material issues, and repeat before moving forward. Avoid infrastructure and polishing without a demonstrated need.
@@ -58,7 +59,7 @@ The agreed initial skill layout is deliberately small:
 
 - **Proposed:** the future funnel may include market discovery, cheap screening, contractual screening, operational-risk screening, deeper investigation, and final evaluation. Their current names and order are working labels, not a locked design.
 - **Open:** the order of contractual and operational-risk screening, and the point at which each check is most valuable, should be tested.
-- **Open:** precise evidence formats, local state and report naming, research thresholds, review sources and weights, and other numeric defaults should emerge from implementation and testing. Do not treat examples in the handoff as fixed requirements.
+- **Open:** precise evidence formats, the internal state schema, report naming and organization, research thresholds, review sources and weights, and other numeric defaults should emerge from implementation and testing. Do not treat examples in the handoff as fixed requirements.
 - **Open:** the Phase 0.1 rules for an incidental discovery of intermediary-related material need clarification; the v1 exclusion is against a dedicated intermediary investigation.
 - **Proposed:** a shared provider knowledge base may live in the skill repository's references, with later contributions reviewed by the maintainer. Its format and workflow remain undecided; Phase 0.1 must not depend on it.
 - **Proposed:** choose models and reasoning effort to fit the work and observed results rather than binding each phase to a particular model.
