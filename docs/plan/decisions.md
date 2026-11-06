@@ -43,3 +43,29 @@ Weigh evidence by directness, recency, completeness, and relevance. Use the stro
 **Status:** Current
 
 When context suggests the current folder is both the Strom archive and skill workspace, explain the inference and ask for confirmation before creating files or beginning deep inventory. Reuse saved locations only when accessible and previously confirmed.
+
+### D-007: Provider payment follow-up
+
+**Status:** Current; **Partially overridden by** [D-009](#d-009-phase-01-task-horizon) for historical task selection in Phase 0.1.
+
+Across phases, when a concrete contract identifies a provider-to-user payment or credit, create linked follow-ups to verify eligibility/terms and actual receipt. Record eligibility as `Eligible`, `Not eligible`, or `Unresolved`; keep the eligibility task open and receipt task blocked while unresolved. The receipt task depends on eligibility and is not applicable if the user is ineligible. This does not apply to hypothetical market-search candidates and does not introduce background account monitoring or reminders. This narrowly overrides the future-final-bill follow-up exclusion in [the scope section](README.md#scope); see that section for the boundary.
+
+### D-008: Shared task reference
+
+**Status:** Current
+
+Keep reusable task guidance under `references/shared/tasks/` because follow-ups span phases. Store the user's active and completed task files in the confirmed Strom workspace. `active.md` means tasks still need action; `done-YYYY.md` means completed, with a completion date, a concise result summary, and evidence rather than a redundant `Done` status. Put a short result directly in the entry; for longer results, provide a brief summary and link to the detailed report. Validate remaining register details and usefulness in Phase 0.1.
+
+### D-009: Phase 0.1 task horizon
+
+**Status:** Current
+
+**Overrides:** [D-007](#d-007-provider-payment-follow-up) only for selecting which historical contracts generate Phase 0.1 tasks; the shared eligibility and receipt procedure still applies within that scope.
+
+For Phase 0.1, include unresolved follow-ups from the currently active contract in full. Include predecessor-contract tasks only when their relevant event or due trigger falls in the current calendar month or the three preceding calendar months. Use calendar-month boundaries, not a rolling day count; do not mine older contract years for unrelated tasks. This limits Phase 0.1 task discovery and does not delete existing entries or constrain later phases reviewing a concrete contract.
+
+### D-010: Target description and incremental delivery
+
+**Status:** Current
+
+Skill and plugin descriptions express the intended final capability. Develop and validate the skill in phases; executable instructions state the currently implemented phase boundary. Do not narrow the target description merely because later phases are not implemented yet.

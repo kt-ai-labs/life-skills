@@ -7,7 +7,7 @@ description: "Research German household electricity supply and tariffs: establis
 
 The skill follows the **Progressive Discovery Funnel**, performs research directly, and saves resumable checkpoints at phase boundaries. Read and follow the instructions for the current implemented phase; do not use separate Research or Execution modes.
 
-After identifying the workspace, if it contains active tasks or the current phase identifies a concrete follow-up, read and follow the [shared task-register instructions](references/tasks/instructions.md). Use the same register across phases rather than creating phase-specific task formats.
+After identifying the workspace, read and follow the [shared task instructions](references/shared/tasks/instructions.md) whenever it contains active tasks or a phase reviews documents for a concrete provider contract, identifies a provider-to-user payment or credit, or identifies another follow-up. Within the current phase's task-selection scope, use the shared eligibility and receipt follow-up procedure for provider-to-user payments or credits even when either status is unknown. Apply the phase's scope filter before creating tasks from historical records. This rule does not apply to general market-search candidates.
 
 ## Phase 0 — Preparation
 
