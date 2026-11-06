@@ -23,3 +23,23 @@ Give each important decision a stable ID and a dated subsection. Link later deci
 **Status:** Current
 
 Create lowercase `de-stromwechsel/` under the user's selected working folder, with `internal/` for agent-managed state and `reports/` for user-readable Markdown. Year folders for documents the skill handles sit alongside it. Inventory old user documents where they are and record their locations; do not sort, move, copy, or rename them. Reuse suitable year folders for skill-handled documents, keep personal paths and cloud-provider choices out of shared instructions, and leave the exact internal state format open.
+
+## 2026-11-06
+
+### D-004: User-facing and internal language
+
+**Status:** Current
+
+Write user-facing reports, task lists, and checkpoint messages in the language of the first substantive request in that run. Keep internal state and inventory in English.
+
+### D-005: Evidence-weighted working defaults
+
+**Status:** Current
+
+Weigh evidence by directness, recency, completeness, and relevance. Use the strongest applicable evidence as the working fact or default, explain why, and retain weaker values as contextual history. A recent complete representative annual bill or `Abschlussrechnung` normally supplies the consumption basis unless stronger contrary evidence exists; invite correction without forcing false equivalence between values.
+
+### D-006: Confirm inferred archive and workspace
+
+**Status:** Current
+
+When context suggests the current folder is both the Strom archive and skill workspace, explain the inference and ask for confirmation before creating files or beginning deep inventory. Reuse saved locations only when accessible and previously confirmed.

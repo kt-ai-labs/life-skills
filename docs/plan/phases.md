@@ -10,18 +10,22 @@ Begin with broad market discovery, then reduce the candidate set through increas
 
 ## Working phase hierarchy
 
-| Phase | Working name               | Intended objective                                                                                                | Status                                                                                         |
-| ----- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| 0.1   | As-Is Research             | Inventory existing records in place, establish the current supply picture, and save a resumable report and state. | **Instructions implemented and locally validated; test with the user's real archive pending.** |
-| 0.2   | Discovery Configuration    | Prepare research inputs and criteria for discovery.                                                               | Identified as part of Phase 0; scope is not designed yet.                                      |
-| 1     | Market Discovery           | Gather a broad set of potentially relevant offers.                                                                | **Proposed.**                                                                                  |
-| 2     | Cheap Screening            | Remove duplicates and perform low-cost initial checks.                                                            | **Proposed.**                                                                                  |
-| 3     | Contractual Knockout       | Find contract conditions that disqualify an offer.                                                                | **Proposed; order needs testing.**                                                             |
-| 4     | Operational Risk Screening | Screen for provider-service and financial risks.                                                                  | **Proposed; order needs testing.**                                                             |
-| 5     | Deep Investigation         | Resolve material evidence gaps for remaining candidates.                                                          | **Proposed.**                                                                                  |
-| 6     | Final Evaluation           | Compare suitable candidates and explain a recommendation.                                                         | **Proposed.**                                                                                  |
+| Phase | Working name               | Intended objective                                                                                                | Status                                                                                               |
+| ----- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 0.1   | As-Is Research             | Inventory existing records in place, establish the current supply picture, and save a resumable report and state. | **One real archive run completed; targeted instruction refinements and a fresh retest are pending.** |
+| 0.2   | Discovery Configuration    | Prepare research inputs and criteria for discovery.                                                               | Identified as part of Phase 0; scope is not designed yet.                                            |
+| 1     | Market Discovery           | Gather a broad set of potentially relevant offers.                                                                | **Proposed.**                                                                                        |
+| 2     | Cheap Screening            | Remove duplicates and perform low-cost initial checks.                                                            | **Proposed.**                                                                                        |
+| 3     | Contractual Knockout       | Find contract conditions that disqualify an offer.                                                                | **Proposed; order needs testing.**                                                                   |
+| 4     | Operational Risk Screening | Screen for provider-service and financial risks.                                                                  | **Proposed; order needs testing.**                                                                   |
+| 5     | Deep Investigation         | Resolve material evidence gaps for remaining candidates.                                                          | **Proposed.**                                                                                        |
+| 6     | Final Evaluation           | Compare suitable candidates and explain a recommendation.                                                         | **Proposed.**                                                                                        |
 
 The hierarchy is illustrative, not a finalized implementation contract. Phase numbers, labels, boundaries, and sequence may change. In particular, test whether contractual screening or operational-risk screening should come first. The handoff's market-size example of roughly 20–30 offers is a planning idea, not a quota or required coverage target.
+
+## Cross-phase task register — proposed
+
+Concrete follow-up actions may arise in multiple phases, so task handling belongs in one shared reference rather than in Phase 0.1 alone. The proposed instructions live at [`references/tasks/instructions.md`](../../plugins/de/de-stromwechsel/skills/de-stromwechsel/references/tasks/instructions.md) and define the user-facing `active.md` and `done-YYYY.md` files. Phase 0.1 is the first validation point; later phases should reuse the same register if testing confirms it is useful. The register is passive and does not provide background monitoring or reminders.
 
 ## Phase 0 — Preparation
 
@@ -41,7 +45,7 @@ Potential inputs include accessible local folders; current and previous contract
 
 This sequence is a starting scope for implementation, not a mandate to create a rigid taxonomy for the user's existing files.
 
-1. **Choose locations:** ask where the user's existing electricity documents are and where the skill should keep its work, unless those locations are already known and accessible. The user may choose the same folder for both. Treat a cloud-provider name as an access route, not as a path; if the files are not accessible, ask for a usable local path, mount, or upload.
+1. **Choose locations:** if the current folder clearly appears to be the user's Strom project, inspect only low-cost metadata, explain why it appears suitable as both archive and workspace, and ask the user to confirm before writing files or doing deep inventory. Otherwise ask separately for the archive and work locations. Reuse a saved location only when accessible and explicitly confirmed. A cloud-provider name is an access route, not a path; if files are inaccessible, ask for a usable local path, mount, or upload.
 2. **Create the skill workspace:** in the selected work folder, create or reuse `de-stromwechsel/internal/` for agent-managed state and `de-stromwechsel/reports/` for readable reports. Year-based folders for documents the skill handles sit at the same level as `de-stromwechsel/`; reuse existing folders where suitable and create a year folder when a new document needs to be stored. This applies to documents the skill handles from this point forward, not to the user's old archive. Do not copy old source documents into the workspace as part of inventory.
 3. **Inventory in place:** inspect accessible folders and file metadata to learn how the archive is arranged, identify likely electricity documents, and record their original paths. If existing records are already grouped by year, start with the newest relevant documents and expand when gaps or conflicts require it. If not, search broadly enough to find the relevant records without deep-reading every file automatically.
 4. **Estimate extraction effort:** identify text-searchable files, image-only scans, and any available OCR companions where tools allow. Before bulk OCR or deep reading of a large scan-heavy archive, tell the user the estimated scope and ask whether to proceed. If supported, mention a lower-cost model as an option; do not change models automatically. If the user declines, continue with searchable and already-extracted evidence and record the limitation. Exact thresholds remain open.
@@ -49,13 +53,23 @@ This sequence is a starting scope for implementation, not a mandate to create a 
 6. **Enrich if permitted:** email is an optional source. Obtain explicit permission before searching it. If permission is declined or email is unavailable, continue from other accessible sources.
 7. **Save a current-state record:** create a user-readable report and a minimal resumable state in the skill workspace. Link to source documents and record where each was found; do not sort, move, rename, or otherwise reorganize the old source archive.
 
+### Evidence and user-facing language
+
+Use the strongest applicable evidence after considering its directness, recency, completeness, and relevance. When one source clearly controls, state the working fact or default and the reason, while retaining older or weaker values as contextual history with provenance. Do not turn them into equal unresolved choices. For consumption, a recent complete, representative annual bill or `Abschlussrechnung` normally supplies the working basis unless there is stronger contrary evidence; disclose the billing period and any estimated component, and invite correction. A sub-interval included in the bill total is not a separate annual consumption candidate. Verify material OCR-derived values visually when feasible, or mark the limitation.
+
+Reports, task lists, and user-facing checkpoint messages use the language of the first substantive request in the run. Internal state and inventory are written in English. When listing inventory totals, distinguish original documents from OCR companions and do not double-count companion pages as additional source pages.
+
+### Task register
+
+Phase 0.1 uses the [shared task-register instructions](../../plugins/de/de-stromwechsel/skills/de-stromwechsel/references/tasks/instructions.md) when current-state research identifies a concrete follow-up. Whether the register proves useful and should be used by later phases remains open for validation.
+
 ### Information to establish
 
 Where evidence permits, record the current provider and tariff; contract start and known end or termination dates; Arbeitspreis and Grundpreis; known bonuses and material contractual limits; historical consumption; meter details and readings; previous providers and supply periods; relevant documents; and missing, uncertain, or conflicting information. Never fill gaps by invention. Separate document-supported facts from user reports and preliminary inferences.
 
 ### Repeated runs
 
-**Proposed:** later runs should reuse saved state, look for changes, and avoid reprocessing a full archive without reason. The initial implementation may use a concise Markdown state index in `internal/` that points to the detailed report in `reports/`; its fields and naming should be validated in real use. Complex synchronization is out of scope for the first implementation.
+**Proposed:** later runs should reuse saved state, look for changes, and avoid reprocessing a full archive without reason. Verify that a linked report still exists before treating its checkpoint as complete; if it has been removed, explain that the saved state is only an index and rebuild the current report from accessible evidence. The initial implementation may use a concise Markdown state index in `internal/` that points to the detailed report in `reports/`; its fields and naming should be validated in real use. Complex synchronization is out of scope for the first implementation.
 
 ### Boundary with future market research
 
@@ -63,7 +77,7 @@ Phase 0.1 establishes actual contract dates and terms where available. It does n
 
 ### Current status
 
-Phase 0.1 instructions are implemented in `references/phases/0-preparation/0.1-as-is/instructions.md` and pass local skill validation. Validation on the user's real archive is pending. The initial report and state conventions are provisional and should be adjusted from observed use. Phase 0.2 instructions are not part of this implementation. Add further files only when needed.
+Phase 0.1 instructions are implemented in `references/phases/0-preparation/0.1-as-is/instructions.md` and have been exercised once against the user's real archive. Review identified refinements for a fresh run: confirm the inferred archive/workspace before writing or deep inspection; apply the strongest evidence as the working default; use the user's language for reports and English for internal files; and test a passive task register. The report/state conventions remain provisional. Phase 0.2 instructions are not part of this implementation. Add further files only when needed.
 
 ## Checkpoints and resumability
 
