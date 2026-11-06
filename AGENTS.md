@@ -1,5 +1,9 @@
 # Repository Instructions
 
+## Local Python environment
+
+- When Python is needed in this repository, use the project-local `.venv` interpreter (`.venv/bin/python`). Manage project dependencies with `uv sync` from the repository root.
+
 ## Project plan
 
 - At the start of every new work session in this repository, read [`docs/plan/README.md`](docs/plan/README.md) before substantive work. It is the concise entry point for the project's agreed direction, proposals, open questions, scope, and development approach.
@@ -8,6 +12,7 @@
 ## Keep the plan current
 
 - When work establishes or changes a material decision, resolves an open question, changes phase scope or status, or establishes durable guidance about data, privacy, or shared knowledge, update the relevant plan document in the same session. Do not defer a needed plan update to a later task.
+- During skill tests, when a run surfaces a new or materially refined candidate for deterministic automation, update [`docs/plan/automation.md`](docs/plan/automation.md) in the same work session. Record the observed friction and what could be mechanically checked or computed; keep unapproved candidates marked Proposed. Recording a candidate does not by itself authorize implementing a script.
 - Prefer updating the existing document that owns the topic. If durable detail needs its own format or procedure, create one focused document, link it from the owning plan document, and avoid duplicating its contents elsewhere.
 - Add only important decisions to [`docs/plan/decisions.md`](docs/plan/decisions.md), grouped under their date and given a stable sequential ID (`D-001`, `D-002`, ...). Keep each statement concise; routine implementation choices and temporary findings do not belong in the log.
 - When a new decision replaces an earlier one, link to it with **Supersedes**; when it changes only part of an earlier decision, use **Overrides** and name the affected scope. Add a reverse link and status to the earlier entry, but preserve its original decision text.

@@ -11,6 +11,7 @@ This document describes the future direction for provider-specific research know
 - Future contributions should be reviewable by the skill maintainer before they are added. A central user database, feedback service, or similar infrastructure is not required by this direction.
 - Phase 0.1 must work without an existing provider knowledge base.
 - Keep personal research in the user's selected working folder, separate from shared provider references. The project workspace uses `de-stromwechsel/internal/` for agent-managed state and `de-stromwechsel/reports/` for user-readable Markdown; year folders for documents the skill handles sit alongside it. The user chooses the working-folder location, so do not encode a personal path or cloud provider in shared instructions.
+- The private `de-stromwechsel/history.md` records document-based supply/billing periods and their total electricity costs; its key-document references remain in the user workspace. It does not feed personal records into shared provider knowledge. See [D-013](decisions.md#d-013-document-based-supply-history).
 - Phase 0.1 inventories old source documents in place and records their locations in private state and reports. It does not sort, move, copy, or rename them. Year folders are for documents handled by the skill from that point forward; reuse suitable existing year folders.
 
 ## Proposed organization and use
@@ -33,7 +34,7 @@ The format compatibility in step 4 depends on a future format decision; it is no
 
 **Proposed:** a user could later share new or updated research as a ZIP or through a GitHub Issue or pull request. The maintainer would review it and verify the evidence before incorporating it. These are possible contribution paths, not implemented workflows.
 
-Only non-personal provider evidence belongs in shared knowledge. Exclude private contracts and bills, names, addresses, meter numbers, and other identifying or household-specific information. The user's workspace location is selected at runtime; the exact files and schema within `de-stromwechsel/internal/` remain open and should be designed only as needed by the phase being implemented.
+Only non-personal provider evidence belongs in shared knowledge. Exclude private contracts and bills, names, addresses, meter numbers, and other identifying or household-specific information. The user's workspace location is selected at runtime; working checkpoints use the private layout in [D-015](decisions.md#d-015-working-checkpoints-and-bounded-retention), while remaining internal schema details should be designed only as needed by the phase being implemented.
 
 ## Open questions
 

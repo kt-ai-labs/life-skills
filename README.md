@@ -1,6 +1,6 @@
 # KT-AI Labs Life Skills — Plugins for Codex & Claude Code
 
-> **Work in progress:** The phase-based rewrite of `de-stromwechsel` is underway. Phase 0.1 has completed two runs against a real document archive; focused task-handling refinements await another retest. The detailed feature description below still reflects the previous version and will be revised after the new workflow is validated.
+> **Work in progress:** The phase-based rewrite of `de-stromwechsel` is underway. Phase 0.1 v1 has been accepted after a successful rerun against a real document archive; Phase 0.2 and later phases are not yet implemented. The detailed feature description below reflects the previous workflow and will be revised as the new phases are developed and validated.
 
 **German Stromwechsel skill for Codex and Claude Code:** [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md) helps you research and compare **Stromtarife in Deutschland**, choose a **Stromanbieter**, and plan an **Anbieterwechsel** (including annual switches). It is an open-source AI Agent Skill, **not** a tariff comparison service or an MCP server.
 
