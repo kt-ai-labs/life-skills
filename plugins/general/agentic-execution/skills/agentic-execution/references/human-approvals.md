@@ -2,6 +2,10 @@
 
 Executor or reviewer may flag a reserved decision with evidence, options and consequences. Executor asks the authorized human and stops dependent work. Verify authority by project rules. Record material dialogue per [Task artifacts](task-artifacts.md); authoritative decisions have actor, scope, UTC (or known provenance/unknown), exact governing version and explicit disposition. Persist/read back before relying on them.
 
+## Resume after a human response
+
+An Executor's request for clarification, confirmation or approval creates an input dependency, not a human-directed Task pause. On the answering turn, record material dialogue/decisions, apply the answer, verify affected prerequisites and perform the next authorized action. Continue through required reviews and work until the next required human input, other concrete blocker, explicit restriction or verified completion. Do not end the turn merely to acknowledge, save or summarize the answer, or ask for Continue. Ask only for still-needed information. Respect the response's scope and restrictions: no implied separate approval, initial launch or lifting of an explicit pause, stop or withdrawal.
+
 ## Initial gates
 
 1. One-time runtime continuation per [Start and resume](start-and-resume.md).

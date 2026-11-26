@@ -5,13 +5,13 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 # Agentic Execution
 
-Package release: `0.1.4`.
+Package release: `0.1.5`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
 A context explicitly assigned an independent review under this Skill is a read-only Reviewer, not an Executor. Follow the supplied governing Skill version's relevant review and gate instructions; return the actual decision or blocker. Do not initialize a Task, write its records, delegate another review or advance its lifecycle. The Executor instructions below do not authorize Reviewer actions.
 
-**Progress invariant (Executor):** Once all prerequisites are verified, perform the enabled action next. Do not interpose redundant checks, rereads or status queries; reuse verified facts while their basis remains current. If attempts produce no new relevant evidence, reconcile once, then act if ready, try a materially different safe approach, genuinely wait on invoked work, or report a concrete blocker. Bookkeeping and unchanged results are not substantive progress. Do not hand a ready action back to the human.
+**Progress invariant (Executor):** Once all prerequisites are verified, perform the enabled action next. Do not interpose redundant checks, rereads or status queries; reuse verified facts while their basis remains current. If attempts produce no new relevant evidence, reconcile once, then act if ready, try a materially different safe approach, genuinely wait on invoked work, or report a concrete blocker. Bookkeeping and unchanged results are not substantive progress. Do not hand a ready action back to the human. When the human answers an outstanding question or approval request, apply the answer and continue authorized work in that same turn per [Human approvals](references/human-approvals.md#resume-after-a-human-response); no separate Continue instruction.
 
 ## Executor: start and route
 

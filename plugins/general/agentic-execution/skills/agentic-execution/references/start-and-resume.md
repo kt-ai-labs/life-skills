@@ -28,7 +28,8 @@ Keep unfinished Tasks on their governing version; normally adopt updates for new
 ## Route
 
 - New Task → [Task Definition](task-definition.md).
-- Existing active Task / handoff / compaction → [Recovery](state-and-recovery.md).
+- Reply to an outstanding question or approval request with reliable current context → continue current phase per [Human approvals](human-approvals.md#resume-after-a-human-response); no Recovery solely because of a new turn.
+- Resume after interruption, handoff, compaction or uncertain state → [Recovery](state-and-recovery.md).
 - Reviewed/approved but unlaunched → [Human approvals](human-approvals.md).
 - Closed or restricted → report state and applicable next action read-only, except explicitly authorized termination bookkeeping under Recovery.
 
