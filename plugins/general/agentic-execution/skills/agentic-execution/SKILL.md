@@ -5,11 +5,13 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 # Agentic Execution
 
-Package release: `0.1.3`.
+Package release: `0.1.4`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
 A context explicitly assigned an independent review under this Skill is a read-only Reviewer, not an Executor. Follow the supplied governing Skill version's relevant review and gate instructions; return the actual decision or blocker. Do not initialize a Task, write its records, delegate another review or advance its lifecycle. The Executor instructions below do not authorize Reviewer actions.
+
+**Progress invariant (Executor):** Once all prerequisites are verified, perform the enabled action next. Do not interpose redundant checks, rereads or status queries; reuse verified facts while their basis remains current. If attempts produce no new relevant evidence, reconcile once, then act if ready, try a materially different safe approach, genuinely wait on invoked work, or report a concrete blocker. Bookkeeping and unchanged results are not substantive progress. Do not hand a ready action back to the human.
 
 ## Executor: start and route
 
@@ -31,7 +33,6 @@ Read [Start and resume](references/start-and-resume.md) on invocation. Identify 
 
 ## Invariants
 
-- **Progress:** Once prerequisites are verified, perform the next authorized action. Reuse checks while their basis remains current. Bookkeeping and unchanged results are not substantive progress. If attempts yield no new relevant evidence, stop repeating: reconcile once, act if ready, try a materially different safe approach, genuinely wait on invoked work, or report a concrete blocker. Do not hand a ready action back to the human.
 - Single Focus: each Discovery Assignment and executable E-Step has one coherent purpose and testable outcome. Related checks may share that purpose; separate unrelated work. One Executor works sequentially.
 - Brief = WHAT/WHY; Plan = strategic HOW; Execution Plan = intended operational work; Ledger = actual events/evidence. Derived work cannot weaken governing obligations.
 - Discovery is planning only. Independent definition acceptance, explicit human Brief and Plan approvals and launch are mandatory before substantive execution or Execution Plan creation.
@@ -42,7 +43,7 @@ Read [Start and resume](references/start-and-resume.md) on invocation. Identify 
 
 ## Pending work and waiting
 
-Applies to every review and long-running job. Before invoking a review or long job that may outlive its call/turn, persist/read back pending intent and recovery basis in the existing phase record; record the available handle/receipt promptly. Missing identity does not prove absence. If dependent work cannot proceed, actually wait using a supported event-driven continuation or blocking tool on the pending operation, with suitable bounds for installed limits, safety and human responsiveness. Prefer the longest suitable wait to repeated short/default polls. A process/session yield, timeout, notification or empty output is not by itself proof of current liveness, progress or completion. Never simulate waiting with text or promises. Report material verified transitions/errors or requested/required updates, with the last observed state/time clearly distinguished from current status.
+Applies to every review and long-running job. Before invoking a review or long job that may outlive its call/turn, persist/read back pending intent and recovery basis in the existing phase record; record the available handle/receipt (or its absence) as soon as returned, before waiting or yielding. Missing identity does not prove absence. If dependent work cannot proceed, actually wait using a supported event-driven continuation or blocking tool on the pending operation, with suitable bounds for installed limits, safety and human responsiveness. Prefer the longest suitable wait to repeated short/default polls. A process/session yield, timeout, notification or empty output is not by itself proof of current liveness, progress or completion. Never simulate waiting with text or promises. Report material verified transitions/errors or requested/required updates, with the last observed state/time clearly distinguished from current status.
 
 Repeated near-immediate or premature returns without meaningful invocation-specific evidence indicate an ineffective wait. Reconcile once and switch to a supported effective lower-overhead mechanism if available; if returns still prevent genuine waiting, report the wait blocker rather than spin. A genuinely elapsed capped short blocking wait is not itself a blocker: use the longest suitable interval while justified, without extra status queries after each ordinary timeout. Reassess at a proportionate elapsed-time/no-progress threshold using actual liveness, failure or result evidence and expected duration; do not reset the threshold on empty, duplicate or unrelated events. Healthy silent computation may justify extending the threshold; mere liveness is not progress. If no effective safe wait is available or state cannot be established at reassessment, report the concrete blocker and preserve pending state for Resume; do not stop after an arbitrary number of returns. Never cancel, relaunch, accept or advance merely because a wait timed out.
 
