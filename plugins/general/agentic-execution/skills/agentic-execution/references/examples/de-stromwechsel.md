@@ -25,6 +25,8 @@ Fictional German household scenario. This is a format illustration, not a real t
 
 ### O01 — Identify comparable eligible offers
 
+Establish comparable current offers, including first-year costs with and without attainable bonuses, applicable contractual conditions and material operational risks; document gaps and exclusions.
+
 **Dependencies**
 
 - User-provided or verified authorized supply scenario, consumption and intended start.
@@ -34,6 +36,8 @@ Fictional German household scenario. This is a format illustration, not a real t
 - [Illustrative request](#illustrative-request), R1 and R2: establish offer eligibility, costs and contract/risk checks.
 
 ### O02 — Recommend a suitable contract
+
+Compare the eligible options and justify a suitable choice or the absence of a verified suitable offer; do not take contractual action.
 
 **Dependencies**
 
@@ -45,7 +49,11 @@ Fictional German household scenario. This is a format illustration, not a real t
 
 **Shared constraints:** No submissions or cancellations. Keep household details private. Do not invent live offers or verification.
 
-**References — Authoritative:** [Illustrative request](#illustrative-request), R1–R3. No actual provider evidence is supplied in this example.
+## References
+
+**Authoritative for this fictional scenario:** [Illustrative request](#illustrative-request), R1–R3.
+
+**Context:** No actual provider evidence is supplied in this example.
 
 # Task Plan — Compare household electricity offers
 
@@ -59,9 +67,15 @@ Fictional German household scenario. This is a format illustration, not a real t
 
 Proposed — pending human confirmation. Illustrative V2 defaults, subject to supported selection and actual confirmation.
 
-- **Batch:** Codex Sol Medium; Claude Code Opus High.
-- **Final Substantive:** Codex Sol High; Claude Code Opus High.
-- **Final Completeness:** Codex Sol High; Claude Code Opus High.
+- **Batch:** Discovery and Execution Batch planning/execution.
+  - Codex: Sol Medium
+  - Claude Code: Opus High
+- **Final Substantive:** Task Definition and final substantive correctness.
+  - Codex: Sol High
+  - Claude Code: Opus High
+- **Final Completeness:** Final obligation and evidence completeness.
+  - Codex: Sol High
+  - Claude Code: Opus High
 
 ## Overall strategy
 

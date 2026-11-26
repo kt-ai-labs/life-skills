@@ -19,7 +19,7 @@ An evidence-backed comparison of the three requested forecasting methods, with r
 
 **Dependencies**
 
-- None beyond the authorized synthetic-data generation scope.
+- None.
 
 **References**
 
@@ -52,7 +52,7 @@ An evidence-backed comparison of the three requested forecasting methods, with r
 
 ## Shared scope, exclusions and constraints
 
-Use only synthetic counts; no personal or external data, real staffing recommendations or operational changes. Preserve failed or missing prediction evidence. Report uncertainty rather than asserting real-world generalization.
+Use only synthetic counts; no personal or external data, real staffing recommendations or operational changes. Earlier holdout observations may be forecast-time inputs only; no fitting, tuning or feature selection on the holdout. Preserve failed or missing prediction evidence. Report uncertainty rather than asserting real-world generalization.
 
 ## References
 

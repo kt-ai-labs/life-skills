@@ -34,7 +34,7 @@ Use a deterministic synthetic dataset and a chronological split. Freeze the eval
 
 **Strategy**
 
-Generate 365 daily nonnegative counts from a documented seeded process with weekday effects, random noise and a demand change. Propose the final 90 days as an untouched holdout, with training-only chronological validation for tuning. Define evaluation periods before examining holdout outcomes.
+Generate 365 daily nonnegative counts from a documented seeded process with weekday effects, random noise and a demand change. Propose the final 90 days as a holdout excluded from fitting, tuning and feature selection, with training-only chronological validation. Define nonempty evaluation periods (for example, pre-change and post-change portions of the holdout if the planned change lies within it) before examining holdout outcomes.
 
 **Key Assumptions / Decisions**
 
@@ -64,11 +64,11 @@ Generate 365 daily nonnegative counts from a documented seeded process with week
 
 **Strategy**
 
-Compare same-weekday historical value, trailing historical average and regularized regression with weekday and lagged features. Select window lengths and regularization using training-only validation. For each one-day-ahead prediction, use only observations available before the forecast date. Freeze model choices before the holdout; use the predeclared fitting/update policy consistently.
+Compare same-weekday historical value, trailing historical average and regularized regression with weekday and lagged features. Select window lengths and regularization using training-only validation. For each one-day-ahead prediction, use only observations available before the forecast date. Freeze model choices and fitted parameters before the holdout; do not refit within it. Apply fixed baseline rules to the observations available before each date.
 
 **Key Assumptions / Decisions**
 
-- The proposed evaluation allows prior observed holdout days as lagged inputs for subsequent forecasts, not for tuning or changing fitted model parameters. Confirm the exact policy in Definition.
+- The request permits earlier observed holdout days only as forecast-time inputs for later predictions. The proposed fixed baseline and regression feature rules use that policy without refitting, tuning or feature selection. Confirm the exact feature and cutoff policy in Definition.
 - Define missing-prediction handling before evaluating results. No post-hoc removal.
 
 **Expected Evidence**

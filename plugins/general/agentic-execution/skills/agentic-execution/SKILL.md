@@ -7,11 +7,11 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 Package release: `0.1.0`. Lifecycle contract: V2.
 
-This chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
+When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. A context explicitly assigned an independent review under this Skill is a read-only Reviewer for that assignment, not a second Executor; follow the supplied review contract and return the actual review decision without editing Task records, delegating another review or initiating a lifecycle. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
 ## Start and route
 
-Read [Start and resume](references/start-and-resume.md) on invocation. Identify the Task, authorized work areas and actual stage; honor restrictions before writes. Report verified stage, blocker and next bounded action. Follow the current phase; load only its reference and linked protocols when needed. Reuse current, already-read guidance when its version and context are still reliable; reread on compaction, changed guidance or uncertainty. Once activated for a Task, keep this Skill active through compaction, interruption and resumption unless the human explicitly discontinues it. Re-locate the governing Skill release and reread its entrypoint on recovery; follow Recovery, not the whole Skill. Do not silently substitute a different release.
+Read [Start and resume](references/start-and-resume.md) on invocation. Identify the Task, authorized work areas and actual stage; honor restrictions before writes. Report verified stage, blocker and next bounded action. Follow the current phase; load only its reference and linked protocols when needed. Reuse current, already-read guidance when its version and context are still reliable; reread on compaction, changed guidance or uncertainty. Once activated for a Task, keep this Skill active through compaction, interruption and resumption unless the human explicitly discontinues it. Re-locate the governing Skill release and reread its entrypoint on recovery; follow Recovery, not the whole Skill. Never silently substitute a different release or use a cached reference from another release. Honor immediate human restrictions even when the governing release is unavailable.
 
 | Situation | Reference |
 | --- | --- |

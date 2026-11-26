@@ -50,7 +50,7 @@ Use [Agentic Execution](plugins/general/agentic-execution/skills/agentic-executi
 
 Example: `Use Agentic Execution to define and execute the specified Task, preserve its approvals and evidence, and proceed through the required independent review gates.`
 
-The first package (`0.1.0`) implements the V2 lifecycle. See [maintenance and project-local installation guidance](docs/agentic-execution/README.md) and [fictional Task Definition examples](plugins/general/agentic-execution/skills/agentic-execution/references/examples/README.md). Project-local installation, pinned releases and updates are owned by each consumer project; the convenience setup script below is not a project-local installation or version-pinning mechanism. Its existing Codex loop can install all available catalog plugins, while its Claude loop currently covers the two original plugins; the script is unchanged by this addition.
+The first package (`0.1.0`) implements the V2 lifecycle. See [maintenance and project-local installation guidance](docs/agentic-execution/README.md) and [fictional Task Definition examples](plugins/general/agentic-execution/skills/agentic-execution/references/examples/README.md). Project-local installation, pinned releases and updates are owned by each consumer project; the convenience setup script below is not a project-local installation or version-pinning mechanism. Its existing Codex loop can install all available catalog plugins globally, while its Claude loop currently covers the two original plugins. Do not use that script to set up or update a pinned Agentic Execution installation; check for any globally enabled competing copy before activating a local one. The script itself is unchanged by this addition.
 
 ## Getting started on macOS
 
@@ -244,14 +244,12 @@ Continue with **one** of the installation sections below: Codex CLI or Claude Co
 
 ## Install Life Skills plugins in Codex CLI
 
-Register the GitHub plugin marketplace, then install the desired plugins. For project-local Agentic Execution instead of the ordinary marketplace install, follow its [project-local guidance](docs/agentic-execution/README.md):
+Register the GitHub plugin marketplace, then install the desired plugins. Agentic Execution is intentionally omitted from the general installation commands; follow its [project-local installation guidance](docs/agentic-execution/README.md) to pin it independently per consumer.
 
 ```bash
 codex plugin marketplace add kt-ai-labs/life-skills --ref main
 codex plugin add de-stromwechsel@kt-ai-labs-life-skills
 codex plugin add browser-research@kt-ai-labs-life-skills
-# Optional, for substantial verified tasks:
-codex plugin add agentic-execution@kt-ai-labs-life-skills
 ```
 
 Check installs with `codex plugin list`; start a new session to pick up the skills. Adding a marketplace alone does **not** install its plugins.
@@ -266,14 +264,12 @@ codex plugin marketplace upgrade kt-ai-labs-life-skills
 
 ## Install Life Skills plugins in Claude Code
 
-For independently pinned project-local versions, see [Agentic Execution project-local guidance](docs/agentic-execution/README.md). The optional project-scoped example below enables the marketplace version in the current project; it does not itself pin a source revision.
+For Agentic Execution, use its [project-local installation guidance](docs/agentic-execution/README.md). Scope alone does not pin the source or isolate the installed version.
 
 ```bash
 claude plugin marketplace add kt-ai-labs/life-skills
 claude plugin install de-stromwechsel@kt-ai-labs-life-skills
 claude plugin install browser-research@kt-ai-labs-life-skills
-# Optional, for substantial verified tasks (run in the consumer project):
-claude plugin install agentic-execution@kt-ai-labs-life-skills --scope project
 ```
 
 Check installed plugins with `claude plugin list`, then start a new session. Claude Code provides `claude plugin validate .` to validate the marketplace locally.

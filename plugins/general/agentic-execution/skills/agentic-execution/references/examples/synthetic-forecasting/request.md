@@ -6,7 +6,7 @@ Compare daily library-visitor forecasts for a synthetic dataset. Determine wheth
 
 ## R2 — Evaluation constraints
 
-Use generated daily counts and a documented deterministic seed. Include weekly seasonality, random noise and a documented change in demand. The final chronological holdout must not influence model fitting, tuning or feature selection. Compare the same forecast dates and horizon for all candidates. Report missing or failed predictions; never remove them just to improve scores.
+Use generated daily counts and a documented deterministic seed. Include weekly seasonality, random noise and a documented change in demand. The final chronological holdout must not influence model fitting, tuning or feature selection. Earlier observations within that period may be used solely as forecast-time inputs for later one-day-ahead predictions; do not refit on them. Compare the same forecast dates and horizon for all candidates. Report missing or failed predictions; never remove them just to improve scores.
 
 ## R3 — Candidate methods
 
