@@ -8,7 +8,7 @@ Executor is the main chat, not a reviewer. Task Plan contains exactly three role
 Proposed — pending human confirmation.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
-  - Codex: Sol Medium
+  - Codex: Sol High
   - Claude Code: Opus High
 - **Final Substantive:** Task Definition and final substantive correctness.
   - Codex: Sol High

@@ -11,7 +11,7 @@
 Proposed — pending human confirmation. Illustrative V2 defaults; actual supported selection and human confirmation are required.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
-  - Codex: Sol Medium
+  - Codex: Sol High
   - Claude Code: Opus High
 - **Final Substantive:** Task Definition and final substantive correctness.
   - Codex: Sol High

@@ -68,7 +68,7 @@ Compare the eligible options and justify a suitable choice or the absence of a v
 Proposed — pending human confirmation. Illustrative V2 defaults, subject to supported selection and actual confirmation.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
-  - Codex: Sol Medium
+  - Codex: Sol High
   - Claude Code: Opus High
 - **Final Substantive:** Task Definition and final substantive correctness.
   - Codex: Sol High

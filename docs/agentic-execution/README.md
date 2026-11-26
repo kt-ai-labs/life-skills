@@ -1,6 +1,6 @@
 # Agentic Execution — maintenance and project-local use
 
-Life Skills owns the canonical operational Skill, example formats, plugin metadata and releases. The initial package version is `0.1.0`, implementing the V2 lifecycle contract. The Skill is instruction-only and has no mandatory MCP server, hooks, scripts or extra software. The actual host must support the independent review and recovery capabilities required by its operational contract.
+Life Skills owns the canonical operational Skill, example formats, plugin metadata and releases. The current package version is `0.1.1`, implementing the V2 lifecycle contract. Compared with `0.1.0`, it corrects the proposed Codex Batch Reviewer default from Sol Medium to Sol High, matching the other Codex reviewer roles and Claude Code's Opus High default for all three roles. Existing confirmed Task profiles are unchanged unless explicitly revised under the operational contract. The Skill is instruction-only and has no mandatory MCP server, hooks, scripts or extra software. The actual host must support the independent review and recovery capabilities required by its operational contract.
 
 ## Maintain the Skill
 
