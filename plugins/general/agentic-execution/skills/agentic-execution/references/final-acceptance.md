@@ -1,0 +1,27 @@
+# Final acceptance and completion
+
+Enter only when all required planned work has been addressed and accepted batch checkpoints are present. Account for every suspended or superseded batch and remaining obligation; no unresolved required work or pending required batch gate. Inspect actual evidence and dependencies, not just plan status. Use [Reviewers](reviewers.md), [Review protocol](review-protocol.md) and [Evidence and checkpoints](evidence-and-checkpoints.md).
+
+## 1. Final Substantive
+
+Start a fresh isolated Final Substantive Reviewer. Initial handoff prioritizes original request, human-approved Brief/Plan, effective accepted amendments and human decisions, governing methodology/sources, actual implementation/results and reproducible primary evidence. Do not limit review by Executor summaries, last batch or listed E-Steps. Check whole Task correctness, assumptions, interactions, scientific/technical/domain validity, limitations and reproducibility. Negative/inconclusive findings can satisfy obligations if method and evidence are valid.
+
+Require explicit full-task substantive acceptance on identifiable current governing definition, sources, relevant implementation/evidence. For blocking findings or elected corrections requiring new work, run normal new correction batches and dependency revalidation under [Changes and corrections](changes-and-corrections.md). After checkpointing corrections, re-establish full-task substantive acceptance on new state. Same final reviewer may do targeted follow-up only when it independently verifies affected scope/downstream impact and explicitly re-establishes whole-task acceptance. Broad/interacting changes, uncertainty or invalid context require fresh full substantive review.
+
+## 2. Final Completeness
+
+Only after substantive acceptance, reconcile current-stage pointers and summaries where possible (see Close). If that changes substantive content, re-establish substantive acceptance first; then start a different fresh isolated Final Completeness Reviewer. Give original request, full authoritative Brief/Plan, amendments/decisions, Execution Plan, Ledger, actual artifacts/evidence, and substantive acceptance. Check every mandatory Objective and obligation, actual execution, Expected Evidence/Verification, tracking accuracy, omitted work and blockers. Missing E-Step is not an excuse. Require explicit acceptance of entire obligation set.
+
+For blocking findings or elected corrections requiring new work, Executor plans and executes new correction batches (reviewer proposes, never edits), checks dependencies and checkpoints. Re-establish substantive acceptance **before** concluding completeness on changed relevant content. Then re-review completeness; narrow follow-up may retain reviewer only with explicit entire-obligation acceptance of new state, broad changes or invalid context require fresh review. Never overlap active reviewers. Low findings alone do not require correction; record disposition. Pure lifecycle metadata does not alter substantive content.
+
+## 3. Close
+
+As part of existing closeout (not another gate), reconcile current-stage pointers in Plan/Ledger/Context index, label historical observations as of their actual stage, and remove stale prospective wording from current summaries. Do not rewrite historical evidence. Prefer this hygiene before completeness submission. After either acceptance, verify which reviewed claims changed: recording a gate or correcting purely presentational metadata need not trigger review, but changes to actual tracking accuracy, obligation dispositions or evidence require renewed affected acceptance. If substantive state changed, re-establish substantive acceptance before completeness. If only completeness-relevant records changed without a blocking finding or additional work, obtain explicit whole-obligation reacceptance if completeness was already accepted; otherwise include the corrected state in the pending completeness review; blocking findings and missing work still use the correction flow above. No additional gate.
+
+Verify both final independent decisions and underlying provenance refer to the same effective definition, governing source versions and relevant implementation/evidence state. Require all:
+- Every mandatory Brief Objective and Plan obligation addressed by verified evidence, honest limitations and valid negative/inconclusive outcomes.
+- Required checks, execution status and findings truthful; no unresolved blocking finding, mandatory obligation or required human/external action.
+- Both final acceptances valid for same final content.
+- Ledger, results, review records and durable final checkpoint saved and verified; persist/read back completion only afterward. Recover missing completion record or checkpoint by reconciliation, not by automatically repeating valid final reviews.
+
+No default additional human closure gate. Report results, evidence/checkpoints, actual reviews, limitations, unresolved decisions if any. A blocker means not Completed. Preserve Completed Task history; later improvement starts a new Task.

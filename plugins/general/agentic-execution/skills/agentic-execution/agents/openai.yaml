@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Execution"
+  short_description: "Define and execute tasks with independent reviews"
+  default_prompt: "Use $agentic-execution to define, start or resume the specified Task, preserve its approvals and evidence, and proceed through the required independent review gates."

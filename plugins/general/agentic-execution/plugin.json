@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agentic-execution",
+  "version": "0.1.0",
+  "description": "Define and execute substantial tasks with bounded discovery, independent reviews, human approvals, evidence and durable recovery.",
+  "author": {
+    "name": "KT-AI Labs",
+    "url": "https://github.com/kt-ai-labs"
+  },
+  "repository": "https://github.com/kt-ai-labs/life-skills",
+  "license": "MIT",
+  "keywords": [
+    "agentic",
+    "execution",
+    "research",
+    "review",
+    "workflow"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Agentic Execution",
+        "shortDescription": "Verified task execution with independent reviews",
+        "developerName": "KT-AI Labs",
+        "category": "Productivity"
+      }
+    }
+  }
+}

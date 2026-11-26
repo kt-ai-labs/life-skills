@@ -14,6 +14,11 @@
       "name": "browser-research",
       "source": "./plugins/general/browser-research",
       "description": "Efficient interactive website research that prefers isolated sessions and requires permission for personal browser profiles."
+    },
+    {
+      "name": "agentic-execution",
+      "source": "./plugins/general/agentic-execution",
+      "description": "Define and execute substantial tasks with bounded discovery, independent reviews, human approvals, evidence and durable recovery."
     }
   ]
 }

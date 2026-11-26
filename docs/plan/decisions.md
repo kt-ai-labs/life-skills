@@ -8,7 +8,7 @@ When a decision fully replaces an earlier one, the new entry links to its dated 
 
 ### D-001: Project documentation workflow
 
-**Status:** Current
+**Status:** Partially overridden by [D-003](#d-003-route-maintenance-by-plugin)
 
 Start each repository work session with `README.md`; consult the other plan documents when relevant. Update affected plan documents as soon as material decisions or durable findings arise, briefly inform the user, and record important decisions here. Prefer the existing topic document; create and link a focused document when durable detail needs its own format or procedure. Omit routine implementation details.
 
@@ -17,3 +17,11 @@ Start each repository work session with `README.md`; consult the other plan docu
 **Status:** Current
 
 Give each important decision a stable ID and a dated subsection. Link later decisions to earlier ones with **Supersedes** for full replacement or **Overrides** for a scoped change, and add a reverse link on the earlier entry. Preserve the earlier decision text.
+
+## 2026-11-26
+
+### D-003: Route maintenance by plugin
+
+**Status:** Current
+
+**Overrides:** [D-001](#d-001-project-documentation-workflow), only its repository-wide plan-entrypoint requirement. Select the affected plugin or shared concern first; retain the electricity-switching plan for that domain and use the focused Agentic Execution maintenance guidance for its Skill. Consumer-specific proposals and experimental records remain with their consumers. See [repository instructions](../../AGENTS.md) and [Agentic Execution guidance](../agentic-execution/README.md).
