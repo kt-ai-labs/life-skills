@@ -2,7 +2,7 @@
 
 **German Stromwechsel skill for Codex and Claude Code:** [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md) helps you research and compare **Stromtarife in Deutschland**, choose a **Stromanbieter**, and plan an **Anbieterwechsel** (including annual switches). It is an open-source AI Agent Skill, **not** a tariff comparison service or an MCP server.
 
-Reusable AI skills for practical everyday decisions and procedures. Each task is packaged as an independent plugin for **OpenAI Codex CLI** and **Anthropic Claude Code**. Both share the same `SKILL.md` and research references; their marketplace manifests differ.
+Reusable AI skills for practical everyday decisions, research, and substantial verified tasks. Each task is packaged as an independent plugin for **OpenAI Codex CLI** and **Anthropic Claude Code**. Both share the same `SKILL.md` and research references; their marketplace manifests differ.
 
 ## Switching electricity providers in Germany: `de-stromwechsel`
 
@@ -40,8 +40,17 @@ The agent organizes yearly folders and saves a dated report with mode, sources a
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
 | [`de-stromwechsel`](plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md)         | Research or simulate a self-managed German electricity switch, including bonuses, provider reliability, and strategic reserves. | None required           |
 | [`browser-research`](plugins/general/browser-research/skills/browser-research/SKILL.md) | Navigate and inspect websites efficiently using an available local browser tool.                                                | Playwright CLI optional |
+| [`agentic-execution`](plugins/general/agentic-execution/skills/agentic-execution/SKILL.md) | Define, review, approve, launch and execute substantial tasks with bounded discovery, independent acceptance and durable recovery. | None required |
 
 Plugins are installed **independently**. `de-stromwechsel` does not require `browser-research` or Playwright CLI. Browser research is an optional reusable capability when the host environment supports it. `browser-research` prefers verified isolated temporary sessions, with observable operation where available, and requires explicit permission before accessing a personal browser profile. New tabs or session names do not prove isolation. The host browser and connection settings enforce isolation; the skill alone cannot guarantee it. If safe agent attempts fail, it supports an explicit human handoff where the tool allows shared control, alongside an independent-browser link/navigation route accepting copied text, screenshots or PDFs. Page automation pauses while the user acts; results are verified before research resumes. Dashboard support, filesystem access and download locations depend on the actual environment.
+
+## Agentic Execution
+
+Use [Agentic Execution](plugins/general/agentic-execution/skills/agentic-execution/SKILL.md) for substantial research, investigation and software tasks requiring independently verified outcomes, not routine small edits or one-off answers. The Skill uses one sequential Executor, bounded Discovery, separate Brief/Plan approvals and explicit launch, rolling execution batches, independent reviews, evidence and recovery. No extra software is required by the package itself; actual review and waiting capabilities depend on the host.
+
+Example: `Use Agentic Execution to define and execute the specified Task, preserve its approvals and evidence, and proceed through the required independent review gates.`
+
+The first package (`0.1.0`) implements the V2 lifecycle. See [maintenance and project-local installation guidance](docs/agentic-execution/README.md) and [fictional Task Definition examples](plugins/general/agentic-execution/skills/agentic-execution/references/examples/README.md). Project-local installation, pinned releases and updates are owned by each consumer project; the convenience setup script below is not a project-local installation or version-pinning mechanism. Its existing Codex loop can install all available catalog plugins, while its Claude loop currently covers the two original plugins; the script is unchanged by this addition.
 
 ## Getting started on macOS
 
@@ -93,7 +102,7 @@ The script leaves existing non-Homebrew Codex, Claude Code, Playwright and RTK e
 
 These steps prepare a Mac for **any** Life Skills plugin, not just `de-stromwechsel`. **Homebrew is the default installer and updater** for all available CLI tools. Open **Terminal** and work through the steps you actually need. If a command is already installed, skip its installation step.
 
-**Basic setup:** Codex CLI **or** Claude Code, plus the desired Life Skills plugins. **Recommended browser setup:** add Playwright CLI for skills that inspect interactive sites. Playwright is **optional but strongly recommended**, not a required dependency of either plugin.
+**Basic setup:** Codex CLI **or** Claude Code, plus the desired Life Skills plugins. **Recommended browser setup:** add Playwright CLI for skills that inspect interactive sites. Playwright is **optional but strongly recommended**, not a required dependency of any Life Skills plugin.
 
 ### 1. Check what's already installed
 
@@ -235,12 +244,14 @@ Continue with **one** of the installation sections below: Codex CLI or Claude Co
 
 ## Install Life Skills plugins in Codex CLI
 
-Register the GitHub plugin marketplace, then install both plugins:
+Register the GitHub plugin marketplace, then install the desired plugins. For project-local Agentic Execution instead of the ordinary marketplace install, follow its [project-local guidance](docs/agentic-execution/README.md):
 
 ```bash
 codex plugin marketplace add kt-ai-labs/life-skills --ref main
 codex plugin add de-stromwechsel@kt-ai-labs-life-skills
 codex plugin add browser-research@kt-ai-labs-life-skills
+# Optional, for substantial verified tasks:
+codex plugin add agentic-execution@kt-ai-labs-life-skills
 ```
 
 Check installs with `codex plugin list`; start a new session to pick up the skills. Adding a marketplace alone does **not** install its plugins.
@@ -255,10 +266,14 @@ codex plugin marketplace upgrade kt-ai-labs-life-skills
 
 ## Install Life Skills plugins in Claude Code
 
+For independently pinned project-local versions, see [Agentic Execution project-local guidance](docs/agentic-execution/README.md). The optional project-scoped example below enables the marketplace version in the current project; it does not itself pin a source revision.
+
 ```bash
 claude plugin marketplace add kt-ai-labs/life-skills
 claude plugin install de-stromwechsel@kt-ai-labs-life-skills
 claude plugin install browser-research@kt-ai-labs-life-skills
+# Optional, for substantial verified tasks (run in the consumer project):
+claude plugin install agentic-execution@kt-ai-labs-life-skills --scope project
 ```
 
 Check installed plugins with `claude plugin list`, then start a new session. Claude Code provides `claude plugin validate .` to validate the marketplace locally.
@@ -375,6 +390,8 @@ codex plugin marketplace upgrade kt-ai-labs-life-skills
 codex plugin list
 ```
 
+For a project-pinned Agentic Execution installation, update it only through the consumer project's chosen mechanism after checking active Tasks; see [version continuity](docs/agentic-execution/README.md#consumer-project-guidance).
+
 **Marketplace refresh is not a promise that every installed plugin was replaced.** If an installed plugin is still out of date, reinstall **that plugin only** after checking its installed version and accepting that the operation removes/re-adds its local installation:
 
 ```bash
@@ -447,6 +464,13 @@ plugins/
         SKILL.md
         references/playwright-cli.md
         references/human-assistance.md
+    agentic-execution/
+      plugin.json
+      .claude-plugin/plugin.json
+      skills/agentic-execution/
+        SKILL.md
+        agents/openai.yaml
+        references/
 ```
 
 ## Add a new plugin
@@ -455,7 +479,7 @@ plugins/
 2. Add a portable `plugin.json` at the plugin root and a minimal `.claude-plugin/plugin.json` for Claude Code. Keep the manifest names consistent.
 3. Add one entry to each of `.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json`, with paths relative to the repository root.
 4. Update the table above; validate JSON, paths, and skill frontmatter. Run `claude plugin validate .` plus `claude plugin validate plugins/<category>/<plugin-name>` where available, and verify installation with real client tools.
-5. Update the plugin version in **both** manifests when releasing changes.
+5. Update the plugin version in **both** manifests when releasing changes. For Agentic Execution also update its entrypoint release marker.
 
 Do not add empty plugin folders, MCP servers, hooks, runtime scripts, or mandatory dependencies without a real use case. Playwright CLI installations are initiated only after user approval, never by installing the browser-research plugin itself.
 
