@@ -90,7 +90,6 @@ Combine archive confirmation with permission to inspect needed file contents reg
 
 Maintain private `de-stromwechsel/history.md`, in the run's user-facing language, from documents. Start with a short description and a table: supply/billing period, supplier, billed kWh, total electricity cost for the period before advance-payment deductions, and a link to that period's reference section. Annual/final bills define periods even across several years with one supplier; include the current period with unavailable billing values until documented. Sort the table and reference sections newest/current first, oldest last. Link key contracts/confirmations, annual/final bills, and relevant price-increase notices. Exclude settlement balances, individual transactions, and paid/unpaid status; those follow-ups belong in tasks. Keep this private history separate from shared provider knowledge.
 
-
 ### D-014: History period aggregation and consumption labels
 
 **Status:** Current

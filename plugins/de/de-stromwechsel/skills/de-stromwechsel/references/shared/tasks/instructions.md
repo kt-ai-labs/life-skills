@@ -16,15 +16,15 @@ Create the directory and files only when there is a task to record. Keep tasks t
 
 Write headings, field labels, generic statuses, and results in the language of the first substantive request in the run. Provider names and useful contractual terms such as Abschlag, Sofortbonus, and Neukundenbonus may retain their original wording. Preserve intentionally different-language earlier entries unless translation is requested; correct mixed metadata in entries authored or updated for this run. English field names and outcomes below describe semantics, not fixed output strings. For Russian, use labels such as `Владелец`, `Статус`, `Право на выплату`, `Когда`, `Зависит от`, `Основание`, `Закрыта`, `Итог закрытия`, and `Результат`, with these outcome values:
 
-| Meaning | Russian wording |
-| --- | --- |
-| Eligible | Право подтверждено |
-| Not eligible | Права на выплату нет |
+| Meaning                                   | Russian wording             |
+| ----------------------------------------- | --------------------------- |
+| Eligible                                  | Право подтверждено          |
+| Not eligible                              | Права на выплату нет        |
 | Conditional on a known future requirement | Зависит от будущего условия |
-| Unresolved | Не выяснено |
-| Blocked | Заблокирована |
-| Cancelled by user | Отменена пользователем |
-| Not applicable | Не применима |
+| Unresolved                                | Не выяснено                 |
+| Blocked                                   | Заблокирована               |
+| Cancelled by user                         | Отменена пользователем      |
+| Not applicable                            | Не применима                |
 
 ## What to record
 
