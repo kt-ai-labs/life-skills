@@ -108,7 +108,8 @@ Use available dated offer sources and actual contractual terms. Screen eligibili
 
 **References**
 
-- [Illustrative request](#illustrative-request), R1–R2: supports the offer and evidence methodology.
+- [Illustrative request](#illustrative-request), R1–R2: establishes offer and evidence requirements.
+- [de-stromwechsel Skill](https://github.com/kt-ai-labs/life-skills/blob/main/plugins/de/de-stromwechsel/skills/de-stromwechsel/SKILL.md), Research mode and linked research protocol: proposed domain method; confirm the actual applicable version during Definition.
 
 ### O02 — Recommend a suitable contract
 
@@ -134,7 +135,8 @@ Compare eligible offers using the user's approved constraints. Keep tariff cost 
 
 **References**
 
-- [Illustrative request](#illustrative-request), R1–R3: supports comparison, risk assessment and the authority boundary.
+- [Illustrative request](#illustrative-request), R1–R3: establishes comparison, risk assessment and the authority boundary.
+- [de-stromwechsel research protocol](https://github.com/kt-ai-labs/life-skills/blob/main/plugins/de/de-stromwechsel/skills/de-stromwechsel/references/research-prompt.md): proposed method for costs, terms and risk checks; actual offers remain Execution evidence.
 
 ## Lifecycle notes
 

@@ -18,7 +18,7 @@ Proposed — pending human confirmation.
   - Claude Code: Opus High
 ```
 
-Additional harness mappings use the same structure. Record actual human confirmation separately. Executor selection is not Plan configuration. These are recommended labels, not guaranteed public model names or API IDs. Where a needed profile label is unavailable, establish a supported human-confirmed choice before use; never guess equivalence or silently downgrade. Present both default harness mappings as proposals when applicable. If a harness is unavailable or not intended for the Task, the human may explicitly leave it unconfigured for all applicable roles; do not claim support or invoke that harness until a mapping is explicitly confirmed under the profile-change rules. All three roles must have confirmed mappings for the intended review harnesses before main Discovery.
+Additional harness mappings use the same structure. Record actual human confirmation separately. Executor selection is not Plan configuration. These are recommended labels, not guaranteed public model names or API IDs. Present both defaults where applicable; confirm supported mappings for all three roles in the intended harnesses before main Discovery. The human may explicitly leave an unused or unavailable harness unconfigured. Establish a confirmed supported mapping before invoking it; never guess equivalence or silently downgrade.
 
 ## Lifecycle
 

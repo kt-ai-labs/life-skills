@@ -54,7 +54,8 @@ Generate 365 daily nonnegative counts from a documented seeded process with week
 **References**
 
 - [R2 — evaluation constraints](request.md#r2--evaluation-constraints): supports the chronology and leakage-prevention strategy.
-- [R4 — deliverables](request.md#r4--deliverables): supports the reproducible synthetic artifact design.
+- [R4 — deliverables](request.md#r4--deliverables): requires reproducibility.
+- Hyndman and Athanasopoulos, [Forecasting: Principles and Practice, §5.10](https://otexts.com/fpp3/toolbox.html): proposed method source for training-only chronological validation.
 
 ### O02 — Produce comparable forecasts for all candidate methods
 
@@ -85,6 +86,7 @@ Compare same-weekday historical value, trailing historical average and regulariz
 
 - [R3 — candidate methods](request.md#r3--candidate-methods): establishes candidate families.
 - [R2 — evaluation constraints](request.md#r2--evaluation-constraints): establishes comparable dates and forecast-time availability.
+- [Forecasting: Principles and Practice, §5.2](https://otexts.com/fpp3/toolbox.html): proposed source for the seasonal baseline; [scikit-learn, linear models, Ridge regression](https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification): proposed source for the regularized regression option.
 
 ### O03 — Assess performance and limitations
 
@@ -116,3 +118,4 @@ Calculate mean absolute error on the predeclared comparable evaluation populatio
 
 - [R3 — candidate methods](request.md#r3--candidate-methods): establishes the primary metric and period reporting.
 - [R4 — deliverables](request.md#r4--deliverables): establishes the comparative report and evidence requirements.
+- [Forecasting: Principles and Practice, §5.8](https://otexts.com/fpp3/toolbox.html): proposed source for mean absolute error and forecast accuracy evaluation.
