@@ -41,7 +41,7 @@ Compare the eligible options and justify a suitable choice or the absence of a v
 
 **Dependencies**
 
-- O01: comparable offers, verified terms and relevant evidence limitations.
+- O01: offer and eligibility evidence, verified terms where available, exclusions and evidence gaps (including a documented absence of comparable eligible offers).
 
 **References**
 
@@ -114,7 +114,7 @@ Use available dated offer sources and actual contractual terms. Screen eligibili
 
 **Dependencies**
 
-- O01: verified comparable offer records, terms and evidence limitations.
+- O01: verified offer/eligibility records where available, exclusions and documented evidence gaps, including the absence of comparable eligible offers if applicable.
 
 **Strategy**
 
@@ -130,7 +130,7 @@ Compare eligible offers using the user's approved constraints. Keep tariff cost 
 
 **Verification**
 
-- Recompute first-year costs with and without attainable bonuses; check consistency with source conditions, constraints, limitations and the full Brief.
+- Recompute available comparable first-year costs with and without attainable bonuses; check consistency with source conditions, constraints, limitations and the full Brief. If no comparable eligible offer can be verified, verify the recorded search, exclusions and gaps instead of inventing prices or a recommendation.
 
 **References**
 

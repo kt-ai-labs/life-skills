@@ -17,6 +17,8 @@ An evidence-backed comparison of the three requested forecasting methods, with r
 
 ### O01 — Establish a valid evaluation dataset and protocol
 
+Create a reproducible synthetic daily dataset with documented seasonality, noise and demand change, and establish a common chronological evaluation protocol that prevents holdout leakage.
+
 **Dependencies**
 
 - None.
@@ -27,6 +29,8 @@ An evidence-backed comparison of the three requested forecasting methods, with r
 - [R4 — deliverables](request.md#r4--deliverables): requires reproducibility and excludes real data.
 
 ### O02 — Produce comparable forecasts for all candidate methods
+
+Produce one-day-ahead predictions for the requested three methods on the same dates; preserve missing or failed predictions and their provenance.
 
 **Dependencies**
 
@@ -39,6 +43,8 @@ An evidence-backed comparison of the three requested forecasting methods, with r
 - [R2 — evaluation constraints](request.md#r2--evaluation-constraints): requires a common evaluation population and no hidden exclusions.
 
 ### O03 — Assess performance and limitations
+
+Compare mean absolute errors across the common evaluation and predeclared periods, explain limitations and deliver reproducible evidence, including any negative or inconclusive result.
 
 **Dependencies**
 
