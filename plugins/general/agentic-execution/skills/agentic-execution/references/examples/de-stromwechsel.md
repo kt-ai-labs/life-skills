@@ -65,7 +65,7 @@ Compare the eligible options and justify a suitable choice or the absence of a v
 
 ## Reviewer Profiles
 
-Proposed — pending human confirmation. Illustrative V2 defaults, subject to supported selection and actual confirmation.
+Proposed — pending human confirmation. Illustrative defaults, subject to supported selection and actual confirmation.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
   - Codex: Sol High

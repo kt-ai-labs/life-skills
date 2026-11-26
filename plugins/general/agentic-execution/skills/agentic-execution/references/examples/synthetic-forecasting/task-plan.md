@@ -8,7 +8,7 @@
 
 ## Reviewer Profiles
 
-Proposed — pending human confirmation. Illustrative V2 defaults; actual supported selection and human confirmation are required.
+Proposed — pending human confirmation. Illustrative defaults; actual supported selection and human confirmation are required.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
   - Codex: Sol High

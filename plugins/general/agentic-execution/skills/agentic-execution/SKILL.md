@@ -3,9 +3,9 @@ name: agentic-execution
 description: Define, review, approve, launch, execute or resume substantial bounded tasks through targeted discovery, evidence-based batches, independent reviews and durable checkpoints. Use for multi-step research, investigation, software work and other substantial tasks requiring verified outcomes; not for a one-off answer or routine small edit.
 ---
 
-# Agentic Execution V2
+# Agentic Execution
 
-Package release: `0.1.1`. Lifecycle contract: V2.
+Package release: `0.1.2`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
