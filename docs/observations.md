@@ -68,3 +68,57 @@ Candidates to test in an isolated, authorized environment:
 Compare the candidates against native/default behavior on the same bounded synthetic reviewer workload. Measure real elapsed blocking time, parent model requests, no-op calls, cached/non-cached token usage, completion-to-continuation latency, human interventions and message delivery. Confirm one active invocation, reliable result correlation, preserved pending records, and no duplicate launches or premature acceptance. If no effective safe wait is available, retain the existing blocker/Resume behavior instead of spinning.
 
 **Disposition:** open experimental question for 0.3. No workaround is approved, no installed configuration is changed, and the 0.2.2 operational contract remains unchanged.
+
+
+## Retrospective diagnostic — OBS-001 update (2026-11-27)
+
+Source: generalized read-only retrospective of the same completed run, using persisted Executor and Reviewer journals, lifecycle records and available telemetry. These are reported findings from one run, not independent maintainer replication. No private artifacts or project identifiers are imported.
+
+- Governing releases: 0.2.1 initially; 0.2.2 installed but not adopted; 0.2.3 explicitly adopted later. 0.2.4 installed during late closeout but did not govern the completed Task.
+- Verified by the diagnostic: 106 unique Executor-authored `true` calls (32 initial planning, 6 correction/resubmission, 54 first final substantive preparation/review, 14 corrective planning after human intervention). 94 occurred while reviews were pending and 12 before dispatch. Native targeted blocking waiting with a 300000 ms requested timeout worked already under 0.2.1. No preceding failed native wait explained the first loop.
+- After 0.2.3 adoption, no further `true` calls were observed, but see OBS-002. The run used native fallback, not demonstrated automatic continuation.
+- Current configuration contained `wake_on_agent_messages = true`; historical effective enablement and the cause of the missing automatic wake were not established. The UI delivery failure remains unverified and cannot be causally attributed to the no-op calls.
+- Controlled reproduction, actual-client feature verification and matched model comparisons remain open. No shell workaround is approved; the demonstrated effective native wait takes precedence.
+
+## OBS-002 — Behavioral substitution and enabled-next-action failure
+
+**Observed:** 2026-11-27  
+**Status:** Diagnostic-confirmed in one run; behavioral reproduction pending.  
+**Related findings:** AE-D02, AE-D03; OBS-001.
+
+Following required invocation recording/readback under 0.2.3, the Executor performed 40 unnecessary operations (33 Git checks and seven clock calls) before genuine waits across four reviews: 4, 6, 12 and 18 respectively. The checks found no changed submitted content or other authorized obligation. The associated intervals totaled about 151 seconds; a completed follow-up response was consumed about 40 seconds late. These intervals may overlap other activity and must not be added indiscriminately.
+
+Across both governing periods, the diagnostic found 146 avoidable tool calls associated with 75 usage-recorded Executor responses out of 244 (53 no-op sampling groups and 22 pre-wait probe responses). Associated input: 14,299,341 tokens, of which 14,278,904 cached; output 5,955; separately reported reasoning 1,192. These associations are not a measured counterfactual cost or billing estimate.
+
+The diagnostic classified the recurring behavior as instruction-following failure: the next enabled action was deferred in favor of no-progress activity even when native blocking waiting was available. The disappearance of a particular command did not establish compliance. No causal model/effort attribution or missing harness capability was demonstrated.
+
+Patch candidate 0.2.5 (PR #9) strengthens the generic invariant and waiting discipline, treats commands as non-exhaustive examples, and assesses material deviations in existing reviews. No new gate, telemetry, mandatory instrumentation or polling. Verify actual behavior using a delayed synthetic review: after required receipt bookkeeping, consume available results or enter effective waiting directly unless a concrete applicable obligation or new material event justifies action. Check for substitution across tools, unnecessary inference and result-consumption delay, not merely absence of `true`. Consider further 0.3 changes only on evidence.
+
+## OBS-003 — Unsupported termination of authorized execution
+
+**Observed:** 2026-11-27  
+**Status:** Diagnostic-confirmed in one run; harness cause unestablished.  
+**Related finding:** AE-D04 (High).
+
+Under 0.2.1, the Executor ended an authorized turn with corrective planning review pending, without a human pause, established automatic continuation or concrete blocker. The child completed 37 seconds later; no automatic parent continuation was observed. Later human status-only restriction was correctly honored, and explicit resume restored execution. Do not attribute the entire subsequent idle interval to the initial cessation.
+
+Investigate effective automatic continuation in the matching client with authorized harmless synthetic operations, including completion racing with turn termination, terminal/nonterminal messages, failure, interruption and applicable deadlines. A configuration value or completion notification alone is insufficient. Verify direct native blocking fallback when automatic continuation is unestablished. Patch candidate 0.2.5 makes the continuation decision explicit; effectiveness remains untested.
+
+## OBS-004 — Selective timestamp capture and review detection
+
+**Observed:** 2026-11-27  
+**Status:** Diagnostic-confirmed in one run; 0.2.4 behavioral validation pending.  
+**Related findings:** AE-D01, AE-D05, AE-D06.
+
+Of 128 Ledger events, 51 had uncertainty in their timing fields. In 51 Execution/closeout events, 39 contained unknown occurrence times: one recovered historical completion and 38 current transitions. The Executor captured reliable clocks near selected reviewer dispatches and preserved them across records, but often failed to capture preparation, receipt/acceptance, step and checkpoint boundaries. Delayed bookkeeping contributed; clock failure and compaction as primary cause were not supported. Intermediate/final tracking reviews did not diagnose the systematic pattern. One late closeout reused a prior clock after intervening verification.
+
+The 0.2.4 common timestamp policy and existing tracking checks directly address these mechanisms in specification. Do not retroactively apply it to the run or invent historical times. Validate current/remote-observed/historical transitions, timely capture and reuse, and reviewer distinction between justified uncertainty and avoidable omission without clock polling or exhaustive session replay. No additional timestamp rule proposed for 0.2.5.
+
+## OBS-005 — Positive architectural evidence
+
+**Observed:** 2026-11-27  
+**Status:** Positive observations from the same diagnostic; not universal guarantees.
+
+The run preserved governing revision across installations, performed explicit adoption and compatibility assessment, reread complete effective Brief and Plan after both Executor compactions, recovered actual child responses and replaced unavailable contexts appropriately. Sequential execution, scoped checkpoints, independent reviews and same-state final acceptance remained coherent. Final Substantive review detected a localized factual miss that survived intermediate acceptance; a corrective batch and renewed whole-task acceptance resolved it (AE-D07). These observations support retaining the architecture rather than adding gates or replacing it on the basis of this run.
+
+All findings above are generalized maintenance evidence, not operational instructions or approved 0.3 design changes. The raw retrospective and consumer-specific evidence remain private.
