@@ -1,7 +1,7 @@
 {
   "name": "agentic-execution",
   "displayName": "Agentic Execution",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Define and execute substantial tasks with bounded discovery, independent reviews, human approvals, evidence and durable recovery.",
   "author": {
     "name": "KT-AI Labs",

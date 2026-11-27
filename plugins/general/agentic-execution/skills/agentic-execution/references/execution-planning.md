@@ -18,7 +18,7 @@ An executable E-Step has stable E01, E02, etc., one coherent focus, required inp
 
 For each new batch identity start a fresh Combined Execution Batch Reviewer; for changes or restoration of the same suspended batch retain its reliable compatible reviewer, or replace it under Reviewers' recovery rule. Provide effective Brief/Plan, original material sources/decisions, identifiable Execution Plan, detailed Current plus full-task overview, prerequisite evidence and target checks. Require review of:
 1. Single Focus and actionable bounded Steps.
-2. Preservation of all governing objectives, methodology, constraints (including required Tools & Skills and their applicable scope) and evidence, including overview coverage/dependencies.
+2. Preservation of all governing objectives, methodology, constraints (including applicable accepted strategic Tools & Skills choices, required workflows and their scope) and evidence, including overview coverage/dependencies.
 3. Coherent prerequisites and scheduling; currently required inputs available, within-batch prerequisites ordered and verified before dependent work.
 4. Meaningful proportionate verifiable checks/evidence targets; expensive runs include actual execution identity, clean/fresh vs reused evidence, privacy/permission safeguards and recovery as applicable (see [Execution](execution.md)).
 5. No invented human decisions or disguised strategic change.
