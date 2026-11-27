@@ -8,7 +8,7 @@
 
 ## Reviewer Profiles
 
-Proposed — pending human confirmation. Illustrative defaults; actual supported selection and human confirmation are required.
+Proposed — pending human confirmation for both harnesses. Illustrative requested defaults; verify actual model/effort support in each harness when used.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
   - Codex: Sol High
@@ -22,7 +22,7 @@ Proposed — pending human confirmation. Illustrative defaults; actual supported
 
 ## Overall strategy
 
-Use a deterministic synthetic dataset and a chronological split. Freeze the evaluation protocol before fitting candidates. Evaluate all methods on the same one-day-ahead forecast dates; do not tune using holdout outcomes. Preserve implementation, evidence and limitations. Model comparison is the goal, not a predetermined winner.
+Use a deterministic synthetic dataset and a chronological split. Fix the data-generation scenario and freeze the evaluation protocol before fitting candidates or inspecting holdout outcomes. Evaluate all methods on the same one-day-ahead forecast dates; do not tune using holdout outcomes. Preserve implementation, evidence and limitations. Model comparison is the goal, not a predetermined winner.
 
 ## Tools & Skills
 
@@ -53,13 +53,13 @@ Generate 365 daily nonnegative counts from a documented seeded process with week
 **Verification**
 
 - Reproduce the same data from the same configuration; verify dates, counts and documented change.
-- Verify nonoverlapping chronological ranges, validation restricted to training and that the holdout cannot affect fitted parameters or model selection.
+- Verify nonoverlapping chronological ranges, validation restricted to training and that holdout outcomes cannot affect fitted parameters, learned preprocessing, feature selection or model selection.
 
 **References**
 
 - [R2 — evaluation constraints](request.md#r2--evaluation-constraints): supports the chronology and leakage-prevention strategy.
 - [R4 — deliverables](request.md#r4--deliverables): requires reproducibility.
-- Hyndman and Athanasopoulos, [Forecasting: Principles and Practice, §5.10](https://otexts.com/fpp3/toolbox.html): proposed method source for training-only chronological validation.
+- Hyndman and Athanasopoulos, [Forecasting: Principles and Practice, 3rd ed., §5.10, Time series cross-validation](https://otexts.com/fpp3/toolbox.html): proposed method source for training-only chronological validation.
 
 ### O02 — Produce comparable forecasts for all candidate methods
 
@@ -69,7 +69,7 @@ Generate 365 daily nonnegative counts from a documented seeded process with week
 
 **Strategy**
 
-Compare same-weekday historical value, trailing historical average and regularized regression with weekday and lagged features. Select window lengths and regularization using training-only validation. For each one-day-ahead prediction, use only observations available before the forecast date. Freeze model choices and fitted parameters before the holdout; do not refit within it. Apply fixed baseline rules to the observations available before each date.
+Compare same-weekday historical value, trailing historical average and regularized regression with weekday and lagged features. Select window lengths and regularization using chronological training-only validation, fitting any learned preprocessing and feature selection inside each training fold. For each one-day-ahead prediction, use only observations available before the forecast date. Freeze model choices, fitted parameters and learned transformations before the holdout; do not refit or update them within it. Apply fixed baseline rules to the observations available before each date.
 
 **Tools & Skills**
 
@@ -82,19 +82,19 @@ Compare same-weekday historical value, trailing historical average and regulariz
 
 **Expected Evidence**
 
-- Versioned code and candidate configurations.
+- Versioned code, candidate configurations, validation results and fitted preprocessing/model provenance.
 - Predictions keyed by model and forecast date, actual counts, input cutoff and failures or missing predictions.
 
 **Verification**
 
-- Verify all three candidates against the same expected date set and horizon, with no future inputs.
+- Verify all three candidates against the same expected date set and horizon, with no future inputs; inspect actual training and preprocessing boundaries and confirm frozen fitted state during holdout forecasting.
 - Check forecast calculations independently on selected cases; reconcile missing predictions without silently restricting comparison.
 
 **References**
 
 - [R3 — candidate methods](request.md#r3--candidate-methods): establishes candidate families.
 - [R2 — evaluation constraints](request.md#r2--evaluation-constraints): establishes comparable dates and forecast-time availability.
-- [Forecasting: Principles and Practice, §5.2](https://otexts.com/fpp3/toolbox.html): proposed source for the seasonal baseline; [scikit-learn, linear models, Ridge regression](https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification): proposed source for the regularized regression option.
+- [Forecasting: Principles and Practice, 3rd ed., §5.2, Seasonal naïve method](https://otexts.com/fpp3/toolbox.html): proposed source for the seasonal baseline; [scikit-learn, linear models, Ridge regression](https://scikit-learn.org/stable/modules/linear_model.html#ridge-regression-and-classification): proposed source for the regularized regression option.
 
 ### O03 — Assess performance and limitations
 
@@ -126,4 +126,4 @@ Calculate mean absolute error on the predeclared comparable evaluation populatio
 
 - [R3 — candidate methods](request.md#r3--candidate-methods): establishes the primary metric and period reporting.
 - [R4 — deliverables](request.md#r4--deliverables): establishes the comparative report and evidence requirements.
-- [Forecasting: Principles and Practice, §5.8](https://otexts.com/fpp3/toolbox.html): proposed source for mean absolute error and forecast accuracy evaluation.
+- [Forecasting: Principles and Practice, 3rd ed., §5.8, Evaluating point forecast accuracy](https://otexts.com/fpp3/toolbox.html): proposed source for mean absolute error and forecast accuracy evaluation.
