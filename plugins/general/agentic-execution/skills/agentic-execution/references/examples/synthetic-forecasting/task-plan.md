@@ -8,7 +8,7 @@
 
 ## Reviewer Profiles
 
-Proposed — pending human confirmation. Illustrative defaults; actual supported selection and human confirmation are required.
+Proposed — pending human confirmation for both harnesses. Illustrative requested defaults; verify actual model/effort support in each harness when used.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
   - Codex: Sol High

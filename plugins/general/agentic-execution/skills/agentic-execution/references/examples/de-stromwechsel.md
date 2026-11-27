@@ -69,7 +69,7 @@ Compare the eligible options and justify a suitable choice or the absence of a v
 
 ## Reviewer Profiles
 
-Proposed — pending human confirmation. Illustrative defaults, subject to supported selection and actual confirmation.
+Proposed — pending human confirmation for both harnesses. Illustrative requested defaults; verify actual model/effort support in each harness when used.
 
 - **Batch:** Discovery and Execution Batch planning/execution.
   - Codex: Sol High
@@ -152,4 +152,4 @@ Compare eligible offers using the user's approved constraints. Keep tariff cost 
 
 ## Lifecycle notes
 
-Neither draft is approved. Apply independent Definition review, separate Brief/Plan approvals and explicit launch under the current Skill before substantive Execution. Use ordinary batch planning, independent acceptance, durable checkpoints and both final reviews. Do not treat this example as evidence of actual offers or execution.
+Neither draft is approved. In an actual Task initialize the root Task Ledger before D00 and record material lifecycle starts/outcomes, including review and human decisions by reference. Apply independent Definition review, separate Brief/Plan approvals and explicit launch under the current Skill before substantive Execution. Use ordinary batch planning, independent acceptance, durable checkpoints and both final reviews. Do not treat this example as evidence of actual offers or execution.

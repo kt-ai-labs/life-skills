@@ -1,6 +1,6 @@
 # Execution Planning — rolling wave
 
-Only enter after verifying independent definition acceptance, distinct initial human Brief/Plan approvals, explicit launch and current effective definition (including approved/accepted amendments). Read [Human approvals](human-approvals.md) if any gate remains pending and [Recovery](state-and-recovery.md) if interrupted. No default human approval of the derived Execution Plan. Create it and the Ledger only after initial launch.
+Only enter after verifying independent definition acceptance, distinct initial human Brief/Plan approvals, explicit launch and current effective definition (including approved/accepted amendments). Read [Human approvals](human-approvals.md) if any gate remains pending and [Recovery](state-and-recovery.md) if interrupted. No default human approval of the derived Execution Plan. Create the Execution Plan only after initial launch; continue the already initialized root Task Ledger.
 
 ## Plan structure
 
@@ -8,7 +8,7 @@ Keep one mutable execution-plan.md for intended work. Link governing Brief/Plan,
 - **Current Batch:** stable BNN ID, focus/deliverable, Objective mapping, actual prerequisites, dependencies, fully specified Single Focus Steps, expected checks/evidence.
 - **Next Batch:** provisional scope, likely decomposition, prerequisites, assumptions/risks.
 - **Remaining overview:** high-level purpose, Objective coverage and important dependencies.
-- Historical/suspended/superseded batch IDs and references to Ledger where relevant; never rewrite accepted history.
+- Historical/suspended/superseded batch IDs and references to Task Ledger where relevant; never rewrite accepted history.
 
 Use only applicable horizons. If no executable work remains (including after a definition re-entry or profile-only amendment at a final review gate), record that fact, verify that all mandatory work and relevant accepted checkpoints/evidence still satisfy the effective definition, and route to [Final acceptance](final-acceptance.md). Do not invent a Current/Next Batch or E-Step just to fill the template; if any work or revalidation is needed, plan and accept the actual batch before executing it.
 

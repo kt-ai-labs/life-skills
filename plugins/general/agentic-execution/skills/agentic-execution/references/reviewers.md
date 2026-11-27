@@ -1,6 +1,6 @@
 # Reviewer configuration and invocation
 
-Executor is the main chat, not a reviewer. Task Plan contains exactly three roles. Defaults for unsupplied new-Task entries; establish explicit human confirmation of the intended harness mappings for all three roles before main Discovery. No automatic change to existing Tasks.
+Executor is the main chat, not a reviewer. Task Plan contains exactly three roles. For new Tasks propose mappings for both Codex and Claude Code for all three roles, regardless of the current Executor harness. Establish explicit human confirmation before main Discovery; one clear confirmation of the complete presented configuration suffices. No automatic change to existing confirmed Tasks.
 
 ```markdown
 ## Reviewer Profiles
@@ -18,7 +18,7 @@ Proposed — pending human confirmation.
   - Claude Code: Opus High
 ```
 
-Use the same structure for other harnesses. Record human confirmation separately; Executor selection is not Plan configuration. Labels are recommendations, not guaranteed model IDs. Propose only missing intended mappings; explicit selection for all reviewers covers all three roles. Leave unused/unavailable harnesses unconfigured until a supported mapping is confirmed. Never guess equivalence or silently downgrade.
+Use the same structure for other explicitly requested harnesses. Record human confirmation separately; Executor selection is session-specific, not Plan configuration. Labels are recommendations, not guaranteed model IDs. Propose both standard harness mappings unless the human explicitly restricts the Task to fewer harnesses; document that restriction. Do not infer exclusion from current harness or local availability. Respect explicit selections already given, propose only missing in-scope mappings, and resolve ambiguous confirmations. A confirmed mapping is the requested profile, not proof of installed capability. For explicitly adopted legacy Tasks, previously confirmed mappings remain valid in their established scope, even when only one harness was configured under the older contract; record that grandfathered scope in the adoption decision. Add missing mappings only by explicit confirmation under the existing mapping-change rules. Unconfirmed legacy drafts follow the new default for missing mappings. Verify support for the selected model and effort when that harness is actually used (before invocation); disclose known incompatibilities and resolve them before affected use. Never guess equivalence or silently downgrade.
 
 ## Lifecycle
 
@@ -48,6 +48,6 @@ At most one active review within this Task; retained idle contexts allowed. No c
 
 ## Recovery and profile changes
 
-Lost/incompatible reviewer: establish old invocation ended or cancel it where authorized and verify termination; start fresh isolated same role/current confirmed profile for pending gate, submit primary versions, earlier findings/decisions/corrections. Record replacement lineage; ignore late superseded responses. Do not rerun accepted work just for a new harness using an existing confirmed mapping.
+Lost/incompatible reviewer: establish old invocation ended or cancel it where authorized and verify termination; start fresh isolated same role/current confirmed profile for pending gate, submit primary versions, earlier findings/decisions/corrections. Record replacement lineage; ignore late superseded responses. Do not rerun accepted work, change the Plan, require definition re-entry or re-confirm the existing mapping just for a new harness using an existing confirmed mapping; verify actual capability and recover compatible independent context or replace it for a pending gate.
 
 Mapping change requires explicit human confirmation before use, retains prior provenance, retires incompatible context (verify any in-flight invocation ended before replacement). Before launch re-review affected definition and renew changed approved Plan per [Human approvals](human-approvals.md). After launch enter or continue pending definition re-entry even for profile-only change per [Changes and corrections](changes-and-corrections.md); use newly confirmed profiles for pending readiness and final definition, never require unavailable old profile to approve replacement. Prior valid acceptances survive absent real defect or applicable human policy.
