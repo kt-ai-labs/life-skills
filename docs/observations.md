@@ -43,3 +43,28 @@ For the diagnostic, correlate the three review-stage episodes, the queued-messag
 - Establish whether the pattern is reproducible and whether Executor model/effort has an effect. A single observed Sol Medium run does not establish a causal relationship with the effort increase.
 
 Let the run finish without diagnostic interference where safe. Do not prescribe a Skill change before establishing the root cause. Consider a correction for 0.3 only if evidence supports it; preserve the existing waiting and independent review invariants.
+
+### External corroboration (2026-11-27)
+
+Public Codex issue reports describe related failure modes. These are user reports and diagnostic leads, not proof that this run has the same root cause.
+
+- [#38132 — placeholder shell output during agent coordination](https://github.com/openai/codex/issues/38132): a Windows coordinator reportedly substituted repeated PowerShell output commands for agent-state tools.
+- [#19325 — no-op shell tool-selection loop](https://github.com/openai/codex/issues/19325): repeated `true` and `printf` despite explicit user correction, in a different tool-use scenario (GPT-5.4 Medium).
+- [#35259 — repeated parent inference during wait/status polling](https://github.com/openai/codex/issues/35259): one reported session had four subagent launches, 234 waits and approximately 140.7 million input tokens overall, mostly cached. This is not a measurement of waiting alone or of billed cost.
+- [#31935 — blocking-wait duration guidance](https://github.com/openai/codex/issues/31935): users describe conflicting guidance concerning long native waits and frequent commentary. Verify whether equivalent constraints actually apply to the installed harness/model; do not assume they explain OBS-001.
+- [#64090 — long-horizon multi-agent monitoring trap](https://github.com/openai/codex/issues/64090): a report describes 852 short wait-loop iterations and about 62.1 million tokens attributed to empty wait turns in one worker. It also reports an isolated successful experiment with event-driven wake-up via `wake_on_agent_messages`. The report warns that long shell/code-mode polling cells may delay delivery of child messages. These are externally reported measurements, not independently reproduced results.
+
+### Open investigation — temporary waiting workaround
+
+**Goal:** Find a practical, low-overhead temporary workaround for Codex pending-review/job waiting while the underlying failure is investigated or fixed upstream. Do not make a workaround a permanent cross-harness requirement.
+
+Candidates to test in an isolated, authorized environment:
+
+1. Native blocking wait, using the actual supported tool and target identity, e.g. a five-minute timeout (`timeout_ms: 300000` if supported). Verify that it genuinely blocks, wakes appropriately on completion or relevant events, and does not cause repeated premature returns.
+2. If native waiting is ineffective, evaluate a bounded five-minute shell-based fallback (e.g. `sleep 300` with an actual supported blocking wait/yield mechanism). Check that the *outer* tool call genuinely waits rather than returning immediately and inducing a new polling loop. A timer is not an agent-status check or completion signal. Confirm that human interruption, urgent reviewer messages and result retrieval remain reliable; reject this option if it suppresses them, violates host constraints or merely moves the polling overhead elsewhere.
+3. Investigate the experimental event-driven `wake_on_agent_messages` feature reported in #64090 and the relevant installed-client capabilities. Test automatic parent continuation and recovery without requiring a human turn. Do not enable it globally or assume corporate/IDE compatibility.
+4. Investigate supported host-local wait configuration, including the user-reported configuration approach in #31935, only within authorized settings and applicable host constraints. Do not try to bypass higher-priority instructions or safety restrictions.
+
+Compare the candidates against native/default behavior on the same bounded synthetic reviewer workload. Measure real elapsed blocking time, parent model requests, no-op calls, cached/non-cached token usage, completion-to-continuation latency, human interventions and message delivery. Confirm one active invocation, reliable result correlation, preserved pending records, and no duplicate launches or premature acceptance. If no effective safe wait is available, retain the existing blocker/Resume behavior instead of spinning.
+
+**Disposition:** open experimental question for 0.3. No workaround is approved, no installed configuration is changed, and the 0.2.2 operational contract remains unchanged.
