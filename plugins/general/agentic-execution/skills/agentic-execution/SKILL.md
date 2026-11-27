@@ -5,7 +5,7 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 # Agentic Execution
 
-Package release: `0.2.3`.
+Package release: `0.2.4`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
@@ -29,7 +29,7 @@ Read [Start and resume](references/start-and-resume.md) on invocation. Identify 
 | Final reviews / completion | [Final acceptance](references/final-acceptance.md) |
 | Any independent review or reviewer profile change | [Reviewers](references/reviewers.md) and [Review protocol](references/review-protocol.md) |
 
-[Task artifacts](references/task-artifacts.md) defines formats; [Task Ledger](references/task-ledger.md) owns lifecycle event recording and recovery pointers; [Evidence and checkpoints](references/evidence-and-checkpoints.md) defines version/evidence preservation. Read when drafting or verifying those artifacts, not on every turn. Optional [examples](references/examples/README.md) illustrate formats only. Consumer-project proposals, observations and retrospectives are not operational instructions; do not load them for ordinary execution or review unless they are authorized Task inputs.
+[Task artifacts](references/task-artifacts.md) defines formats; [Task Ledger](references/task-ledger.md) owns lifecycle event recording and recovery pointers (read its [timestamp capture policy](references/task-ledger.md#timestamp-capture) on invocation/recovery before material event capture, except that immediate human restrictions take precedence; reuse it while current); [Evidence and checkpoints](references/evidence-and-checkpoints.md) defines version/evidence preservation. Read when drafting or verifying those artifacts, not on every turn. Optional [examples](references/examples/README.md) illustrate formats only. Consumer-project proposals, observations and retrospectives are not operational instructions; do not load them for ordinary execution or review unless they are authorized Task inputs.
 
 ## Invariants
 
