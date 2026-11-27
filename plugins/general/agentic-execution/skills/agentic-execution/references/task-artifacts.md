@@ -40,7 +40,7 @@ Preserve the original human request verbatim in request.md or via an authorized 
 
 ## Task Brief — WHAT / WHY
 
-Human-readable structure:
+Human-readable structure (the three required level-two sections below follow the header in the stated order):
 - Header: Task ID, Draft/Approved (or explicit effective revision status), Created and Last Updated UTC (`YYYY-MM-DD HH:mm:ssZ`). Created is fixed; use known provenance or label unknown. Update Last Updated on document edits.
 - A separate required level-two Markdown section: `## Task`, `## Problem`, `## Research Question` or `## Hypothesis` (choose the applicable framing). State what needs to be addressed and why.
 - `## Intended Outcome`: a separate required level-two section stating the desired result (no assumed positive scientific finding). Do not combine it with the preceding section.
