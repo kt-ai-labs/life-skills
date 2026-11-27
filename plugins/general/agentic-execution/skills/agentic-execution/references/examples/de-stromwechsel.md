@@ -4,11 +4,11 @@ Fictional German household scenario. This is a format illustration, not a real t
 
 ## Illustrative request
 
-**R1:** Identify current eligible household electricity offers for the user's specified supply scenario and compare first-year costs with and without attainable bonuses.
+**R1:** Run a non-binding Switching Simulation for a household electricity supply scenario to be specified during Definition. Compare first-year costs of real current address-specific offers with and without attainable bonuses, and distinguish simulated quotation timing from feasibility at the actual intended start.
 
 **R2:** Check contractual conditions and explain material operational risks using dated evidence; distinguish unavailable evidence from confirmed failure.
 
-**R3:** Recommend a suitable contract, or explain why no suitable option can be established. No application, contract acceptance, cancellation or supplier switch is authorized. Personal supply details and records stay in the consumer project.
+**R3:** Recommend a suitable option for the quotation scenario, or explain why no suitable option can be established. This fictional request is limited to the annual tariff choice; strategic reserve assessment and designation are out of scope. No application, contract acceptance, cancellation or supplier switch is authorized. Keep personal supply details and records in authorized private storage; use only the minimum inputs needed for non-binding quotations.
 
 # Task Brief — Compare household electricity offers
 
@@ -19,7 +19,7 @@ Fictional German household scenario. This is a format illustration, not a real t
 
 ## Research Question
 
-Which eligible electricity offer, if any, best satisfies the user's stated consumption, timing, price and risk constraints?
+Which eligible electricity offer, if any, best satisfies the consumption, timing, price and risk constraints to be established for the scenario, and what is known about feasibility at the actual intended start?
 
 ## Intended Outcome
 
@@ -29,11 +29,13 @@ A reproducible comparison and justified recommendation, including a no-suitable-
 
 ### O01 — Identify comparable eligible offers
 
-Establish comparable current offers, including first-year costs with and without attainable bonuses, applicable contractual conditions and material operational risks; document gaps and exclusions.
+Establish comparable current address-specific offers, including first-year costs with and without attainable bonuses, applicable contractual conditions and material operational risks; distinguish quotation eligibility from actual-start feasibility and document gaps and exclusions.
 
 **Dependencies**
 
-- User-provided or verified authorized supply scenario, consumption and intended start.
+- Authorized supply-point scenario and applicable eligibility inputs.
+- Confirmed primary annual consumption basis.
+- Actual intended supply start.
 
 **References**
 
@@ -51,7 +53,7 @@ Compare the eligible options and justify a suitable choice or the absence of a v
 
 - [Illustrative request](#illustrative-request), R3: requires a justified recommendation or an honest negative outcome without taking contractual action.
 
-**Shared constraints:** No submissions or cancellations. Keep household details private. Do not invent live offers or verification.
+**Shared constraints:** No applications, contract acceptance, cancellations, supplier switches, strategic reserve assessment or designation. Keep household details in authorized private storage; disclose only minimum inputs for non-binding quotations. Do not invent live offers or verification.
 
 ## References
 
@@ -83,7 +85,7 @@ Proposed — pending human confirmation for both harnesses. Illustrative request
 
 ## Overall strategy
 
-Use the applicable electricity-research domain method; collect cheap evidence first and deepen checks only where they can change suitability or the decision. Definition-stage Discovery establishes scenario, strategy, source availability and evidence requirements; the approved offer investigation is Execution.
+Use the Switching Simulation mode of the applicable electricity-research domain method within the explicitly narrowed annual-tariff scope. Collect cheap evidence first and deepen checks only where they can change suitability or the decision. Definition-stage Discovery establishes scenario, strategy, source availability and evidence requirements; the approved offer investigation is Execution.
 
 ## Tools & Skills
 
@@ -95,11 +97,13 @@ Use the applicable electricity-research domain method; collect cheap evidence fi
 
 **Dependencies**
 
-- Authorized supply scenario and applicable eligibility inputs from the user.
+- Authorized supply-point scenario and applicable eligibility inputs.
+- Confirmed primary annual consumption basis.
+- Actual intended supply start.
 
 **Strategy**
 
-Use available dated offer sources and actual contractual terms. Screen eligibility and compare costs for consistent consumption, period and mandatory charges; distinguish attainable bonuses from uncertain or excluded ones. Investigate risk and contract conditions proportionately. Where interactive browser research is necessary, use the applicable authorized browser method.
+Attempt real current non-binding address-specific quotations and obtain applicable contractual terms. Screen eligibility and compare costs for consistent consumption, quotation start, period and mandatory charges; distinguish attainable bonuses from uncertain or excluded ones. Investigate risk and contract conditions proportionately. If the actual intended start is outside booking windows, choose and justify a separate current quotation scenario; assess real-start limitations separately. Where interactive browser research is necessary, use the applicable authorized browser method.
 
 **Tools & Skills**
 
@@ -108,15 +112,15 @@ Use available dated offer sources and actual contractual terms. Screen eligibili
 **Key Assumptions / Decisions**
 
 - Confirm consumption, start scenario and selection constraints during Definition. Unavailable price or contract data is not verified evidence.
-- A simulated quotation date, if needed, must be distinct from the actual intended start.
+- If a separate quotation date is needed, distinguish modelled timing, date selected in the calculator and timing compatibility established by applicable terms. None establishes a binding supplier acceptance.
 
 **Expected Evidence**
 
-- Dated offer records, source locators, eligibility/exclusion reasons, cost components, contractual conditions, relevant risk evidence and gaps.
+- Dated quotation records or documented blocked attempts, source locators, scenario and input basis (without duplicating private address details), eligibility/exclusion reasons, cost components, contractual conditions, relevant risk evidence and gaps.
 
 **Verification**
 
-- Check source dates and applicability, consistent scenario/consumption, price components and bonus attainability; reconcile missing evidence and exclusions.
+- Check source dates and supply-point applicability, consistent quotation start and consumption, price components and bonus attainability; verify material contract conditions, risk evidence and actual-start limitations separately. Reconcile missing evidence and exclusions.
 
 **References**
 
@@ -131,19 +135,19 @@ Use available dated offer sources and actual contractual terms. Screen eligibili
 
 **Strategy**
 
-Compare eligible offers using the user's approved constraints. Keep tariff cost distinct from risk and uncertainty. Explain the decision and alternatives, or conclude that no suitable choice can yet be verified.
+Compare eligible offers for the quotation scenario using the user's approved constraints. Keep tariff cost distinct from risk and uncertainty, and distinguish the simulated recommendation from actual-start feasibility. If reasonable authorized alternatives are exhausted without a defensible choice, report the simulation as incomplete, with concrete blockers and next actions; do not mislabel it as a completed simulation.
 
 **Key Assumptions / Decisions**
 
-- No recommendation constitutes permission to switch or accept a contract.
+- No recommendation constitutes permission to switch or accept a contract. Strategic reserve research is outside this illustrative request.
 
 **Expected Evidence**
 
-- Reproducible comparison and reasoned recommendation or documented negative/inconclusive outcome.
+- Dated report with reproducible comparison, reasoned recommendation or documented negative/inconclusive investigation outcome, actual-start limitations, and the domain simulation's actual completion status.
 
 **Verification**
 
-- Recompute available comparable first-year costs with and without attainable bonuses; check consistency with source conditions, constraints, limitations and the full Brief. If no comparable eligible offer can be verified, verify the recorded search, exclusions and gaps instead of inventing prices or a recommendation.
+- Recompute available comparable first-year costs with and without attainable bonuses; check consistency with source conditions, constraints, limitations and the full Brief. Verify the report and applicable domain records are saved within authorized storage. If no comparable eligible offer can be verified, verify the recorded attempts, alternatives, exclusions and gaps instead of inventing prices or a recommendation. A verified inconclusive investigation does not establish a completed Switching Simulation.
 
 **References**
 

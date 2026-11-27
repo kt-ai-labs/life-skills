@@ -14,4 +14,4 @@ Compare a same-weekday seasonal baseline, a trailing-average baseline, and a reg
 
 ## R4 — Deliverables
 
-Provide reproducible generation and evaluation code, predictions and metrics, and an evidence-backed comparative report. A negative or inconclusive result is acceptable. No real visitor data, personal information, external data collection, or operational staffing changes are in scope.
+Provide reproducible generation and evaluation code, predictions and metrics, and an evidence-backed comparative report. A negative or inconclusive result is acceptable. No real visitor data, personal information, external observation data collection, or operational staffing changes are in scope. Public methodological literature may be consulted; it does not supply observations for the dataset.
