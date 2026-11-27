@@ -45,21 +45,26 @@ Human-readable structure (the three required level-two sections below follow the
 - A separate required level-two Markdown section: `## Task`, `## Problem`, `## Research Question` or `## Hypothesis` (choose the applicable framing). State what needs to be addressed and why.
 - `## Intended Outcome`: a separate required level-two section stating the desired result (no assumed positive scientific finding). Do not combine it with the preceding section.
 - `## Objectives`: a separate required level-two section following Intended Outcome. `### O01 — Name` etc. Each states the human-level obligation, **Dependencies** (one required input per item, referenced O-ID or external prerequisite; say none if none), then **References** (source, precise locator and why it establishes the requirement).
-- Shared scope, exclusions and constraints; Objective-specific exceptions beside that Objective.
+- Shared scope, exclusions and constraints; Objective-specific exceptions beside that Objective. Preserve any human-required use of particular Tools or Skills as an applicable constraint, not merely a suggested method.
 - References source register: **Authoritative** (human-designated governing sources/amendments, precedence/conflicts) and **Context** (prior results, drafts and unconfirmed material). Draft classification is proposed until approved.
 - Genuine decisions requiring confirmation only.
 
 ## Task Plan — strategic HOW
 
-Same header plus link to corresponding Brief. Include a single `## Reviewer Profiles` section per [Reviewers](reviewers.md), then overall strategy, Objectives, shared decisions/limitations and real pending choices as relevant.
+Same header plus link to corresponding Brief. Include a single `## Reviewer Profiles` section per [Reviewers](reviewers.md), then overall strategy, an optional `## Tools & Skills` section for shared or cross-cutting choices, Objectives, shared decisions/limitations and real pending choices as relevant.
 
 Match every top-level Brief Objective ID **and exact name** one-to-one. Each Objective contains:
 - **Dependencies:** required previous Objective outputs/external inputs, one per item.
 - **Strategy:** essential methods, alternatives, rationale and trade-offs.
+- **Tools & Skills** (where applicable): material choices specific to this Objective, not repetitions of applicable Task-level choices.
 - **Key Assumptions / Decisions:** established vs proposed vs pending material choices.
 - **Expected Evidence:** what output, finding or record demonstrates completion, including valid negative/inconclusive findings.
 - **Verification:** how to verify the evidence (validity, comparability, provenance, reproducibility, timing or relevant criteria); never omit the basis for any mandatory Objective.
 - **References:** precise sources supporting strategy or method, not merely a repeated requirement citation.
+
+### Tools & Skills at both levels
+
+Explicitly identify strategically significant tools, frameworks and additional Skills in the applicable block. State each one's purpose, applicable Objectives or activity scope (Task-level does not necessarily mean every activity), and material constraints, outputs or evidence implications where relevant. Objective-level choices supplement shared choices; identify any justified exception explicitly and resolve conflicts before acceptance. Omit empty blocks and avoid listing routine commands, interchangeable utilities or every library. Distinguish proposed choices from established or human-required ones; assess availability, suitability and compatibility proportionately during Definition. Selection does not itself grant access, disclosure, installation, external-action or other permissions. Preserve required workflows and their evidence without duplicating external artifacts; reference them from existing Task records. No particular tool or additional Skill is mandatory by default.
 
 Omit empty boilerplate; explain no dependencies/check separately applicable where useful. Allocate stable O-IDs monotonically; never recycle retired IDs. Resolve contradictory, circular or missing strategic prerequisites. Do not silently add Objectives, import past decisions as binding or defer major methodology to the Execution Plan. No fine-grained steps, runtime state or Executor profile in Task Plan.
 

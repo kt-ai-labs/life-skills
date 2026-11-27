@@ -5,7 +5,7 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 # Agentic Execution
 
-Package release: `0.1.7`.
+Package release: `0.1.8`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 

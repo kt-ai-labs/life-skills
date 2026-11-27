@@ -24,6 +24,10 @@ Proposed — pending human confirmation. Illustrative defaults; actual supported
 
 Use a deterministic synthetic dataset and a chronological split. Freeze the evaluation protocol before fitting candidates. Evaluate all methods on the same one-day-ahead forecast dates; do not tune using holdout outcomes. Preserve implementation, evidence and limitations. Model comparison is the goal, not a predetermined winner.
 
+## Tools & Skills
+
+- Python — proposed common environment for reproducible data generation, forecasting and evaluation (O01–O03); confirm feasibility during Definition.
+
 ## Objectives
 
 ### O01 — Establish a valid evaluation dataset and protocol
@@ -66,6 +70,10 @@ Generate 365 daily nonnegative counts from a documented seeded process with week
 **Strategy**
 
 Compare same-weekday historical value, trailing historical average and regularized regression with weekday and lagged features. Select window lengths and regularization using training-only validation. For each one-day-ahead prediction, use only observations available before the forecast date. Freeze model choices and fitted parameters before the holdout; do not refit within it. Apply fixed baseline rules to the observations available before each date.
+
+**Tools & Skills**
+
+- scikit-learn — proposed implementation of regularized regression; preserve the fitted configuration and version for reproducibility. Confirm suitability during Definition.
 
 **Key Assumptions / Decisions**
 

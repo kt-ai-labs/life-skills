@@ -5,8 +5,8 @@ Verify current Planning Acceptance per [Execution planning](execution-planning.m
 ## Execute each Single Focus Step
 
 1. Verify actual dependencies and valid earlier results; stop affected work on invalid inputs or reserved decisions.
-2. Execute authorized work, cheap checks before costly operations. Preserve failures, skipped checks and limitations. For potentially non-idempotent actions persist/read back authorized intent, target and expected result before acting; reconcile actual outcome before retry.
-3. Record actual output/checks, input and implementation versions and evidence in Ledger. Material changes to executable scope or prerequisites require renewed Planning Acceptance before affected work; strategy failure/earlier defect → [Changes and corrections](changes-and-corrections.md).
+2. Execute authorized work using the applicable accepted Tools & Skills; verify needed capabilities and follow their relevant instructions within existing authority and gates. Preserve failures, skipped checks and limitations. For potentially non-idempotent actions persist/read back authorized intent, target and expected result before acting; reconcile actual outcome before retry.
+3. Record actual output/checks, input and implementation versions and evidence in Ledger, including material Tools & Skills usage, deviations and relevant workflow artifact references. Material changes to executable scope or prerequisites require renewed Planning Acceptance before affected work; strategy failure/earlier defect → [Changes and corrections](changes-and-corrections.md).
 
 ### Long-running work (when applicable)
 
@@ -16,7 +16,7 @@ Apply [Pending work and waiting](../SKILL.md#pending-work-and-waiting). For a lo
 
 ## Execution Acceptance and checkpoint
 
-Give the **same Combined Execution Batch Reviewer** recoverable actual implementation/artifacts, evidence, Ledger, effective requirements and plan changes; apply [Reviewers](reviewers.md) and [Review protocol](review-protocol.md). Require explicit acceptance of technical/domain substance and completeness/truthfulness of required work, checks, evidence and tracking. Correct, rerun affected checks and resubmit until accepted. Renew Planning Acceptance first if material plan changed.
+Give the **same Combined Execution Batch Reviewer** recoverable actual implementation/artifacts, evidence, Ledger, effective requirements and plan changes; apply [Reviewers](reviewers.md) and [Review protocol](review-protocol.md). Require explicit acceptance of technical/domain substance and completeness/truthfulness of required work, checks, evidence and tracking, including actual compliance with applicable required Tools & Skills. Correct, rerun affected checks and resubmit until accepted. Renew Planning Acceptance first if material plan changed.
 
 After acceptance verify/create scoped durable checkpoint per Evidence and checkpoints. Record/read back acceptance, evidence and checkpoint in Ledger; pending until verified. Recover exact accepted content if interrupted; no substitution. Retire reviewer and advance only after checkpoint; follow [Execution planning](execution-planning.md) to reconcile suspended dependents before ordinary Next Batch promotion. Earlier batches are historical; use correction batches. When no work remains route to [Final acceptance](final-acceptance.md).
 

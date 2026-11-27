@@ -85,6 +85,10 @@ Proposed — pending human confirmation. Illustrative defaults, subject to suppo
 
 Use the applicable electricity-research domain method; collect cheap evidence first and deepen checks only where they can change suitability or the decision. Definition-stage Discovery establishes scenario, strategy, source availability and evidence requirements; the approved offer investigation is Execution.
 
+## Tools & Skills
+
+- de-stromwechsel Skill — proposed domain workflow for offer research and recommendation (O01–O02); use the applicable version confirmed during Definition.
+
 ## Objectives
 
 ### O01 — Identify comparable eligible offers
@@ -96,6 +100,10 @@ Use the applicable electricity-research domain method; collect cheap evidence fi
 **Strategy**
 
 Use available dated offer sources and actual contractual terms. Screen eligibility and compare costs for consistent consumption, period and mandatory charges; distinguish attainable bonuses from uncertain or excluded ones. Investigate risk and contract conditions proportionately. Where interactive browser research is necessary, use the applicable authorized browser method.
+
+**Tools & Skills**
+
+- browser-research Skill — proposed for interactive offer-source inspection if needed and supported; use authorized browser access only.
 
 **Key Assumptions / Decisions**
 

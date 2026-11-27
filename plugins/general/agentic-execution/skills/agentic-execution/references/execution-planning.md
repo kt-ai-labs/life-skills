@@ -4,7 +4,7 @@ Only enter after verifying independent definition acceptance, distinct initial h
 
 ## Plan structure
 
-Keep one mutable execution-plan.md for intended work. Link governing Brief/Plan, effective definition and major source/decision versions. Cover **every** Objective and obligation end-to-end. Use:
+Keep one mutable execution-plan.md for intended work. Link governing Brief/Plan, effective definition and major source/decision versions. Cover **every** Objective and obligation end-to-end. Carry applicable Task- and Objective-level Tools & Skills into affected work, prerequisites and evidence targets. Reference any external workflow/decomposition artifacts where useful rather than duplicating them; retain Single Focus Steps, dependencies and independent gates in this lifecycle. Use:
 - **Current Batch:** stable BNN ID, focus/deliverable, Objective mapping, actual prerequisites, dependencies, fully specified Single Focus Steps, expected checks/evidence.
 - **Next Batch:** provisional scope, likely decomposition, prerequisites, assumptions/risks.
 - **Remaining overview:** high-level purpose, Objective coverage and important dependencies.
@@ -18,7 +18,7 @@ An executable E-Step has stable E01, E02, etc., one coherent focus, required inp
 
 For each new batch identity start a fresh Combined Execution Batch Reviewer; for changes or restoration of the same suspended batch retain its reliable compatible reviewer, or replace it under Reviewers' recovery rule. Provide effective Brief/Plan, original material sources/decisions, identifiable Execution Plan, detailed Current plus full-task overview, prerequisite evidence and target checks. Require review of:
 1. Single Focus and actionable bounded Steps.
-2. Preservation of all governing objectives, methodology, constraints and evidence, including overview coverage/dependencies.
+2. Preservation of all governing objectives, methodology, constraints (including required Tools & Skills and their applicable scope) and evidence, including overview coverage/dependencies.
 3. Coherent prerequisites and scheduling; currently required inputs available, within-batch prerequisites ordered and verified before dependent work.
 4. Meaningful proportionate verifiable checks/evidence targets; expensive runs include actual execution identity, clean/fresh vs reused evidence, privacy/permission safeguards and recovery as applicable (see [Execution](execution.md)).
 5. No invented human decisions or disguised strategic change.
