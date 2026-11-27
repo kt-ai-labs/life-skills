@@ -5,7 +5,7 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 # Agentic Execution
 
-Package release: `0.2.2`.
+Package release: `0.2.3`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
@@ -42,6 +42,8 @@ Read [Start and resume](references/start-and-resume.md) on invocation. Identify 
 - Preserve human authority, original inputs and material two-way dialogue throughout the lifecycle, actual review responses, recoverable versions and checkpoints. Maintain one Task Ledger from initialization through termination; record material starts and outcomes promptly, not every tool call. Read back gates before advancing. Respect pause/stop/withdrawal/abandonment and closed history; never overwrite unrelated work or force-push. No mandatory exclusivity declaration, separate state DB or lock.
 
 ## Pending work and waiting
+
+For Codex, read [Codex harness guidance](references/harness/codex.md) before the first independent review or long-running invocation that may require waiting, or on recovery if applicable guidance is not reliably current. Reuse verified capabilities while their basis remains current. The harness reference selects the mechanism; the following lifecycle rules remain authoritative.
 
 Applies to every review and long-running job. Complete submission checks before dispatch. Before invoking a review or long job that may outlive its call/turn, persist/read back pending intent and recovery basis in the appropriate authoritative record (review round for reviews, Task Ledger for jobs); correlate the Task Ledger event by stable identity. Record the actual invocation and available handle/receipt (or its absence) as soon as returned, before waiting or yielding. Missing identity does not prove absence. Once a pending invocation and its required records are persisted, wait next using a supported blocking tool or event-driven continuation, with suitable bounds for installed limits, safety and human responsiveness. If a completed result is already available, handle it instead of waiting; reconcile its identity and perform the required acceptance checks. Intervene before waiting only for a specific outstanding independent authorized obligation within the current Single Focus that materially advances the Task without affecting the submitted scope or bypassing a gate, or to handle a new material event, restriction, failure or recovery need. The independent-work exception does not authorize starting another Assignment, E-Step, batch or review. Rechecking unchanged files, rereading submitted material and speculative preparation do not qualify. After recovery of a pending invocation, apply the same rule once the required reconciliation is complete. Prefer the longest suitable wait to repeated short/default polls. A process/session yield, timeout, notification or empty output is not by itself proof of current liveness, progress or completion. Never simulate waiting with text or promises. Report material verified transitions/errors or requested/required updates, with the last observed state/time clearly distinguished from current status.
 
