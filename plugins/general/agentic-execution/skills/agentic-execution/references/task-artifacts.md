@@ -42,8 +42,9 @@ Preserve the original human request verbatim in request.md or via an authorized 
 
 Human-readable structure:
 - Header: Task ID, Draft/Approved (or explicit effective revision status), Created and Last Updated UTC (`YYYY-MM-DD HH:mm:ssZ`). Created is fixed; use known provenance or label unknown. Update Last Updated on document edits.
-- Task / Problem / Question / Hypothesis (only applicable framing); Intended Outcome (no assumed positive scientific finding).
-- Objectives: `### O01 — Name` etc. Each states the human-level obligation, **Dependencies** (one required input per item, referenced O-ID or external prerequisite; say none if none), then **References** (source, precise locator and why it establishes the requirement).
+- A separate required level-two Markdown section: `## Task`, `## Problem`, `## Research Question` or `## Hypothesis` (choose the applicable framing). State what needs to be addressed and why.
+- `## Intended Outcome`: a separate required level-two section stating the desired result (no assumed positive scientific finding). Do not combine it with the preceding section.
+- `## Objectives`: a separate required level-two section following Intended Outcome. `### O01 — Name` etc. Each states the human-level obligation, **Dependencies** (one required input per item, referenced O-ID or external prerequisite; say none if none), then **References** (source, precise locator and why it establishes the requirement).
 - Shared scope, exclusions and constraints; Objective-specific exceptions beside that Objective.
 - References source register: **Authoritative** (human-designated governing sources/amendments, precedence/conflicts) and **Context** (prior results, drafts and unconfirmed material). Draft classification is proposed until approved.
 - Genuine decisions requiring confirmation only.

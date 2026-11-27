@@ -5,11 +5,11 @@
 **Created:** 2026-01-01 09:00:00Z (fictional)  
 **Last Updated:** 2026-01-01 09:00:00Z (fictional)
 
-## Research question
+## Research Question
 
 Do more complex daily visitor-count forecasts improve on simple baselines under a reproducible chronological evaluation?
 
-## Intended outcome
+## Intended Outcome
 
 An evidence-backed comparison of the three requested forecasting methods, with reproducible data and evaluation, comparable predictions, and honest conclusions including negative or inconclusive findings.
 

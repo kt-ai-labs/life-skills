@@ -17,9 +17,13 @@ Fictional German household scenario. This is a format illustration, not a real t
 **Created:** 2026-01-01 09:00:00Z (fictional)  
 **Last Updated:** 2026-01-01 09:00:00Z (fictional)
 
-**Question:** Which eligible electricity offer, if any, best satisfies the user's stated consumption, timing, price and risk constraints?
+## Research Question
 
-**Intended Outcome:** A reproducible comparison and justified recommendation, including a no-suitable-offer or insufficient-evidence outcome if warranted.
+Which eligible electricity offer, if any, best satisfies the user's stated consumption, timing, price and risk constraints?
+
+## Intended Outcome
+
+A reproducible comparison and justified recommendation, including a no-suitable-offer or insufficient-evidence outcome if warranted.
 
 ## Objectives
 
