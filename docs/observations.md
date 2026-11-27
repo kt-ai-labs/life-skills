@@ -18,6 +18,15 @@ The screenshots support the repeated no-op calls and visible sequence; the appro
 
 A bare shell `true` returns success without performing substantive work, verification or blocking waiting. The calls are therefore a potential no-progress overhead pattern.
 
+### Additional observations from the same run (2026-11-27)
+
+- The same repeated `true` call pattern was visible around Batch Execution Review and again around Final Substantive Review. These are additional episodes within one run, not independent experiments.
+- During the Batch Execution Review episode, the Codex UI reported failure to send a queued human message and offered retry, edit or deletion to continue the queue. The operator reported that the session had been hanging and appeared to recover. The cause, duration and any relationship to the no-op calls are unverified.
+- During the Final Substantive Review episode, the human explicitly challenged the repeated calls. The Executor acknowledged (paraphrased) that it had looped on empty `true` calls instead of waiting for the Reviewer, that the calls performed no checks or changes, and that it intended to stop the pattern and use real waiting. This is an observed Executor self-report, not independent proof of the underlying cause, available wait facilities, or subsequent compliance.
+- The repeated behavior therefore also consumed human attention through an intervention. The actual elapsed time, token cost and whether the intervention resolved the pattern remain unknown.
+
+For the diagnostic, correlate the three review-stage episodes, the queued-message delivery failure, actual host events and the intervention. Check whether the pattern ceased after the intervention and whether any later gates or work were affected. Do not infer causation from temporal proximity or treat the Executor's acknowledgment as a verified root-cause analysis.
+
 ### Working hypotheses (unconfirmed)
 
 - The Executor may have used repeated no-op tool calls as a surrogate for waiting on a Reviewer or receiving a completion event.
