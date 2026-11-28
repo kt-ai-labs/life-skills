@@ -2,6 +2,8 @@
 
 ## Ordinary operational changes
 
+When evidence triggers a recorded material risk or contradicts an assumption, reassess affected work promptly; stop dependent work where validity or authority is uncertain. Apply an already authorized response where its conditions hold, otherwise follow the existing operational replanning or Definition re-entry boundary below. A trigger does not itself expand authority or automatically require human escalation. Record actual material impact and disposition in existing records, not a separate risk register.
+
 Stay in Execution if Brief/Plan strategy, constraints and evidence obligations remain intact. Reorder pending Steps, update dependencies, substitute equivalent tools within the accepted strategy and constraints (never silently replace a human-required tool or workflow), add checks, add/skip a Step with justification or regroup future batches. Record reason, O-ID impact and required verification in Execution Plan/Task Ledger. Material current batch plan or prerequisite changes require renewed Planning Acceptance before affected work. No default human gate for routine decisions.
 
 ## Material definition changes

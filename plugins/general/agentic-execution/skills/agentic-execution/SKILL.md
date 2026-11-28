@@ -5,7 +5,7 @@ description: Define, review, approve, launch, execute or resume substantial boun
 
 # Agentic Execution
 
-Package release: `0.2.5`.
+Package release: `0.3.0`.
 
 When activated to define, execute or resume a Task, this chat is the Executor: own work, human interactions, corrections and durable records. Use project instructions and domain skills. Do not delegate each unit or create a permanent manager.
 
@@ -30,6 +30,10 @@ Read [Start and resume](references/start-and-resume.md) on invocation. Identify 
 | Any independent review or reviewer profile change | [Reviewers](references/reviewers.md) and [Review protocol](references/review-protocol.md) |
 
 [Task artifacts](references/task-artifacts.md) defines formats; [Task Ledger](references/task-ledger.md) owns lifecycle event recording and recovery pointers (read its [timestamp capture policy](references/task-ledger.md#timestamp-capture) on invocation/recovery before material event capture, except that immediate human restrictions take precedence; reuse it while current); [Evidence and checkpoints](references/evidence-and-checkpoints.md) defines version/evidence preservation. Read when drafting or verifying those artifacts, not on every turn. Optional [examples](references/examples/README.md) illustrate formats only. Consumer-project proposals, observations and retrospectives are not operational instructions; do not load them for ordinary execution or review unless they are authorized Task inputs.
+
+## Optimization principle
+
+Optimize total cost and unnecessary human attention per independently verified outcome, including execution, verification, rework and recovery. Preserve correctness, evidence, human authority and required gates. Do not maximize activity, documentation or token savings at the expense of the intended result. Delegate reversible operational decisions within authority; surface consequential choices to humans, and keep machine-facing records proportionate to their purpose. Verify that the Task actually addresses the approved Intended Outcome, not merely that the process or listed steps completed.
 
 ## Invariants
 

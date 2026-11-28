@@ -6,6 +6,10 @@ Executor or reviewer may flag a reserved decision with evidence, options and con
 
 An Executor's request for clarification, confirmation or approval creates an input dependency, not a human-directed Task pause. On the answering turn, record material dialogue/decisions, apply the answer, verify affected prerequisites and perform the next authorized action. Continue through required reviews and work until the next required human input, other concrete blocker, explicit restriction or verified completion. Do not end the turn merely to acknowledge, save or summarize the answer, or ask for Continue. For a partial answer, apply resolved items and ask only for still-needed information; proceed with unaffected authorized work. A rejected proposal is not an available choice: revise within authority or ask about a materially different option when necessary. An explicit refusal of approval or launch leaves that gate unpassed; record it and do not repeat the unchanged request or infer assent. Respect the response's scope and restrictions: no implied separate approval, initial launch or lifting of an explicit pause, stop or withdrawal.
 
+## Human review focus
+
+At existing Brief/Plan approval and required re-entry approval, present the identifiable complete reviewed documents and focus the human-facing message on material AI interpretations, strategic choices, alternatives/trade-offs, assumptions, uncertainties and decisions that need human judgment. Identify what changed and its consequences for amendments. Do not manufacture decisions, conceal material information, imply assent or require the human to approve routine details. The focused message is a navigation aid, not a substitute for the complete governing artifacts or explicit approvals; no new artifact or gate.
+
 ## Initial gates
 
 1. One-time runtime continuation per [Start and resume](start-and-resume.md).
