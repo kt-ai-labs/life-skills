@@ -22,7 +22,7 @@ def precision(value):
         return "unknown"
     formats = ((r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}Z", FULL),) + PARTIAL
     for pattern, fmt in formats:
-        if re.fullmatch(pattern, value):
+        if re.fullmatch(pattern, value, flags=re.ASCII):
             dt.datetime.strptime(value, fmt)
             return "full" if fmt == FULL else "partial"
     raise ValueError("invalid UTC timestamp or partial date")

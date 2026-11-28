@@ -65,6 +65,16 @@ class LedgerAppendTests(unittest.TestCase):
         self.reject("now", event="first\n- LE999 | fake | fake")
         self.reject("now", event="first\u2028second")
 
+    def test_ascii_timestamp_format(self):
+        # strptime accepts some Unicode digits; ledger timestamps are canonical ASCII.
+        for timestamp in ("２０２６-01-01 09:00:00Z", "2026-01-01 0١:00:00Z",
+                          "2026-01-01 09:0١:00Z", "2026-01-01 09:00:0١Z"):
+            with self.subTest(timestamp=timestamp):
+                self.reject("captured", "--timestamp", timestamp)
+        self.reject("historical", "--timestamp", "２０２６", "--reason", "year only")
+        self.path.write_bytes(HEADER + "- LE001 | 2026-01-01 09:00:0١Z | old\n".encode("utf-8"))
+        self.reject("now")
+
     def test_format_and_duplicates(self):
         self.path.write_bytes(HEADER + b"- LE001 | unknown | old\n- LE001 | unknown | duplicate\n")
         self.reject("now")
