@@ -127,3 +127,5 @@ Calculate mean absolute error on the predeclared comparable evaluation populatio
 - [R3 — candidate methods](request.md#r3--candidate-methods): establishes the primary metric and period reporting.
 - [R4 — deliverables](request.md#r4--deliverables): establishes the comparative report and evidence requirements.
 - [Forecasting: Principles and Practice, 3rd ed., §5.8, Evaluating point forecast accuracy](https://otexts.com/fpp3/toolbox.html): proposed source for mean absolute error and forecast accuracy evaluation.
+
+Applicable illustrative risk definition: [RT001](risk-tripwires.md#rt001--result-comparability), subject to Definition review and existing Plan approval; the Task Plan retains the governing methodology and verification obligations.

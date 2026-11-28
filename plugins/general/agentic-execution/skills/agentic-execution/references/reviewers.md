@@ -34,6 +34,8 @@ At most one active review within this Task; retained idle contexts allowed. No c
 
 ## Invoke and verify
 
+Before any independent invocation, load [Waiting and continuation](waiting-and-continuation.md) and applicable harness guidance unless reliably current; use them on recovery before resuming pending work. Do not treat this as repeated preflight.
+
 1. Identify harness, select confirmed role entry. Establish installed support for model AND effort selection and independent context facilities; reuse that capability/configuration check while current. For each invocation require a supported explicit selection or verified configuration for both values; prose instructions alone, inherited unverified settings, guessed aliases or a shared-context fork cannot establish the requested setup.
 2. Confirm no other active invocation for this Task; preserve the pending round and submit bounded gate scope, primary evidence and version references per [Review protocol](review-protocol.md). Fresh context must be independent of Executor and other reviewer conversations; authorized Task artifacts are legitimate shared evidence. Invoke per Review protocol once ready.
 3. Verify actual invocation/context isolation, access, completion and response. Inspect available effective settings, overrides and fallback/substitution warnings. Label each model/effort **host-established**, **human-attested** (scope of observation), or **unknown**; keep requested values distinct. A reviewer self-report is not proof.

@@ -156,4 +156,8 @@ Compare eligible offers for the quotation scenario using the user's approved con
 
 ## Lifecycle notes
 
-Neither draft is approved. In an actual Task initialize the root Task Ledger before D00 and record material lifecycle starts/outcomes, including review and human decisions by reference. Apply independent Definition review, separate Brief/Plan approvals and explicit launch under the current Skill before substantive Execution. Use ordinary batch planning, independent acceptance, durable checkpoints and both final reviews. Do not treat this example as evidence of actual offers or execution.
+Neither draft is approved. In an actual Task initialize the root Task Ledger and Agentic Decisions before D00 and record material lifecycle starts/outcomes, including review and human decisions by reference. Apply independent Definition review, separate Brief/Plan approvals and explicit launch under the current Skill before substantive Execution. Use ordinary batch planning, independent acceptance, durable checkpoints and both final reviews. Do not treat this example as evidence of actual offers or execution.
+
+### Illustrative Risk Tripwires and Agentic Decisions
+
+If material, RT001 (O01/O02): a quotation cannot be made for the actual intended start; risk of confusing scenario suitability with feasibility. Tripwire: provider booking window excludes actual start. Response: use a separately identified authorized quotation scenario if within approved strategy, retain the actual-start limitation, stop unsupported recommendation claims; otherwise re-enter Definition. Store the definition in the living risk artifact, not as evidence of actual trigger. A material Executor decision to select a different quotation scenario would be appended to Agentic Decisions with actual time, rationale, authority and references; a later human override is a new linked disposition. No actual decision, trigger or approval is asserted in this fictional example.
