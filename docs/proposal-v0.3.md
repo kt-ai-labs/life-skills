@@ -1,7 +1,7 @@
 # Agentic Execution — Proposal v0.3
 
-**Status:** Proposed for discussion; not approved or implemented.
-**Baseline:** Released Agentic Execution 0.2.2 (commit `c2bc332d8ad9fb20ecc4f3e89204c0d71b539d1f`).
+**Status:** P01–P06 approved for implementation; candidate pending full independent audit. P07.1 (deterministic Ledger append with ordinary tests) additionally approved. Remaining P07, P08 and P09 deferred to the separate 0.4 research branch.
+**Baseline:** Originally drafted on 0.2.2; main 0.2.5 merged at `1847f947c6ce36d74a091a231bf6eaafa963e629` before implementation.
 
 This temporary proposal collects findings from a selective comparison with public agentic workflows and identifies candidates worth considering for 0.3. It is not operational Skill guidance. Discuss and decide each candidate before implementation. Remove this document once its purpose is fulfilled; retain only accepted guidance in the owning operational references.
 
@@ -15,7 +15,7 @@ Keep human authority over intent, outcomes, governing strategic choices and perm
 
 ## Candidates worth considering
 
-All six candidates below are proposals, not agreed requirements.
+P01–P06 are approved for implementation on the 0.3 branch; the following is the original design rationale, not operational authority.
 
 ### P01 — Human Attention Principle
 
@@ -91,4 +91,4 @@ The comparisons and external reports are selective and qualitative, not a contro
 
 ## Constraints for any accepted implementation
 
-Preserve the 0.2.2 operational invariants, human approval and launch, independent review, Single Focus, version-specific evidence and acceptance, lifecycle Ledger, recovery and waiting policy. Prefer small amendments to existing owning instructions. No new mandatory artifact, checklist, lifecycle gate, integration, permanent manager or consumer-project data. Keep the released package and manifests at 0.2.2 until an explicit implementation and release decision. Audit the complete affected Skill before release.
+Preserve the 0.2.5 operational invariants, human approval and launch, independent review, Single Focus, version-specific evidence and acceptance, lifecycle Ledger, recovery and waiting policy. Prefer small amendments to existing owning instructions. No new mandatory artifact, checklist, lifecycle gate, integration, permanent manager or consumer-project data. Keep main at the released 0.2.5 until explicit release acceptance; branch package/manifests are candidate 0.3.0. Audit the complete affected Skill before release.

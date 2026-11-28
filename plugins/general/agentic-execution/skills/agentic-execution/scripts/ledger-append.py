@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Append one actual event to a compatible Task Ledger (Python 3.8+)."""
+import argparse
+import datetime as dt
+import json
+import os
+from pathlib import Path
+import re
+import sys
+
+ROW = re.compile(r"- (LE[0-9]{3,}) \| ([^|]+) \| (.+)")
+ID_PREFIX = re.compile(r"\s*(?:[-*+]\s+|#+\s+|\|\s*)?LE[0-9]+(?:\s|\||:|$)")
+FULL = "%Y-%m-%d %H:%M:%SZ"
+PARTIAL = ((r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}Z", "%Y-%m-%d %H:%MZ"),
+           (r"\d{4}-\d{2}-\d{2}", "%Y-%m-%d"),
+           (r"\d{4}-\d{2}", "%Y-%m"), (r"\d{4}", "%Y"))
+
+
+def precision(value):
+    if value == "unknown":
+        return "unknown"
+    formats = ((r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}Z", FULL),) + PARTIAL
+    for pattern, fmt in formats:
+        if re.fullmatch(pattern, value):
+            dt.datetime.strptime(value, fmt)
+            return "full" if fmt == FULL else "partial"
+    raise ValueError("invalid UTC timestamp or partial date")
+
+
+def one_line(value, label):
+    if not value or not value.strip() or any(ord(c) < 32 or ord(c) == 127 for c in value) or len(value.splitlines()) != 1:
+        raise ValueError(label + " must be nonempty single-line text")
+    return value.strip()
+
+
+def next_id(data):
+    lines = data.decode("utf-8").splitlines()
+    if lines.count("## Events") != 1:
+        raise ValueError("expected one canonical ## Events section at end of ledger")
+    start = lines.index("## Events")
+    if any(ID_PREFIX.match(line) for line in lines[:start]):
+        raise ValueError("possible event outside canonical history; reconcile manually")
+    last = 0
+    for line in lines[start + 1:]:
+        if not line.strip():
+            continue
+        m = ROW.fullmatch(line)
+        if not m:
+            raise ValueError("noncanonical history row; reconcile manually")
+        n = int(m[1][2:])
+        if n <= last or m[1] != f"LE{n:03d}":
+            raise ValueError("nonmonotonic, duplicate or invalid event identity")
+        last = n
+    return f"LE{last + 1:03d}"
+
+
+def append(path, event, kind, timestamp=None, reason=None):
+    event = one_line(event, "event")
+    if reason is not None:
+        reason = one_line(reason, "reason")
+    if kind == "now" and timestamp is not None:
+        raise ValueError("now must not receive a timestamp; use captured or historical")
+    if kind in ("captured", "historical") and timestamp is None:
+        raise ValueError("captured/historical requires an explicit timestamp")
+    if timestamp is not None:
+        accuracy = precision(timestamp)
+        if accuracy != "full" and (kind != "historical" or not reason):
+            raise ValueError("partial/unknown requires historical mode and a reason")
+    if kind == "observed":
+        event = "Observed: " + event
+    if reason:
+        event += "; timing note: " + reason
+    # No creation, truncation or replacement. The caller owns authorization and
+    # single-writer coordination; detect conflicting changes, never retry blindly.
+    with os.fdopen(os.open(path, os.O_RDWR | os.O_APPEND), "r+b", buffering=0) as f:
+        before = f.read()
+        identity = next_id(before)
+        if path.read_bytes() != before:
+            raise ValueError("ledger changed before append; reconcile")
+        if timestamp is None:
+            timestamp = dt.datetime.now(dt.timezone.utc).strftime(FULL)
+        nl = b"\r\n" if b"\r\n" in before and b"\n" not in before.replace(b"\r\n", b"") else b"\n"
+        suffix = (b"" if before.endswith(b"\n") else nl) + f"- {identity} | {timestamp} | {event}".encode("utf-8") + nl
+        if f.write(suffix) != len(suffix):
+            raise OSError("partial append")
+        os.fsync(f.fileno())
+    if path.read_bytes() != before + suffix:
+        raise OSError("append readback mismatch")
+    return {"status": "appended", "event_id": identity, "timestamp": timestamp, "time_kind": kind}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("ledger", type=Path)
+    parser.add_argument("--event", required=True, help="single-line actual event, including scope and evidence as applicable")
+    parser.add_argument("--time-kind", choices=("now", "captured", "observed", "historical"), required=True)
+    parser.add_argument("--timestamp", help="full UTC; historical may use partial precision or unknown")
+    parser.add_argument("--reason", help="required for partial/unknown historical time")
+    args = parser.parse_args()
+    try:
+        result = append(args.ledger, args.event, args.time_kind, args.timestamp, args.reason)
+    except (OSError, ValueError) as exc:
+        print(f"Ledger append failed: {exc}. Inspect actual history before retrying or falling back.", file=sys.stderr)
+        return 1
+    print(json.dumps(result))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
