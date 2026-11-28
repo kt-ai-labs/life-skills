@@ -1,6 +1,6 @@
 # Codex harness
 
-Read for Codex Executor invocations and recovery as directed by the [Skill](../../SKILL.md#pending-work-and-waiting). This reference describes host-specific mechanisms, not additional lifecycle gates. The common [Reviewer configuration](../reviewers.md), [Review protocol](../review-protocol.md) and pending-work rules remain authoritative. Do not apply these Codex-specific settings to other harnesses.
+Read for Codex Executor invocations and recovery as directed by the [Skill](../waiting-and-continuation.md#pending-work-and-waiting). This reference describes host-specific mechanisms, not additional lifecycle gates. The common [Reviewer configuration](../reviewers.md), [Review protocol](../review-protocol.md) and pending-work rules remain authoritative. Do not apply these Codex-specific settings to other harnesses.
 
 ## Installed capabilities
 
