@@ -45,6 +45,11 @@ def next_id(data):
     if lines.count("## Events") != 1:
         raise ValueError("expected one canonical ## Events section at end of ledger")
     start = lines.index("## Events")
+    # The compatible preamble is plain Markdown, not a document container.
+    # Do not mistake a heading in a fenced example or raw HTML for history.
+    if any(re.match(r"^\s*(?:`{3,}|~{3,}|<)", line) or "<!--" in line
+           for line in lines[:start]):
+        raise ValueError("unsupported fenced or HTML preamble; reconcile manually")
     if any(ID_PREFIX.match(line) for line in lines[:start]):
         raise ValueError("possible event outside canonical history; reconcile manually")
     last = 0

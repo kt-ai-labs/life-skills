@@ -94,6 +94,19 @@ class LedgerAppendTests(unittest.TestCase):
                 self.path.write_bytes(HEADER + row)
                 self.reject("now")
 
+    def test_noncanonical_containers_and_utf8(self):
+        for prefix in (b"# Ledger\n```markdown\n", b"# Ledger\n~~~\n",
+                       b"# Ledger\n<!--\n", b"# Ledger\n<div>\n"):
+            with self.subTest(prefix=prefix):
+                self.path.write_bytes(prefix + b"## Events\n")
+                self.reject("now")
+        self.path.write_bytes(HEADER + b"\xff\n")
+        self.reject("now")
+        self.path.write_bytes(HEADER)
+        event = "Überprüfung | evidence: 日本語; $literal"
+        self.success("now", event=event)
+        self.assertIn(event.encode("utf-8"), self.path.read_bytes())
+
     def test_adopted_history_and_retry_reconciliation(self):
         # The first active adoption event is manually allocated using archived history.
         first = HEADER + b"- LE042 | 2026-01-01 09:00:00Z | Adopted archived history.\n"
