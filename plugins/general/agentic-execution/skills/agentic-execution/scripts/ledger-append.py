@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import stat
 
 ROW = re.compile(r"- (LE[0-9]{3,}) \| ([^|]+) \| (.+)")
 ID_PREFIX = re.compile(r"\s*(?:[-*+]\s+|#+\s+|\|\s*)?LE[0-9]+(?:\s|\||:|$)")
@@ -34,7 +35,13 @@ def one_line(value, label):
 
 
 def next_id(data):
-    lines = data.decode("utf-8").splitlines()
+    # A complete helper-written row always ends in LF (including CRLF).
+    # An unterminated tail might be a partial append, even if it parses.
+    if not data.endswith(b"\n"):
+        raise ValueError("unterminated ledger tail; reconcile manually")
+    lines = data.decode("utf-8").replace("\r\n", "\n").split("\n")
+    if any("\r" in line for line in lines):
+        raise ValueError("unsupported bare CR; reconcile manually")
     if lines.count("## Events") != 1:
         raise ValueError("expected one canonical ## Events section at end of ledger")
     start = lines.index("## Events")
@@ -47,14 +54,20 @@ def next_id(data):
         m = ROW.fullmatch(line)
         if not m:
             raise ValueError("noncanonical history row; reconcile manually")
+        precision(m[2])
+        one_line(m[3], "historical event")
         n = int(m[1][2:])
         if n <= last or m[1] != f"LE{n:03d}":
             raise ValueError("nonmonotonic, duplicate or invalid event identity")
+        if last and n != last + 1:
+            raise ValueError("gap in active event history; reconcile manually")
         last = n
     return f"LE{last + 1:03d}"
 
 
 def append(path, event, kind, timestamp=None, reason=None):
+    if kind not in ("now", "captured", "observed", "historical"):
+        raise ValueError("unsupported timing mode")
     event = one_line(event, "event")
     if reason is not None:
         reason = one_line(reason, "reason")
@@ -72,20 +85,26 @@ def append(path, event, kind, timestamp=None, reason=None):
         event += "; timing note: " + reason
     # No creation, truncation or replacement. The caller owns authorization and
     # single-writer coordination; detect conflicting changes, never retry blindly.
-    with os.fdopen(os.open(path, os.O_RDWR | os.O_APPEND), "r+b", buffering=0) as f:
+    if not stat.S_ISREG(path.stat().st_mode):
+        raise ValueError("ledger must be a regular file")
+    flags = os.O_RDWR | os.O_APPEND | getattr(os, "O_BINARY", 0)
+    with os.fdopen(os.open(path, flags), "r+b", buffering=0) as f:
+        opened = os.fstat(f.fileno())
+        if not stat.S_ISREG(opened.st_mode):
+            raise ValueError("ledger must be a regular file")
         before = f.read()
         identity = next_id(before)
-        if path.read_bytes() != before:
+        if not os.path.samestat(opened, path.stat()) or path.read_bytes() != before:
             raise ValueError("ledger changed before append; reconcile")
         if timestamp is None:
             timestamp = dt.datetime.now(dt.timezone.utc).strftime(FULL)
         nl = b"\r\n" if b"\r\n" in before and b"\n" not in before.replace(b"\r\n", b"") else b"\n"
-        suffix = (b"" if before.endswith(b"\n") else nl) + f"- {identity} | {timestamp} | {event}".encode("utf-8") + nl
+        suffix = f"- {identity} | {timestamp} | {event}".encode("utf-8") + nl
         if f.write(suffix) != len(suffix):
             raise OSError("partial append")
         os.fsync(f.fileno())
-    if path.read_bytes() != before + suffix:
-        raise OSError("append readback mismatch")
+        if not os.path.samestat(opened, path.stat()) or path.read_bytes() != before + suffix:
+            raise OSError("append readback mismatch or file replacement")
     return {"status": "appended", "event_id": identity, "timestamp": timestamp, "time_kind": kind}
 
 

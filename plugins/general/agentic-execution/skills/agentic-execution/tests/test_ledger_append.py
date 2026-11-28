@@ -1,5 +1,7 @@
 import datetime as dt
 import json
+import importlib.util
+from unittest import mock
 from pathlib import Path
 import subprocess
 import sys
@@ -74,12 +76,57 @@ class LedgerAppendTests(unittest.TestCase):
         self.reject("now")
 
     def test_crlf_and_growth(self):
-        before = (HEADER + b"- LE999 | unknown | old").replace(b"\n", b"\r\n")
+        before = (HEADER + b"- LE999 | unknown | old; timing note: legacy trace unavailable.\n").replace(b"\n", b"\r\n")
         self.path.write_bytes(before)
         result = self.success("now")
         self.assertEqual(result["event_id"], "LE1000")
-        self.assertTrue(self.path.read_bytes().startswith(before + b"\r\n- LE1000"))
+        self.assertTrue(self.path.read_bytes().startswith(before + b"- LE1000"))
         self.assertTrue(self.path.read_bytes().endswith(b"\r\n"))
+
+    def test_unterminated_and_invalid_history(self):
+        for row in (b"- LE001 | 2026-01-01 09:00:00Z | truncated",
+                    b"- LE001 | nonsense | old\n",
+                    b"- LE001 | 2026-02-30 00:00:00Z | old\n",
+                    b"- LE001 | unknown |    \n",
+                    b"- LE001 | unknown | first\n- LE003 | unknown | gap\n",
+                    b"- LE001 | unknown | old\rbroken\n"):
+            with self.subTest(row=row):
+                self.path.write_bytes(HEADER + row)
+                self.reject("now")
+
+    def test_adopted_history_and_retry_reconciliation(self):
+        # The first active adoption event is manually allocated using archived history.
+        first = HEADER + b"- LE042 | 2026-01-01 09:00:00Z | Adopted archived history.\n"
+        self.path.write_bytes(first)
+        result = self.success("observed", event="Received outcome; remote time unknown.")
+        self.assertEqual(result["event_id"], "LE043")
+        written = self.path.read_bytes()
+        self.assertTrue(written.startswith(first))
+        # A caller that loses the receipt reconciles the actual row instead of retrying.
+        self.assertEqual(written.count(b"- LE043 |"), 1)
+        self.assertEqual(self.success("historical", "--timestamp", "2026-01-01 09:02Z",
+                                      "--reason", "minute precision only")["event_id"], "LE044")
+
+    def test_replacement_and_fsync_failure(self):
+        spec = importlib.util.spec_from_file_location("ledger_append", SCRIPT)
+        helper = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(helper)
+        original_read = Path.read_bytes
+        backup = self.path.with_suffix(".old")
+        def replace_before_check(path, *args, **kwargs):
+            if path == self.path and not backup.exists():
+                path.rename(backup)
+                path.write_bytes(HEADER)
+            return original_read(path, *args, **kwargs)
+        # Replacement during pre-write readback must not report success.
+        with mock.patch.object(Path, "read_bytes", replace_before_check):
+            with self.assertRaises((OSError, ValueError)):
+                helper.append(self.path, "event", "now")
+        self.assertEqual(self.path.read_bytes(), HEADER)
+        with mock.patch.object(helper.os, "fsync", side_effect=OSError("injected failure")):
+            with self.assertRaises(OSError):
+                helper.append(self.path, "event", "now")
+        self.assertEqual(self.path.read_bytes().count(b"- LE001 |"), 1)
 
     def test_missing_file(self):
         self.path.unlink()

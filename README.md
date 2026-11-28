@@ -46,7 +46,7 @@ Plugins are installed **independently**. `de-stromwechsel` does not require `bro
 
 ## Agentic Execution
 
-Use [Agentic Execution](plugins/general/agentic-execution/skills/agentic-execution/SKILL.md) for substantial research, investigation and software tasks requiring independently verified outcomes, not routine small edits or one-off answers. The Skill uses one sequential Executor, bounded Discovery, separate Brief/Plan approvals and explicit launch, rolling execution batches, independent reviews, a lifecycle-wide Task Ledger, evidence and recovery. The bundled Ledger append helper uses Python 3 (standard library) when available, with a manual fallback; actual review and waiting capabilities depend on the host.
+Use [Agentic Execution](plugins/general/agentic-execution/skills/agentic-execution/SKILL.md) for substantial research, investigation and software tasks requiring independently verified outcomes, not routine small edits or one-off answers. The Skill uses one sequential Executor, bounded Discovery, separate Brief/Plan approvals and explicit launch, rolling execution batches, independent reviews, a lifecycle-wide Task Ledger, evidence and recovery. The bundled Ledger append helper uses Python 3.8+ (standard library) when available, with a manual fallback; actual review and waiting capabilities depend on the host.
 
 Example: `Use Agentic Execution to define and execute the specified Task, preserve its approvals and evidence, and proceed through the required independent review gates.`
 
